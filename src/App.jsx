@@ -377,7 +377,7 @@ const InternshipPage = () => (
         <div className="bg-white/10 p-6 rounded-xl border border-white/10 backdrop-blur-md min-w-[280px]">
           <h4 className="font-bold text-xl mb-4 border-b border-white/20 pb-2">Program Details</h4>
           <ul className="space-y-3 text-sm text-emerald-50">
-            <li className="flex items-center gap-2"><img src="src/assests/logo.svg" alt="RegenLab Logo" className="w-6 h-6"/> Real-world project impact</li>
+            <li className="flex items-center gap-2"><img src="src/assets/logo.png" alt="RegenLab Logo" className="w-6 h-6"/> Real-world project impact</li>
             <li className="flex items-center gap-2"><Users size={16}/> Mentorship from senior engineers</li>
             <li className="flex items-center gap-2"><BarChart size={16}/> Research publication support</li>
             <li className="flex items-center gap-2"><MapPin size={16}/> Remote & On-site (Vietnam)</li>
@@ -513,7 +513,7 @@ export default function App() {
               onClick={() => navigate('home')}
             >
               <div className="w-10 h-10 bg-emerald-600 rounded-lg flex items-center justify-center text-white shadow-lg group-hover:bg-emerald-700 transition-colors">
-                <img src="src/assets/logo.svg" alt="RegenLab Logo"/>
+                <img src="src/assets/logo.png" alt="RegenLab Logo"/>
               </div>
               <div className="flex flex-col">
                 <span className="text-xl font-bold text-slate-900 leading-none">RegenLab</span>
@@ -579,7 +579,7 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div className="col-span-1 md:col-span-1">
               <div className="flex items-center gap-2 mb-6 text-white">
-                <img src="src/assets/logo.svg" alt="RegenLab Logo" className="w-6 h-6 object-contain"/>
+                <img src="src/assets/logo.png" alt="RegenLab Logo" className="w-6 h-6 object-contain"/>
                 <span className="text-xl font-bold">RegenLab</span>
               </div>
               <p className="text-slate-400 text-sm leading-relaxed mb-6">
