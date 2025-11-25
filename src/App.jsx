@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import logoImg from './assets/logo.png';
+import CaliforniaDashboard from './components/CaliforniaDashboard';
 import { 
   Menu, X, ChevronRight, Leaf, Cpu, Globe, 
   Play, Users, Mail, MapPin, ExternalLink, 
