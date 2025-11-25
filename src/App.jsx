@@ -6,7 +6,10 @@ import {
   ArrowLeft
 } from 'lucide-react';
 import CaliforniaDashboard from './components/CaliforniaDashboard';
+
+// Define IMG
 import logoImg from './assets/logo.png';
+import californiaImg from './assets/california_dashboard.jpeg';
 
 // --- MULTI-LANGUAGE CONTENT ---
 const CONTENT = {
@@ -147,6 +150,7 @@ const PROJECTS_DATA = [
     id: 1,
     title: { en: "Vietnam Corn Optimization", vi: "Tối ưu hóa Giống Ngô Việt Nam" },
     owner: "uyen91nct2016@gmail.com",
+    image: null,
     category: "Crop Science",
     summary: { en: "Optimizing corn yield using data-driven genetic selection.", vi: "Tối ưu hóa năng suất ngô bằng chọn lọc di truyền dựa trên dữ liệu." },
     status: "Active"
@@ -155,6 +159,7 @@ const PROJECTS_DATA = [
     id: 2,
     title: { en: "California’s Regen Ag Planner", vi: "Quy hoạch Nông nghiệp Tái sinh California" },
     owner: "Trần Văn Tuấn Phong",
+    image: californiaImg,
     category: "Software Tool",
     summary: { en: "Digital planner for regenerative transition.", vi: "Công cụ lập kế hoạch kỹ thuật số cho chuyển đổi tái sinh." },
     status: "Active"
@@ -270,15 +275,33 @@ export default function App() {
 
   const ProjectCard = ({ project, onClick }) => (
     <div onClick={onClick} className="flex flex-col h-full transition-all duration-300 bg-white border border-slate-200 shadow-sm hover:shadow-lg hover:border-emerald-300 rounded-xl overflow-hidden group cursor-pointer">
-      <div className="h-32 bg-slate-100 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-900 to-slate-800 opacity-90 group-hover:opacity-100 transition-opacity"></div>
-        <div className="absolute inset-0 flex items-center justify-center text-emerald-100">
-          {project.category === 'AI/Computer Vision' || project.category === 'AI Assistant' ? <Cpu size={48} className="opacity-50" /> :
-           project.category === 'Software Tool' ? <Database size={48} className="opacity-50" /> :
-           <Sprout size={48} className="opacity-50" />}
-        </div>
-        <span className="absolute top-3 right-3 bg-white/20 backdrop-blur-md text-white text-xs font-semibold px-2 py-1 rounded">{project.category}</span>
+      <div className="h-48 bg-slate-100 relative overflow-hidden">
+        
+        {project.image ? (
+          <>
+            <img
+              src={project.image}
+              alt={project.title.en}
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+          </>
+        ): (
+          <>
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-900 to-slate-800 opacity-90 group-hover:opacity-100 transition-opacity"></div>
+            <div className="absolute inset-0 flex items-center justify-center text-emerald-100">
+              {project.category === 'AI/Computer Vision' || project.category === 'AI Assistant' ? <Cpu size={48} className="opacity-50" /> :
+              project.category === 'Software Tool' ? <Database size={48} className="opacity-50" /> :
+              <Sprout size={48} className="opacity-50" />}
+          </div>
+          </>
+        )}
+
+        <span className="absolute top-3 right-3 bg-white/20 backdrop-blur-md text-white text-xs font-semibold px-2 py-1 rounded">{project.category}
+          {project.category}
+        </span>
       </div>
+
       <div className="p-6 flex-1 flex flex-col">
         <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-emerald-700 transition-colors">{project.title[lang]}</h3>
         <p className="text-sm text-slate-600 mb-4 flex-grow">{project.summary[lang]}</p>
