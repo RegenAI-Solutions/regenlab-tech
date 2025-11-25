@@ -18,11 +18,11 @@ const vi = {
   },
   highlights: {
     ai_title: "Khoa học Uy tín (DayCent)",
-    ai_desc: "Xây dựng trên mô hình DayCent (ĐH Bang Colorado).",
+    ai_desc: "Xây dựng trên mô hình DayCent (ĐH Bang Colorado) phát triển hơn 45 năm, đảm bảo tín chỉ carbon đạt chuẩn quốc tế cao nhất.",
     climate_title: "Tự động hóa bằng AI",
-    climate_desc: "AI & MCP tự động hóa toàn bộ quá trình MMRV.",
+    climate_desc: "Quy trình AI và giao thức MCP tự động hóa toàn bộ việc Đo đạc & Báo cáo (MMRV), mở rộng quy mô chưa từng có.",
     origin_title: "Cắt giảm 80% Chi phí",
-    origin_desc: "AI Agents giảm 80% chi phí vận hành."
+    origin_desc: "Sử dụng AI Agents giúp giảm 80% chi phí vận hành, biến thị trường carbon thành cơ hội thực tế cho nông dân nhỏ."
   },
   about: {
     title: "Lợi thế RegenAI",
