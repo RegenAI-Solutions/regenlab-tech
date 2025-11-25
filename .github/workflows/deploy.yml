@@ -1,0 +1,42 @@
+name: Deploy React to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Chạy workflow này khi có code push lên nhánh main
+
+permissions:
+  contents: write # Cấp quyền cho bot để nó có thể đẩy code vào nhánh gh-pages
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Lấy mã nguồn về máy chủ ảo (Runner)
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Cài đặt Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Hoặc phiên bản node bạn đang dùng
+
+      # 3. Cài đặt các thư viện (tương tự npm install)
+      - name: Install Dependencies
+        run: npm install
+
+      # 4. Build dự án (tương tự npm run build)
+      # Kết quả build sẽ nằm trong thư mục 'dist'
+      - name: Build Project
+        run: npm run build
+
+      # 5. Deploy lên GitHub Pages
+      # Thay vì dùng 'npm run deploy' (vốn chạy gh-pages ở local), 
+      # ta dùng Action chuyên dụng này để đẩy thư mục 'dist' lên nhánh gh-pages ổn định hơn.
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist # Thư mục chứa code đã build (Vite mặc định là dist)
+          branch: gh-pages # Nhánh đích để deploy
