@@ -3,7 +3,7 @@ import {
   Menu, X, ChevronRight, Leaf, Cpu, Globe, 
   Play, Users, Mail, MapPin, ExternalLink, 
   BarChart, Sprout, Database, Microscope,
-  ArrowLeft
+  ArrowLeft, Loader2, CheckCircle
 } from 'lucide-react';
 import CaliforniaDashboard from './components/CaliforniaDashboard';
 
@@ -24,31 +24,31 @@ const CONTENT = {
       cta: "Get Involved"
     },
     hero: {
-      tagline: "RESEARCH • TECHNOLOGY • REGENERATION",
-      title_prefix: "Cultivating the Future of",
-      title_highlight: "Vietnamese Agriculture",
-      desc: "RegenLab applies artificial intelligence, remote sensing, and data science to build transparent, resilient, and climate-smart agricultural systems.",
-      btn_explore: "Explore Projects",
-      btn_mission: "Our Mission"
+      tagline: "EMPOWERING FARMERS • RESTORING PLANET",
+      title_prefix: "Democratizing the",
+      title_highlight: "Global Carbon Market",
+      desc: "We're democratizing the carbon market for smallholder farmers with our revolutionary, low-cost, AI-powered MMRV platform.",
+      btn_explore: "Explore Platform",
+      btn_mission: "Our Solution"
     },
     highlights: {
-      ai_title: "AI-Driven Insights",
-      ai_desc: "Using LLMs and Computer Vision to diagnose crop health and optimize inputs for Vietnamese micro-climates.",
-      climate_title: "Climate Resilience",
-      climate_desc: "Developing tools specifically for adaptation to climate change, focusing on carbon modeling and water efficiency.",
-      origin_title: "Transparent Origins & Safety",
-      origin_desc: "We address consumer concerns by providing clear evidence of origin and safety certifications (Traceability & Quality Assurance).",
+      ai_title: "Scientifically-Credible",
+      ai_desc: "Built on the DayCent model (Colorado State University), ensuring high-quality carbon credits that meet rigorous registry standards.",
+      climate_title: "AI-Powered Automation",
+      climate_desc: "Our AI-driven pipelines and Model Context Protocol (MCP) automate the entire MMRV process, enabling unprecedented scale.",
+      origin_title: "Drastic Cost Reduction",
+      origin_desc: "Leveraging AI agents to reduce MMRV costs by 80%, making carbon markets economically viable for smallholders.",
     },
     about: {
-      title: "About RegenLab",
-      lead: "RegenLab is a pioneering research laboratory dedicated to the intersection of advanced technology and regenerative agriculture in Vietnam.",
-      vision_title: "Our Vision: Trust via Transparency",
-      vision_desc: "We understand that consumers lack confidence in the origin of vegetables (HI1) and prioritize safety above all else (HI2). Our vision is to rebuild this trust by making every step of the production process transparent and verifiable.",
-      focus: "Research Focus",
-      values: "Core Values"
+      title: "The RegenAI Advantage",
+      lead: "The global carbon market holds immense promise, but high costs and complex science create barriers. RegenAI removes them.",
+      vision_title: "Validated by Leading Institutions",
+      vision_desc: "We've partnered with The Center for Regenerative Agriculture (CRARS) at California State University, Chico. This collaboration validates our robustness in real-world, academic settings.",
+      focus: "A Simple Path to Credits",
+      values: "Core Capabilities"
     },
     projects: {
-      title: "Research & Projects",
+      title: "Projects & Deployments",
       filter_all: "All",
       lead: "Lead",
       status: "Status",
@@ -57,23 +57,23 @@ const CONTENT = {
     },
     videos: { title: "Demo Videos", owner: "Owner" },
     internship: { 
-      title: "Internship Program",
-      join: "Join the Lab",
-      desc: "We offer 3–12 month internship opportunities for students and researchers passionate about AgTech, AI, and Sustainability.",
-      details: "Program Details",
-      apply_title: "How to Apply",
-      apply_msg: "Send your CV, transcript, and a brief cover letter to:"
+      title: "Join the Revolution",
+      join: "Partner with Us",
+      desc: "Are you a smallholder farmer, a cooperative, or an investor? Help us fuel a scalable solution to one of the world's most pressing problems.",
+      details: "Why Join?",
+      apply_title: "Contact for Partnership",
+      apply_msg: "Interested in piloting our MMRV Suite? Reach out to:"
     },
     contact: {
       title: "Contact Us",
-      get_in_touch: "Get in touch",
-      desc: "Whether you are a farmer, researcher, or student, we'd love to hear from you.",
-      form: { name: "Name", email: "Email", subject: "Subject", msg: "Message", send: "Send Message" }
+      get_in_touch: "Unlock New Revenue",
+      desc: "Tap into new income streams with verified carbon credits. Let's create a resilient, profitable future.",
+      form: { name: "Name", email: "Email", subject: "Subject", msg: "Message", send: "Send Message", sending: "Sending...", success_title: "Message Sent!", success_desc: "Thank you for contacting RegenLab. We will get back to you shortly." }
     },
     footer: {
-      desc: "Applying advanced AI and remote sensing technologies to regenerate agriculture in Vietnam. Building trust through transparent data.",
+      desc: "Empowering farmers with low-cost, AI-powered MMRV tools. Validated by science, driven by impact.",
       links: "Quick Links",
-      areas: "Research Areas",
+      areas: "Technology",
       contact: "Contact",
       rights: "All rights reserved."
     }
@@ -84,36 +84,36 @@ const CONTENT = {
       about: "Giới thiệu",
       projects: "Dự án",
       videos: "Video",
-      internship: "Tuyển dụng",
+      internship: "Hợp tác",
       contact: "Liên hệ",
       cta: "Tham gia ngay"
     },
     hero: {
-      tagline: "NGHIÊN CỨU • CÔNG NGHỆ • TÁI SINH",
-      title_prefix: "Kiến tạo Tương lai",
-      title_highlight: "Nông nghiệp Việt Nam",
-      desc: "RegenLab ứng dụng trí tuệ nhân tạo (AI), viễn thám và khoa học dữ liệu để xây dựng hệ thống nông nghiệp minh bạch, bền vững và thích ứng khí hậu.",
-      btn_explore: "Xem Dự án",
-      btn_mission: "Sứ mệnh"
+      tagline: "TRAO QUYỀN NÔNG DÂN • PHỤC HỒI HÀNH TINH",
+      title_prefix: "Dân chủ hóa",
+      title_highlight: "Thị trường Carbon",
+      desc: "Chúng tôi mang thị trường tín chỉ carbon đến với các nông hộ nhỏ bằng nền tảng MMRV ứng dụng AI đột phá với chi phí thấp.",
+      btn_explore: "Khám phá Nền tảng",
+      btn_mission: "Giải pháp"
     },
     highlights: {
-      ai_title: "Thấu hiểu từ AI",
-      ai_desc: "Sử dụng mô hình ngôn ngữ lớn (LLM) và thị giác máy tính để chẩn đoán sức khỏe cây trồng phù hợp với vi khí hậu Việt Nam.",
-      climate_title: "Thích ứng Khí hậu",
-      climate_desc: "Phát triển các công cụ chuyên biệt cho mô hình hóa carbon và sử dụng nước hiệu quả.",
-      origin_title: "Minh bạch & An toàn",
-      origin_desc: "Giải quyết nỗi lo của người tiêu dùng bằng các bằng chứng rõ ràng về nguồn gốc và chứng nhận an toàn (Tem truy xuất & VietGAP).",
+      ai_title: "Khoa học Uy tín (DayCent)",
+      ai_desc: "Xây dựng trên mô hình DayCent (ĐH Bang Colorado) phát triển hơn 45 năm, đảm bảo tín chỉ carbon đạt chuẩn quốc tế cao nhất.",
+      climate_title: "Tự động hóa bằng AI",
+      climate_desc: "Quy trình AI và giao thức MCP tự động hóa toàn bộ việc Đo đạc & Báo cáo (MMRV), mở rộng quy mô chưa từng có.",
+      origin_title: "Cắt giảm 80% Chi phí",
+      origin_desc: "Sử dụng AI Agents giúp giảm 80% chi phí vận hành, biến thị trường carbon thành cơ hội thực tế cho nông dân nhỏ.",
     },
     about: {
-      title: "Về RegenLab",
-      lead: "RegenLab là phòng thí nghiệm tiên phong ứng dụng công nghệ cao vào nông nghiệp tái sinh tại Việt Nam.",
-      vision_title: "Tầm nhìn: Niềm tin từ sự Minh bạch",
-      vision_desc: "Chúng tôi hiểu rằng người tiêu dùng thiếu niềm tin vào nguồn gốc rau củ (HI1) và đặt sự an toàn lên hàng đầu (HI2). Tầm nhìn của chúng tôi là xây dựng lại niềm tin đó bằng cách minh bạch hóa quy trình sản xuất (HI3).",
-      focus: "Trọng tâm Nghiên cứu",
-      values: "Giá trị Cốt lõi"
+      title: "Lợi thế RegenAI",
+      lead: "Thị trường carbon toàn cầu đầy tiềm năng nhưng rào cản chi phí quá lớn. RegenAI sinh ra để phá bỏ những rào cản đó.",
+      vision_title: "Kiểm chứng bởi Tổ chức Hàng đầu",
+      vision_desc: "Đối tác chiến lược với Trung tâm Nông nghiệp Tái sinh (CRARS) tại ĐH California State, Chico. Công nghệ của chúng tôi đã được kiểm chứng thực tế về độ tin cậy và khả năng mở rộng.",
+      focus: "Đường đến Tín chỉ Carbon",
+      values: "Năng lực Cốt lõi"
     },
     projects: {
-      title: "Dự án & Nghiên cứu",
+      title: "Dự án & Triển khai",
       filter_all: "Tất cả",
       lead: "Phụ trách",
       status: "Trạng thái",
@@ -122,23 +122,23 @@ const CONTENT = {
     },
     videos: { title: "Video Demo", owner: "Người đăng" },
     internship: { 
-      title: "Chương trình Thực tập",
-      join: "Tham gia cùng Lab",
-      desc: "Chúng tôi cung cấp cơ hội thực tập 3–12 tháng cho sinh viên và nhà nghiên cứu đam mê AgTech, AI và Phát triển bền vững.",
-      details: "Chi tiết Chương trình",
-      apply_title: "Cách Ứng tuyển",
-      apply_msg: "Gửi CV, bảng điểm và thư ngỏ của bạn tới:"
+      title: "Tham gia Cách mạng Tái sinh",
+      join: "Hợp tác cùng RegenLab",
+      desc: "Bạn là nông dân, hợp tác xã hay nhà đầu tư tác động? Hãy cùng chúng tôi mở khóa sức mạnh của thị trường carbon.",
+      details: "Tại sao chọn RegenAI?",
+      apply_title: "Liên hệ Hợp tác",
+      apply_msg: "Bạn muốn thử nghiệm bộ công cụ MMRV Suite? Liên hệ ngay:"
     },
     contact: {
       title: "Liên hệ",
-      get_in_touch: "Kết nối với chúng tôi",
-      desc: "Dù bạn là nông dân, nhà nghiên cứu hay sinh viên, chúng tôi luôn sẵn sàng lắng nghe.",
-      form: { name: "Họ tên", email: "Email", subject: "Chủ đề", msg: "Tin nhắn", send: "Gửi đi" }
+      get_in_touch: "Mở khóa Doanh thu mới",
+      desc: "Tạo dòng thu nhập bền vững từ tín chỉ carbon đã được xác minh. Xây dựng tương lai thịnh vượng cho cộng đồng.",
+      form: { name: "Họ tên", email: "Email", subject: "Chủ đề", msg: "Tin nhắn", send: "Gửi đi", sending: "Đang gửi...", success_title: "Gửi thành công!", success_desc: "Cảm ơn bạn đã liên hệ với RegenLab. Chúng tôi sẽ phản hồi sớm nhất." }
     },
     footer: {
-      desc: "Ứng dụng AI và công nghệ viễn thám để tái sinh nông nghiệp Việt Nam. Xây dựng niềm tin qua dữ liệu minh bạch.",
+      desc: "Trao quyền cho nông dân với công cụ MMRV AI chi phí thấp. Được kiểm chứng khoa học, thúc đẩy bởi tác động xã hội.",
       links: "Liên kết nhanh",
-      areas: "Lĩnh vực",
+      areas: "Công nghệ",
       contact: "Thông tin",
       rights: "Bảo lưu mọi quyền."
     }
@@ -259,6 +259,7 @@ export default function App() {
 
   const navigate = (pageId) => {
     setCurrentPage(pageId);
+    setActiveProject(null);
     setIsMobileMenuOpen(false);
     window.scrollTo(0, 0);
   };
@@ -404,7 +405,6 @@ export default function App() {
             <ul className="list-disc pl-5 space-y-2 text-sm">
               <li>Machine Learning</li>
               <li>Carbon Modeling</li>
-              <li>Blockchain Traceability</li>
             </ul>
           </div>
           <div className="bg-blue-50 p-6 rounded-xl border border-blue-100">
@@ -456,31 +456,69 @@ export default function App() {
           <h4 className="text-xl font-bold text-slate-800 mb-4">{t.internship.apply_title}</h4>
           <div className="bg-slate-50 p-6 rounded-xl border border-slate-200">
             <p className="text-sm text-slate-600 mb-4">{t.internship.apply_msg}</p>
-            <a href="mailto:careers@regenlab.tech" className="flex items-center gap-2 text-emerald-600 font-bold hover:underline mb-4"><Mail size={18}/> careers@regenlab.tech</a>
+            <a href="mailto:menoi1900@gmail.com" className="flex items-center gap-2 text-emerald-600 font-bold hover:underline mb-4"><Mail size={18}/> menoi1900@gmail.com</a>
           </div>
         </div>
       </div>
     </div>
   );
 
-  const ContactPage = () => (
-    <div className="max-w-4xl mx-auto px-6 py-16 animate-fade-in">
-      <SectionTitle subtitle>{t.contact.title}</SectionTitle>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-        <div className="space-y-8">
-          <div><h3 className="text-xl font-bold text-slate-800 mb-2">{t.contact.get_in_touch}</h3><p className="text-slate-600">{t.contact.desc}</p></div>
-          <div className="flex items-start gap-4"><div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-700 shrink-0"><Mail size={20}/></div><div><h4 className="font-bold text-slate-800">Email</h4><p className="text-slate-600">info@regenlab.tech</p></div></div>
-        </div>
-        <form className="bg-white p-6 rounded-xl shadow-lg border border-slate-100" onSubmit={(e) => e.preventDefault()}>
-          <div className="space-y-4">
-            <div><label className="block text-sm font-semibold text-slate-700 mb-1">{t.contact.form.name}</label><input type="text" className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none" /></div>
-            <div><label className="block text-sm font-semibold text-slate-700 mb-1">{t.contact.form.email}</label><input type="email" className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none" /></div>
-            <button className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition-colors shadow-md">{t.contact.form.send}</button>
+  const ContactPage = () => {
+    const [status, setStatus] = useState('idle'); 
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      setStatus('submitting');
+      
+      setTimeout(() => {
+        setStatus('success');
+      }, 1500);
+    };
+
+    return (
+      <div className="max-w-4xl mx-auto px-6 py-16 animate-fade-in">
+        <SectionTitle subtitle>{t.contact.title}</SectionTitle>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="space-y-8">
+            <div><h3 className="text-xl font-bold text-slate-800 mb-2">{t.contact.get_in_touch}</h3><p className="text-slate-600">{t.contact.desc}</p></div>
+            <div className="flex items-start gap-4"><div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-700 shrink-0"><Mail size={20}/></div><div><h4 className="font-bold text-slate-800">Email</h4><p className="text-slate-600">menoi1900@gmail.com</p></div></div>
           </div>
-        </form>
+          
+          {status === 'success' ? (
+            <div className="bg-emerald-50 border border-emerald-100 p-8 rounded-xl text-center flex flex-col items-center justify-center h-full shadow-sm">
+              <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 mb-4">
+                <CheckCircle size={32} />
+              </div>
+              <h4 className="text-2xl font-bold text-emerald-800 mb-2">{t.contact.form.success_title}</h4>
+              <p className="text-emerald-600">{t.contact.form.success_desc}</p>
+              <button onClick={() => setStatus('idle')} className="mt-6 px-6 py-2 bg-white text-emerald-600 font-semibold rounded-lg border border-emerald-200 hover:bg-emerald-50 transition-colors text-sm">
+                Send Another
+              </button>
+            </div>
+          ) : (
+            <form className="bg-white p-6 rounded-xl shadow-lg border border-slate-100" onSubmit={handleSubmit}>
+              <div className="space-y-4">
+                <div><label className="block text-sm font-semibold text-slate-700 mb-1">{t.contact.form.name}</label><input type="text" required className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none" /></div>
+                <div><label className="block text-sm font-semibold text-slate-700 mb-1">{t.contact.form.email}</label><input type="email" required className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none" /></div>
+                <div><label className="block text-sm font-semibold text-slate-700 mb-1">{t.contact.form.subject}</label><select className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none"><option>General Inquiry</option><option>Project Collaboration</option><option>Internship Application</option></select></div>
+                <div><label className="block text-sm font-semibold text-slate-700 mb-1">{t.contact.form.msg}</label><textarea required className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none h-32"></textarea></div>
+                <button 
+                  disabled={status === 'submitting'}
+                  className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition-colors shadow-md flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {status === 'submitting' ? (
+                    <><Loader2 size={20} className="animate-spin" /> {t.contact.form.sending}</>
+                  ) : (
+                    t.contact.form.send
+                  )}
+                </button>
+              </div>
+            </form>
+          )}
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   const VideosPage = () => (
     <div className="max-w-6xl mx-auto px-6 py-16 animate-fade-in">
@@ -557,7 +595,7 @@ export default function App() {
             </div>
             <div><h4 className="text-white font-bold mb-6">{t.footer.links}</h4><ul className="space-y-3 text-sm"><li><button onClick={() => navigate('about')}>{t.nav.about}</button></li><li><button onClick={() => navigate('projects')}>{t.nav.projects}</button></li></ul></div>
             <div><h4 className="text-white font-bold mb-6">{t.footer.areas}</h4><ul className="space-y-3 text-sm"><li>Carbon Modeling</li><li>Remote Sensing</li></ul></div>
-            <div><h4 className="text-white font-bold mb-6">{t.footer.contact}</h4><ul className="space-y-3 text-sm text-slate-400"><li>info@regenlab.tech</li></ul></div>
+            <div><h4 className="text-white font-bold mb-6">{t.footer.contact}</h4><ul className="space-y-3 text-sm text-slate-400"><li>menoi1900@gmail.com</li></ul></div>
           </div>
           <div className="border-t border-slate-800 pt-8 text-xs text-slate-500 text-center">
             &copy; {new Date().getFullYear()} RegenLab Technology. {t.footer.rights}
