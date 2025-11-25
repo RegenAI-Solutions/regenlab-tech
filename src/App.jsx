@@ -4,7 +4,7 @@ import CaliforniaDashboard from './components/CaliforniaDashboard';
 import { 
   Menu, X, ChevronRight, Leaf, Cpu, Globe, 
   Play, Users, Mail, MapPin, ExternalLink, 
-  BarChart, Sprout, Database, Microscope 
+  BarChart, Sprout, Database, Microscope, ArrowLeft
 } from 'lucide-react';
 
 // --- DATA & CONFIGURATION ---
@@ -19,7 +19,6 @@ const NAV_LINKS = [
 ];
 
 const PROJECTS = [
-  // Existing Projects
   {
     id: 1,
     title: "Vietnam Corn Optimization",
@@ -90,7 +89,6 @@ const PROJECTS = [
     outputs: "Carbon credit verification documentation.",
     status: "Review"
   },
-  // New Potential Projects
   {
     id: 8,
     title: "AI-Driven Pest Detection",
@@ -140,7 +138,7 @@ const VIDEOS = [
   }
 ];
 
-// --- COMPONENTS ---
+// --- MAIN APP COMPONENTS ---
 
 const SectionTitle = ({ children, subtitle }) => (
   <div className="mb-10 text-center">
@@ -149,8 +147,11 @@ const SectionTitle = ({ children, subtitle }) => (
   </div>
 );
 
-const ProjectCard = ({ project }) => (
-  <div className="flex flex-col h-full transition-all duration-300 bg-white border border-slate-200 shadow-sm hover:shadow-lg hover:border-emerald-300 rounded-xl overflow-hidden group">
+const ProjectCard = ({ project, onClick }) => (
+  <div 
+    onClick={onClick}
+    className="flex flex-col h-full transition-all duration-300 bg-white border border-slate-200 shadow-sm hover:shadow-lg hover:border-emerald-300 rounded-xl overflow-hidden group cursor-pointer"
+  >
     <div className="h-32 bg-slate-100 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-emerald-900 to-slate-800 opacity-90 group-hover:opacity-100 transition-opacity"></div>
       <div className="absolute inset-0 flex items-center justify-center text-emerald-100">
@@ -169,17 +170,6 @@ const ProjectCard = ({ project }) => (
       </h3>
       <p className="text-sm text-slate-600 mb-4 flex-grow">{project.summary}</p>
       
-      <div className="space-y-2 mb-4">
-        <div className="flex items-start text-xs text-slate-500">
-          <span className="font-semibold w-16 shrink-0">Methods:</span>
-          <span>{project.methods}</span>
-        </div>
-        <div className="flex items-start text-xs text-slate-500">
-          <span className="font-semibold w-16 shrink-0">Outputs:</span>
-          <span>{project.outputs}</span>
-        </div>
-      </div>
-
       <div className="pt-4 mt-auto border-t border-slate-100 flex items-center justify-between">
         <div className="text-xs text-slate-400 truncate max-w-[180px]">
           Lead: {project.owner}
@@ -192,7 +182,49 @@ const ProjectCard = ({ project }) => (
   </div>
 );
 
-// --- PAGES ---
+const ProjectsPage = () => {
+  const [activeProject, setActiveProject] = useState(null);
+
+  // Nếu đang xem chi tiết dự án số 2 (California)
+  if (activeProject && activeProject.id === 2) {
+    return (
+      <div className="max-w-7xl mx-auto px-6 py-16 animate-fade-in">
+        <CaliforniaDashboard onBack={() => setActiveProject(null)} />
+      </div>
+    );
+  }
+
+  // Nếu đang xem chi tiết các dự án khác (Placeholder)
+  if (activeProject) {
+    return (
+      <div className="max-w-4xl mx-auto px-6 py-16 animate-fade-in text-center">
+         <button onClick={() => setActiveProject(null)} className="mb-6 flex items-center gap-2 text-slate-500 hover:text-emerald-600 mx-auto font-medium">
+          <ArrowLeft size={20} /> Back to Projects
+        </button>
+        <h2 className="text-3xl font-bold mb-4">{activeProject.title}</h2>
+        <div className="bg-slate-100 p-12 rounded-xl">
+          <p className="text-slate-500">Detailed dashboard for this project is under development.</p>
+          <p className="text-sm text-slate-400 mt-2">Please check the California’s Regen Ag Planner for a live demo.</p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="max-w-7xl mx-auto px-6 py-16 animate-fade-in">
+      <SectionTitle subtitle>Research & Projects</SectionTitle>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {PROJECTS.map(project => (
+          <ProjectCard 
+            key={project.id} 
+            project={project} 
+            onClick={() => setActiveProject(project)} 
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const HomePage = ({ navigate }) => (
   <div className="animate-fade-in">
@@ -308,41 +340,19 @@ const AboutPage = () => (
   </div>
 );
 
-const ProjectsPage = () => (
-  <div className="max-w-7xl mx-auto px-6 py-16 animate-fade-in">
-    <SectionTitle subtitle>Research & Projects</SectionTitle>
-    <div className="flex flex-wrap gap-4 justify-center mb-12">
-       {/* Filter UI Placeholder */}
-       {['All', 'AI/Tech', 'Crop Science', 'Climate', 'Digital'].map(filter => (
-         <button key={filter} className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${filter === 'All' ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}>
-           {filter}
-         </button>
-       ))}
-    </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {PROJECTS.map(project => (
-        <ProjectCard key={project.id} project={project} />
-      ))}
-    </div>
-  </div>
-);
-
 const VideosPage = () => (
   <div className="max-w-6xl mx-auto px-6 py-16 animate-fade-in">
     <SectionTitle subtitle>Demo Videos</SectionTitle>
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
       {VIDEOS.map(video => (
         <div key={video.id} className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-          {/* Video Placeholder */}
           <div className="aspect-video bg-slate-900 relative flex items-center justify-center group cursor-pointer">
             <div className="absolute inset-0 bg-black/40"></div>
             <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center pl-1 group-hover:scale-110 transition-transform">
               <Play fill="white" className="text-white" size={28} />
             </div>
             <div className="absolute bottom-4 left-4 right-4">
-              <div className="bg-black/60 text-white text-xs px-2 py-1 inline-block rounded">
-                Demo Preview
-              </div>
+              <div className="bg-black/60 text-white text-xs px-2 py-1 inline-block rounded">Demo Preview</div>
             </div>
           </div>
           <div className="p-6">
@@ -362,14 +372,11 @@ const VideosPage = () => (
 const InternshipPage = () => (
   <div className="max-w-4xl mx-auto px-6 py-16 animate-fade-in">
     <SectionTitle subtitle>Internship Program</SectionTitle>
-    
     <div className="bg-gradient-to-br from-emerald-900 to-slate-800 rounded-2xl p-8 md:p-12 text-white mb-12 shadow-xl">
       <div className="flex flex-col md:flex-row items-center gap-8">
         <div className="flex-1">
           <h3 className="text-3xl font-bold mb-4">Join the Lab</h3>
-          <p className="text-emerald-100 text-lg mb-6">
-            We offer 3–12 month internship opportunities for students and researchers passionate about AgTech, AI, and Sustainability.
-          </p>
+          <p className="text-emerald-100 text-lg mb-6">We offer 3–12 month internship opportunities for students and researchers passionate about AgTech, AI, and Sustainability.</p>
           <div className="flex flex-wrap gap-3">
             <span className="bg-white/10 px-3 py-1 rounded-full text-sm backdrop-blur-sm border border-white/20">Full-Stack Dev</span>
             <span className="bg-white/10 px-3 py-1 rounded-full text-sm backdrop-blur-sm border border-white/20">Data Science</span>
@@ -379,7 +386,7 @@ const InternshipPage = () => (
         <div className="bg-white/10 p-6 rounded-xl border border-white/10 backdrop-blur-md min-w-[280px]">
           <h4 className="font-bold text-xl mb-4 border-b border-white/20 pb-2">Program Details</h4>
           <ul className="space-y-3 text-sm text-emerald-50">
-            <li className="flex items-center gap-2"><img src={logoImg} alt="RegenLab Logo" className="w-6 h-6"/> Real-world project impact</li>
+            <li className="flex items-center gap-2"><Leaf size={16}/> Real-world project impact</li>
             <li className="flex items-center gap-2"><Users size={16}/> Mentorship from senior engineers</li>
             <li className="flex items-center gap-2"><BarChart size={16}/> Research publication support</li>
             <li className="flex items-center gap-2"><MapPin size={16}/> Remote & On-site (Vietnam)</li>
@@ -387,25 +394,16 @@ const InternshipPage = () => (
         </div>
       </div>
     </div>
-
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       <div>
         <h4 className="text-xl font-bold text-slate-800 mb-4">Who we are looking for</h4>
-        <p className="text-slate-600 mb-4">
-          Undergraduate or graduate students with a strong background in either computer science or agricultural sciences. You must be self-driven, curious, and ready to tackle unstructured problems.
-        </p>
-        <p className="text-slate-600">
-          We value transparency and scientific rigor. You will be expected to document your work thoroughly and contribute to the lab's open knowledge base.
-        </p>
+        <p className="text-slate-600 mb-4">Undergraduate or graduate students with a strong background in either computer science or agricultural sciences. You must be self-driven, curious, and ready to tackle unstructured problems.</p>
       </div>
       <div>
         <h4 className="text-xl font-bold text-slate-800 mb-4">How to Apply</h4>
         <div className="bg-slate-50 p-6 rounded-xl border border-slate-200">
           <p className="text-sm text-slate-600 mb-4">Send your CV, transcript, and a brief cover letter outlining your interest in regenerative agriculture to:</p>
-          <a href="mailto:careers@regenlab.tech" className="flex items-center gap-2 text-emerald-600 font-bold hover:underline mb-4">
-            <Mail size={18}/> careers@regenlab.tech
-          </a>
-          <p className="text-xs text-slate-500 italic">Please include "Internship Application - [Your Name]" in the subject line.</p>
+          <a href="mailto:careers@regenlab.tech" className="flex items-center gap-2 text-emerald-600 font-bold hover:underline mb-4"><Mail size={18}/> careers@regenlab.tech</a>
         </div>
       </div>
     </div>
@@ -417,62 +415,17 @@ const ContactPage = () => (
     <SectionTitle subtitle>Contact Us</SectionTitle>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
       <div className="space-y-8">
-        <div>
-          <h3 className="text-xl font-bold text-slate-800 mb-2">Get in touch</h3>
-          <p className="text-slate-600">
-            Whether you are a farmer looking for tech solutions, a researcher looking to collaborate, or a student interested in our lab, we'd love to hear from you.
-          </p>
-        </div>
-        
-        <div className="flex items-start gap-4">
-          <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-700 shrink-0">
-            <Mail size={20}/>
-          </div>
-          <div>
-            <h4 className="font-bold text-slate-800">Email</h4>
-            <p className="text-slate-600">info@regenlab.tech</p>
-            <p className="text-slate-600">partnerships@regenlab.tech</p>
-          </div>
-        </div>
-
-        <div className="flex items-start gap-4">
-          <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-700 shrink-0">
-            <MapPin size={20}/>
-          </div>
-          <div>
-            <h4 className="font-bold text-slate-800">Lab Location</h4>
-            <p className="text-slate-600">Hi-Tech Agriculture Park</p>
-            <p className="text-slate-600">Ho Chi Minh City / Da Nang, Vietnam</p>
-          </div>
-        </div>
+        <div><h3 className="text-xl font-bold text-slate-800 mb-2">Get in touch</h3><p className="text-slate-600">Whether you are a farmer looking for tech solutions, a researcher looking to collaborate, or a student interested in our lab, we'd love to hear from you.</p></div>
+        <div className="flex items-start gap-4"><div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-700 shrink-0"><Mail size={20}/></div><div><h4 className="font-bold text-slate-800">Email</h4><p className="text-slate-600">info@regenlab.tech</p></div></div>
+        <div className="flex items-start gap-4"><div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-700 shrink-0"><MapPin size={20}/></div><div><h4 className="font-bold text-slate-800">Lab Location</h4><p className="text-slate-600">Hi-Tech Agriculture Park</p><p className="text-slate-600">Ho Chi Minh City / Da Nang, Vietnam</p></div></div>
       </div>
-
       <form className="bg-white p-6 rounded-xl shadow-lg border border-slate-100" onSubmit={(e) => e.preventDefault()}>
         <div className="space-y-4">
-          <div>
-            <label className="block text-sm font-semibold text-slate-700 mb-1">Name</label>
-            <input type="text" className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all" placeholder="Dr. Nguyen Van A" />
-          </div>
-          <div>
-            <label className="block text-sm font-semibold text-slate-700 mb-1">Email</label>
-            <input type="email" className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all" placeholder="you@example.com" />
-          </div>
-          <div>
-            <label className="block text-sm font-semibold text-slate-700 mb-1">Subject</label>
-            <select className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all">
-              <option>General Inquiry</option>
-              <option>Project Collaboration</option>
-              <option>Internship Application</option>
-              <option>Media/Press</option>
-            </select>
-          </div>
-          <div>
-            <label className="block text-sm font-semibold text-slate-700 mb-1">Message</label>
-            <textarea className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all h-32" placeholder="How can we help?"></textarea>
-          </div>
-          <button className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition-colors shadow-md">
-            Send Message
-          </button>
+          <div><label className="block text-sm font-semibold text-slate-700 mb-1">Name</label><input type="text" className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all" placeholder="Dr. Nguyen Van A" /></div>
+          <div><label className="block text-sm font-semibold text-slate-700 mb-1">Email</label><input type="email" className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all" placeholder="you@example.com" /></div>
+          <div><label className="block text-sm font-semibold text-slate-700 mb-1">Subject</label><select className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all"><option>General Inquiry</option><option>Project Collaboration</option><option>Internship Application</option></select></div>
+          <div><label className="block text-sm font-semibold text-slate-700 mb-1">Message</label><textarea className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all h-32" placeholder="How can we help?"></textarea></div>
+          <button className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition-colors shadow-md">Send Message</button>
         </div>
       </form>
     </div>
@@ -510,12 +463,9 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <div 
-              className="flex items-center gap-2 cursor-pointer group" 
-              onClick={() => navigate('home')}
-            >
-              <div className="w-10 h-10 bg-emerald-600 rounded-lg flex items-center justify-center text-white shadow-lg group-hover:bg-emerald-700 transition-colors">
-                <img src={logoImg} alt="RegenLab Logo"/>
+            <div className="flex items-center gap-2 cursor-pointer group" onClick={() => navigate('home')}>
+              <div className="w-10 h-10 bg-emerald-600 rounded-lg flex items-center justify-center text-white shadow-lg group-hover:bg-emerald-700 transition-colors overflow-hidden">
+                <img src={logoImg} alt="RegenLab Logo" />
               </div>
               <div className="flex flex-col">
                 <span className="text-xl font-bold text-slate-900 leading-none">RegenLab</span>
@@ -526,27 +476,17 @@ export default function App() {
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center gap-8">
               {NAV_LINKS.map(link => (
-                <button
-                  key={link.id}
-                  onClick={() => navigate(link.id)}
-                  className={`text-sm font-medium transition-colors hover:text-emerald-600 ${currentPage === link.id ? 'text-emerald-600' : 'text-slate-600'}`}
-                >
+                <button key={link.id} onClick={() => navigate(link.id)} className={`text-sm font-medium transition-colors hover:text-emerald-600 ${currentPage === link.id ? 'text-emerald-600' : 'text-slate-600'}`}>
                   {link.label}
                 </button>
               ))}
-              <button 
-                onClick={() => navigate('contact')}
-                className="px-5 py-2 bg-slate-900 text-white text-sm font-semibold rounded-full hover:bg-emerald-600 transition-colors"
-              >
+              <button onClick={() => navigate('contact')} className="px-5 py-2 bg-slate-900 text-white text-sm font-semibold rounded-full hover:bg-emerald-600 transition-colors">
                 Get Involved
               </button>
             </div>
 
             {/* Mobile Toggle */}
-            <button 
-              className="md:hidden p-2 text-slate-600 hover:bg-slate-100 rounded-lg"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
+            <button className="md:hidden p-2 text-slate-600 hover:bg-slate-100 rounded-lg" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -557,11 +497,7 @@ export default function App() {
           <div className="md:hidden bg-white border-t border-slate-100 absolute w-full shadow-xl">
             <div className="flex flex-col p-4 space-y-4">
               {NAV_LINKS.map(link => (
-                <button
-                  key={link.id}
-                  onClick={() => navigate(link.id)}
-                  className={`text-left px-4 py-3 rounded-lg text-sm font-medium ${currentPage === link.id ? 'bg-emerald-50 text-emerald-700' : 'text-slate-600 hover:bg-slate-50'}`}
-                >
+                <button key={link.id} onClick={() => navigate(link.id)} className={`text-left px-4 py-3 rounded-lg text-sm font-medium ${currentPage === link.id ? 'bg-emerald-50 text-emerald-700' : 'text-slate-600 hover:bg-slate-50'}`}>
                   {link.label}
                 </button>
               ))}
@@ -581,7 +517,7 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div className="col-span-1 md:col-span-1">
               <div className="flex items-center gap-2 mb-6 text-white">
-                <img src={logoImg} alt="RegenLab Logo" className="w-6 h-6 object-contain"/>
+                <img src={logoImg} alt="RegenLab Logo" className="w-6 h-6 object-contain" /> 
                 <span className="text-xl font-bold">RegenLab</span>
               </div>
               <p className="text-slate-400 text-sm leading-relaxed mb-6">
@@ -589,12 +525,10 @@ export default function App() {
                 Building trust through transparent data.
               </p>
               <div className="flex gap-4">
-                {/* Social Placeholders */}
                 <div className="w-8 h-8 bg-slate-800 rounded-full flex items-center justify-center hover:bg-emerald-600 transition-colors cursor-pointer"><ExternalLink size={14}/></div>
                 <div className="w-8 h-8 bg-slate-800 rounded-full flex items-center justify-center hover:bg-emerald-600 transition-colors cursor-pointer"><Mail size={14}/></div>
               </div>
             </div>
-
             <div>
               <h4 className="text-white font-bold mb-6">Quick Links</h4>
               <ul className="space-y-3 text-sm">
@@ -604,7 +538,6 @@ export default function App() {
                 <li><button onClick={() => navigate('contact')} className="hover:text-emerald-400 transition-colors">Contact Support</button></li>
               </ul>
             </div>
-
             <div>
               <h4 className="text-white font-bold mb-6">Research Areas</h4>
               <ul className="space-y-3 text-sm">
@@ -614,22 +547,14 @@ export default function App() {
                 <li><span className="text-slate-400">Traceability Blockchain</span></li>
               </ul>
             </div>
-
             <div>
               <h4 className="text-white font-bold mb-6">Contact</h4>
               <ul className="space-y-3 text-sm text-slate-400">
-                <li className="flex items-start gap-3">
-                  <MapPin size={16} className="mt-1 text-emerald-500"/>
-                  <span>Hi-Tech Agriculture Park,<br/>Vietnam</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Mail size={16} className="text-emerald-500"/>
-                  <span>info@regenlab.tech</span>
-                </li>
+                <li className="flex items-start gap-3"><MapPin size={16} className="mt-1 text-emerald-500"/><span>Hi-Tech Agriculture Park,<br/>Vietnam</span></li>
+                <li className="flex items-center gap-3"><Mail size={16} className="text-emerald-500"/><span>info@regenlab.tech</span></li>
               </ul>
             </div>
           </div>
-          
           <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
             <p>&copy; {new Date().getFullYear()} RegenLab Technology. All rights reserved.</p>
             <div className="flex gap-6 mt-4 md:mt-0">
