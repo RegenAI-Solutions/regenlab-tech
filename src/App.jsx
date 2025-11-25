@@ -11,241 +11,9 @@ import CaliforniaDashboard from './components/CaliforniaDashboard';
 import logoImg from './assets/logo.png';
 import californiaImg from './assets/california_dashboard.jpeg';
 
-// --- MULTI-LANGUAGE CONTENT ---
-const CONTENT = {
-  en: {
-    nav: {
-      home: "Home",
-      about: "About",
-      projects: "Projects",
-      videos: "Videos",
-      internship: "Careers",
-      contact: "Contact",
-      cta: "Get Involved"
-    },
-    hero: {
-      tagline: "EMPOWERING FARMERS • RESTORING PLANET",
-      title_prefix: "Democratizing the",
-      title_highlight: "Global Carbon Market",
-      desc: "We're democratizing the carbon market for smallholder farmers with our revolutionary, low-cost, AI-powered MMRV platform.",
-      btn_explore: "Explore Platform",
-      btn_mission: "Our Solution"
-    },
-    highlights: {
-      ai_title: "Scientifically-Credible",
-      ai_desc: "Built on the DayCent model (Colorado State University), ensuring high-quality carbon credits that meet rigorous registry standards.",
-      climate_title: "AI-Powered Automation",
-      climate_desc: "Our AI-driven pipelines and Model Context Protocol (MCP) automate the entire MMRV process, enabling unprecedented scale.",
-      origin_title: "Drastic Cost Reduction",
-      origin_desc: "Leveraging AI agents to reduce MMRV costs by 80%, making carbon markets economically viable for smallholders.",
-    },
-    about: {
-      title: "The RegenAI Advantage",
-      lead: "The global carbon market holds immense promise, but high costs and complex science create barriers. RegenAI removes them.",
-      vision_title: "Validated by Leading Institutions",
-      vision_desc: "We've partnered with The Center for Regenerative Agriculture (CRARS) at California State University, Chico. This collaboration validates our robustness in real-world, academic settings.",
-      focus: "A Simple Path to Credits",
-      values: "Core Capabilities"
-    },
-    projects: {
-      title: "Projects & Deployments",
-      filter_all: "All",
-      lead: "Lead",
-      status: "Status",
-      dev_msg: "Detailed dashboard for this project is under development.",
-      check_cali: "Please check the California’s Regen Ag Planner for a live demo."
-    },
-    videos: { title: "Demo Videos", owner: "Owner" },
-    internship: { 
-      title: "Join the Revolution",
-      join: "Partner with Us",
-      desc: "Are you a smallholder farmer, a cooperative, or an investor? Help us fuel a scalable solution to one of the world's most pressing problems.",
-      details: "Why Join?",
-      apply_title: "Contact for Partnership",
-      apply_msg: "Interested in piloting our MMRV Suite? Reach out to:"
-    },
-    contact: {
-      title: "Contact Us",
-      get_in_touch: "Unlock New Revenue",
-      desc: "Tap into new income streams with verified carbon credits. Let's create a resilient, profitable future.",
-      form: { name: "Name", email: "Email", subject: "Subject", msg: "Message", send: "Send Message", sending: "Sending...", success_title: "Message Sent!", success_desc: "Thank you for contacting RegenLab. We will get back to you shortly." }
-    },
-    footer: {
-      desc: "Empowering farmers with low-cost, AI-powered MMRV tools. Validated by science, driven by impact.",
-      links: "Quick Links",
-      areas: "Technology",
-      contact: "Contact",
-      rights: "All rights reserved."
-    }
-  },
-  vi: {
-    nav: {
-      home: "Trang chủ",
-      about: "Giới thiệu",
-      projects: "Dự án",
-      videos: "Video",
-      internship: "Hợp tác",
-      contact: "Liên hệ",
-      cta: "Tham gia ngay"
-    },
-    hero: {
-      tagline: "TRAO QUYỀN NÔNG DÂN • PHỤC HỒI HÀNH TINH",
-      title_prefix: "Dân chủ hóa",
-      title_highlight: "Thị trường Carbon",
-      desc: "Chúng tôi mang thị trường tín chỉ carbon đến với các nông hộ nhỏ bằng nền tảng MMRV ứng dụng AI đột phá với chi phí thấp.",
-      btn_explore: "Khám phá Nền tảng",
-      btn_mission: "Giải pháp"
-    },
-    highlights: {
-      ai_title: "Khoa học Uy tín (DayCent)",
-      ai_desc: "Xây dựng trên mô hình DayCent (ĐH Bang Colorado) phát triển hơn 45 năm, đảm bảo tín chỉ carbon đạt chuẩn quốc tế cao nhất.",
-      climate_title: "Tự động hóa bằng AI",
-      climate_desc: "Quy trình AI và giao thức MCP tự động hóa toàn bộ việc Đo đạc & Báo cáo (MMRV), mở rộng quy mô chưa từng có.",
-      origin_title: "Cắt giảm 80% Chi phí",
-      origin_desc: "Sử dụng AI Agents giúp giảm 80% chi phí vận hành, biến thị trường carbon thành cơ hội thực tế cho nông dân nhỏ.",
-    },
-    about: {
-      title: "Lợi thế RegenAI",
-      lead: "Thị trường carbon toàn cầu đầy tiềm năng nhưng rào cản chi phí quá lớn. RegenAI sinh ra để phá bỏ những rào cản đó.",
-      vision_title: "Kiểm chứng bởi Tổ chức Hàng đầu",
-      vision_desc: "Đối tác chiến lược với Trung tâm Nông nghiệp Tái sinh (CRARS) tại ĐH California State, Chico. Công nghệ của chúng tôi đã được kiểm chứng thực tế về độ tin cậy và khả năng mở rộng.",
-      focus: "Đường đến Tín chỉ Carbon",
-      values: "Năng lực Cốt lõi"
-    },
-    projects: {
-      title: "Dự án & Triển khai",
-      filter_all: "Tất cả",
-      lead: "Phụ trách",
-      status: "Trạng thái",
-      dev_msg: "Dashboard chi tiết cho dự án này đang được phát triển.",
-      check_cali: "Vui lòng xem demo tại dự án 'California’s Regen Ag Planner'."
-    },
-    videos: { title: "Video Demo", owner: "Người đăng" },
-    internship: { 
-      title: "Tham gia Cách mạng Tái sinh",
-      join: "Hợp tác cùng RegenLab",
-      desc: "Bạn là nông dân, hợp tác xã hay nhà đầu tư tác động? Hãy cùng chúng tôi mở khóa sức mạnh của thị trường carbon.",
-      details: "Tại sao chọn RegenAI?",
-      apply_title: "Liên hệ Hợp tác",
-      apply_msg: "Bạn muốn thử nghiệm bộ công cụ MMRV Suite? Liên hệ ngay:"
-    },
-    contact: {
-      title: "Liên hệ",
-      get_in_touch: "Mở khóa Doanh thu mới",
-      desc: "Tạo dòng thu nhập bền vững từ tín chỉ carbon đã được xác minh. Xây dựng tương lai thịnh vượng cho cộng đồng.",
-      form: { name: "Họ tên", email: "Email", subject: "Chủ đề", msg: "Tin nhắn", send: "Gửi đi", sending: "Đang gửi...", success_title: "Gửi thành công!", success_desc: "Cảm ơn bạn đã liên hệ với RegenLab. Chúng tôi sẽ phản hồi sớm nhất." }
-    },
-    footer: {
-      desc: "Trao quyền cho nông dân với công cụ MMRV AI chi phí thấp. Được kiểm chứng khoa học, thúc đẩy bởi tác động xã hội.",
-      links: "Liên kết nhanh",
-      areas: "Công nghệ",
-      contact: "Thông tin",
-      rights: "Bảo lưu mọi quyền."
-    }
-  }
-};
-
-const PROJECTS_DATA = [
-  {
-    id: 1,
-    title: { en: "Vietnam Corn Optimization", vi: "Tối ưu hóa Giống Ngô Việt Nam" },
-    owner: "uyen91nct2016@gmail.com",
-    image: null,
-    category: "Crop Science",
-    summary: { en: "Optimizing corn yield using data-driven genetic selection.", vi: "Tối ưu hóa năng suất ngô bằng chọn lọc di truyền dựa trên dữ liệu." },
-    status: "Active"
-  },
-  {
-    id: 2,
-    title: { en: "California’s Regen Ag Planner", vi: "Quy hoạch Nông nghiệp Tái sinh California" },
-    owner: "Trần Văn Tuấn Phong",
-    image: californiaImg,
-    category: "Software Tool",
-    summary: { en: "Digital planner for regenerative transition.", vi: "Công cụ lập kế hoạch kỹ thuật số cho chuyển đổi tái sinh." },
-    status: "Active"
-  },
-  {
-    id: 3,
-    title: { en: "Indian IGP & Gujarat Analysis", vi: "Phân tích Khu vực IGP & Gujarat Ấn Độ" },
-    owner: "thanhnganho0105@gmail.com",
-    category: "Regional Analysis",
-    summary: { en: "Satellite imagery processing for water efficiency.", vi: "Xử lý ảnh vệ tinh để đánh giá hiệu quả sử dụng nước." },
-    status: "Active"
-  },
-  {
-    id: 4,
-    title: { en: "Hỏi RegenAI", vi: "Hỏi RegenAI" },
-    owner: "Trần Văn Tuấn Phong",
-    category: "AI Assistant",
-    summary: { en: "LLM-powered chatbot for Vietnamese agriculture.", vi: "Chatbot AI chuyên biệt cho kiến thức nông nghiệp Việt Nam." },
-    status: "Beta"
-  },
-  {
-    id: 5,
-    title: { en: "Digital Transformation: Quảng Trị", vi: "Chuyển đổi số Nông nghiệp Quảng Trị" },
-    owner: "Lab Team",
-    category: "Digital Transformation",
-    summary: { en: "Blockchain traceability for organic chains.", vi: "Truy xuất nguồn gốc Blockchain cho chuỗi cung ứng hữu cơ." },
-    status: "Active"
-  },
-  {
-    id: 6,
-    title: { en: "Thang’s Project", vi: "Dự án Nghiên cứu Đất (Thắng)" },
-    owner: "dvthang774@gmail.com",
-    category: "Research",
-    summary: { en: "Advanced soil microbiome analysis.", vi: "Phân tích hệ vi sinh vật đất tiên tiến." },
-    status: "Research"
-  },
-  {
-    id: 7,
-    title: { en: "VMD0053", vi: "VMD0053 (Carbon)" },
-    owner: "uyen91nct2016@gmail.com",
-    category: "Carbon Protocol",
-    summary: { en: "Verified Carbon Standard methodology.", vi: "Phương pháp luận Tiêu chuẩn Carbon được xác minh." },
-    status: "Review"
-  },
-  {
-    id: 8,
-    title: { en: "AI-Driven Pest Detection", vi: "Phát hiện Sâu bệnh bằng AI" },
-    owner: "Open for Lead",
-    category: "AI/Computer Vision",
-    summary: { en: "Using drone imagery for early detection.", vi: "Sử dụng hình ảnh drone để phát hiện sớm dịch bệnh." },
-    status: "Proposal"
-  },
-  {
-    id: 9,
-    title: { en: "Soil Carbon Modeling", vi: "Mô hình hóa Carbon trong Đất" },
-    owner: "Open for Lead",
-    category: "Climate Modeling",
-    summary: { en: "Predictive modeling of sequestration.", vi: "Mô hình dự báo khả năng hấp thụ carbon." },
-    status: "Proposal"
-  },
-  {
-    id: 10,
-    title: { en: "Rice Stress Analysis", vi: "Phân tích Đa phổ Lúa" },
-    owner: "Open for Lead",
-    category: "Remote Sensing",
-    summary: { en: "Detecting abiotic stress using Sentinel-2.", vi: "Phát hiện căng thẳng phi sinh học bằng dữ liệu Sentinel-2." },
-    status: "Proposal"
-  }
-];
-
-const VIDEOS = [
-  {
-    id: 1,
-    title: "Regen Ag Planner Demo v1.0",
-    owner: "Trần Văn Tuấn Phong",
-    description: "A walkthrough of the California planning tool, demonstrating the soil health overlay and crop rotation features.",
-    date: "Oct 2024"
-  },
-  {
-    id: 2,
-    title: "Hỏi RegenAI: Context Awareness",
-    owner: "Trần Văn Tuấn Phong",
-    description: "Testing the AI's ability to answer complex questions regarding pest control in tropical climates.",
-    date: "Nov 2024"
-  }
-];
+import CONTENT from './data/content';
+import PROJECTS_DATA from './data/projects';
+import VIDEOS from './data/videos';
 
 // --- MAIN APP COMPONENT ---
 
@@ -456,7 +224,7 @@ export default function App() {
           <h4 className="text-xl font-bold text-slate-800 mb-4">{t.internship.apply_title}</h4>
           <div className="bg-slate-50 p-6 rounded-xl border border-slate-200">
             <p className="text-sm text-slate-600 mb-4">{t.internship.apply_msg}</p>
-            <a href="mailto:menoi1900@gmail.com" className="flex items-center gap-2 text-emerald-600 font-bold hover:underline mb-4"><Mail size={18}/> menoi1900@gmail.com</a>
+            <a href="mailto:info@regenlab.tech" className="flex items-center gap-2 text-emerald-600 font-bold hover:underline mb-4"><Mail size={18}/> info@regenlab.tech</a>
           </div>
         </div>
       </div>
@@ -481,7 +249,7 @@ export default function App() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div className="space-y-8">
             <div><h3 className="text-xl font-bold text-slate-800 mb-2">{t.contact.get_in_touch}</h3><p className="text-slate-600">{t.contact.desc}</p></div>
-            <div className="flex items-start gap-4"><div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-700 shrink-0"><Mail size={20}/></div><div><h4 className="font-bold text-slate-800">Email</h4><p className="text-slate-600">menoi1900@gmail.com</p></div></div>
+            <div className="flex items-start gap-4"><div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-700 shrink-0"><Mail size={20}/></div><div><h4 className="font-bold text-slate-800">Email</h4><p className="text-slate-600">info@regenlab.tech</p></div></div>
           </div>
           
           {status === 'success' ? (
@@ -595,7 +363,7 @@ export default function App() {
             </div>
             <div><h4 className="text-white font-bold mb-6">{t.footer.links}</h4><ul className="space-y-3 text-sm"><li><button onClick={() => navigate('about')}>{t.nav.about}</button></li><li><button onClick={() => navigate('projects')}>{t.nav.projects}</button></li></ul></div>
             <div><h4 className="text-white font-bold mb-6">{t.footer.areas}</h4><ul className="space-y-3 text-sm"><li>Carbon Modeling</li><li>Remote Sensing</li></ul></div>
-            <div><h4 className="text-white font-bold mb-6">{t.footer.contact}</h4><ul className="space-y-3 text-sm text-slate-400"><li>menoi1900@gmail.com</li></ul></div>
+            <div><h4 className="text-white font-bold mb-6">{t.footer.contact}</h4><ul className="space-y-3 text-sm text-slate-400"><li>info@regenlab.tech</li></ul></div>
           </div>
           <div className="border-t border-slate-800 pt-8 text-xs text-slate-500 text-center">
             &copy; {new Date().getFullYear()} RegenLab Technology. {t.footer.rights}
