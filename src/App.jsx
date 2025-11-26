@@ -9,6 +9,8 @@ import {
 // Dashboard for Projects 
 import CaliforniaDashboard from './components/CaliforniaDashboard';
 import QuangTriDashboard from './components/QuangTriDashboard';
+import NetzeroDashboard from './components/NetzeroDashboard';
+import CanopyDashboard from './components/CanopyHeightDashboard';
 
 // IMG
 import logoImg from './assets/logo.png';
@@ -134,7 +136,7 @@ export default function App() {
   );
 
   const ProjectsPage = () => {
-    // Case 1: California Project (ID: 2) -> Hiện CaliforniaDashboard
+    // CaliforniaDashboard
     if (activeProject && activeProject.id === 2) {
       return (
         <div className="max-w-7xl mx-auto px-6 py-16 animate-fade-in">
@@ -142,11 +144,27 @@ export default function App() {
         </div>
       );
     }
-
+    // QuangTriDashboard
     if (activeProject && activeProject.id === 5) {
       return (
         <div className="max-w-7xl mx-auto px-6 py-16 animate-fade-in">
           <QuangTriDashboard onBack={() => setActiveProject(null)} lang={lang} />
+        </div>
+      );
+    }
+    // NetzeroDashboard
+    if (activeProject && activeProject.id === 7) {
+      return (
+        <div className="max-w-7xl mx-auto px-6 py-16 animate-fade-in">
+          <NetzeroDashboard onBack={() => setActiveProject(null)} lang={lang} />
+        </div>
+      );
+    }
+    // CanopyDashboard
+    if (activeProject && activeProject.id === 8) {
+      return (
+        <div className="max-w-7xl mx-auto px-6 py-16 animate-fade-in">
+          <CanopyDashboard onBack={() => setActiveProject(null)} lang={lang} />
         </div>
       );
     }

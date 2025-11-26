@@ -1,5 +1,6 @@
 import californiaImg from "../assets/california_dashboard.jpeg";
 import quangtriImg from "../assets/quangtri_dashboard.jpg";
+import netzero_dashboard from "../assets/netzero_dashboard.png";
 
 const PROJECTS_DATA = [
   {
@@ -58,21 +59,21 @@ const PROJECTS_DATA = [
   },
   {
     id: 7,
-    title: { en: "VMD0053", vi: "VMD0053 (Carbon)" },
+    title: { en: "Net Zero Carbon", vi: "Net Zero Carbon" },
     owner: "Lab Team",
-    image: null,
-    category: "Carbon Protocol",
-    summary: { en: "Verified Carbon Standard methodology.", vi: "Phương pháp luận Tiêu chuẩn Carbon được xác minh." },
-    status: "Review"
+    image: netzero_dashboard,
+    category: "Carbon Market",
+    summary: { en: "A scalable, AI-powered carbon framework for Vietnam.", vi: "Khung dự án tín chỉ carbon quy mô quốc gia ứng dụng AI." },
+    status: "Pilot"
   },
   {
     id: 8,
-    title: { en: "AI-Driven Pest Detection", vi: "Phát hiện Sâu bệnh bằng AI" },
+    title: { en: "LiDAR Canopy Mapping", vi: "Bản đồ Chiều cao Tán rừng (LiDAR)" },
     owner: "Open for Lead",
     image: null,
-    category: "AI/Computer Vision",
-    summary: { en: "Using drone imagery for early detection.", vi: "Sử dụng hình ảnh drone để phát hiện sớm dịch bệnh." },
-    status: "Proposal"
+    category: "Remote Sensing",
+    summary: { en: "3D canopy height modeling using LiDAR & Machine Learning.", vi: "Mô hình hóa 3D chiều cao tán rừng sử dụng LiDAR & Học máy." },
+  status: "Completed",
   },
   {
     id: 9,
