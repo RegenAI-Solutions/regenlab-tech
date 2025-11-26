@@ -5,11 +5,13 @@ import {
   BarChart, Sprout, Database, Microscope,
   ArrowLeft, Loader2, CheckCircle
 } from 'lucide-react';
-import CaliforniaDashboard from './components/CaliforniaDashboard';
 
-// Define IMG
+// Dashboard for Projects 
+import CaliforniaDashboard from './components/CaliforniaDashboard';
+import QuangTriDashboard from './components/QuangTriDashboard';
+
+// IMG
 import logoImg from './assets/logo.png';
-import californiaImg from './assets/california_dashboard.jpeg';
 
 import CONTENT from './data/content';
 import PROJECTS_DATA from './data/projects';
@@ -132,14 +134,24 @@ export default function App() {
   );
 
   const ProjectsPage = () => {
+    // Case 1: California Project (ID: 2) -> Hiện CaliforniaDashboard
     if (activeProject && activeProject.id === 2) {
-      // --- Pass lang prop to Dashboard ---
       return (
         <div className="max-w-7xl mx-auto px-6 py-16 animate-fade-in">
           <CaliforniaDashboard onBack={() => setActiveProject(null)} lang={lang} />
         </div>
       );
     }
+
+    if (activeProject && activeProject.id === 5) {
+      return (
+        <div className="max-w-7xl mx-auto px-6 py-16 animate-fade-in">
+          <QuangTriDashboard onBack={() => setActiveProject(null)} lang={lang} />
+        </div>
+      );
+    }
+
+    // Case 3: Các dự án khác (Placeholder - Chưa có Dashboard)
     if (activeProject) {
       return (
         <div className="max-w-4xl mx-auto px-6 py-16 animate-fade-in text-center">
@@ -152,6 +164,8 @@ export default function App() {
         </div>
       );
     }
+
+    // Case 4: Danh sách tất cả dự án (Giao diện mặc định)
     return (
       <div className="max-w-7xl mx-auto px-6 py-16 animate-fade-in">
         <SectionTitle subtitle>{t.projects.title}</SectionTitle>
@@ -217,8 +231,8 @@ export default function App() {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
-          <h4 className="text-xl font-bold text-slate-800 mb-4">Who we are looking for</h4>
-          <p className="text-slate-600 mb-4">Undergraduate or graduate students with a strong background in either computer science or agricultural sciences.</p>
+          <h4 className="text-xl font-bold text-slate-800 mb-4">{t.internship.who_title}</h4>
+          <p className="text-slate-600 mb-4">{t.internship.who_desc}</p>
         </div>
         <div>
           <h4 className="text-xl font-bold text-slate-800 mb-4">{t.internship.apply_title}</h4>

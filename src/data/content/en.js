@@ -28,7 +28,7 @@ const en = {
     title: "The RegenAI Advantage",
     lead: "The global carbon market holds immense promise, but high costs and complex science create barriers. RegenAI removes them.",
     vision_title: "Validated by Leading Institutions",
-    vision_desc: "We've partnered with The Center for Regenerative Agriculture (CRARS) at California State University, Chico.",
+    vision_desc: "We've partnered with The Center for Regenerative Agriculture (CRARS) at California State University, Chico. This collaboration validates our robustness in real-world, academic settings.",
     focus: "A Simple Path to Credits",
     values: "Core Capabilities"
   },
@@ -47,7 +47,9 @@ const en = {
     desc: "Are you a smallholder farmer, cooperative, or investor? Join our mission.",
     details: "Why Join?",
     apply_title: "Contact for Partnership",
-    apply_msg: "Interested in piloting our MMRV Suite? Reach out to:"
+    apply_msg: "Interested in piloting our MMRV Suite? Reach out to:",
+    who_title: "Who we are looking for",
+    who_desc: "Undergraduate or graduate students with a strong background in either computer science or agricultural sciences."
   },
   contact: {
     title: "Contact Us",
@@ -65,7 +67,7 @@ const en = {
     }
   },
   footer: {
-    desc: "Empowering farmers with low-cost, AI-powered MMRV tools.",
+    desc: "Empowering farmers with low-cost, AI-powered MMRV tools. Validated by science, driven by impact.",
     links: "Quick Links",
     areas: "Technology",
     contact: "Contact",

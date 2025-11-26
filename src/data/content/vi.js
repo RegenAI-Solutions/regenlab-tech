@@ -26,9 +26,9 @@ const vi = {
   },
   about: {
     title: "Lợi thế RegenAI",
-    lead: "Thị trường carbon đầy tiềm năng nhưng rào cản chi phí lớn.",
+    lead: "Thị trường carbon toàn cầu đầy tiềm năng nhưng rào cản chi phí quá lớn. RegenAI sinh ra để phá bỏ những rào cản đó.",
     vision_title: "Kiểm chứng bởi Tổ chức Hàng đầu",
-    vision_desc: "Đối tác chiến lược với CRARS - ĐH California State, Chico.",
+    vision_desc: "Đối tác chiến lược với Trung tâm Nông nghiệp Tái sinh (CRARS) tại ĐH California State, Chico. Công nghệ của chúng tôi đã được kiểm chứng thực tế về độ tin cậy và khả năng mở rộng.",
     focus: "Đường đến Tín chỉ Carbon",
     values: "Năng lực Cốt lõi"
   },
@@ -47,7 +47,9 @@ const vi = {
     desc: "Bạn là nông dân, hợp tác xã hoặc nhà đầu tư tác động?",
     details: "Tại sao chọn RegenAI?",
     apply_title: "Liên hệ Hợp tác",
-    apply_msg: "Bạn muốn thử nghiệm MMRV Suite? Liên hệ:"
+    apply_msg: "Bạn muốn thử nghiệm MMRV Suite? Liên hệ:",
+    who_title: "Ứng viên tiềm năng",
+    who_desc: "Sinh viên đại học hoặc cao học có nền tảng vững chắc về Khoa học Máy tính hoặc Khoa học Nông nghiệp."
   },
   contact: {
     title: "Liên hệ",
@@ -65,7 +67,7 @@ const vi = {
     }
   },
   footer: {
-    desc: "Trao quyền cho nông dân với công cụ MMRV AI chi phí thấp.",
+    desc: "Trao quyền cho nông dân với công cụ MMRV AI chi phí thấp. Được kiểm chứng khoa học, thúc đẩy bởi tác động xã hội.",
     links: "Liên kết nhanh",
     areas: "Công nghệ",
     contact: "Thông tin",
