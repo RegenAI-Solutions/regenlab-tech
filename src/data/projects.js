@@ -1,6 +1,7 @@
 import californiaImg from "../assets/california_dashboard.jpeg";
 import quangtriImg from "../assets/quangtri_dashboard.jpg";
 import netzero_dashboard from "../assets/netzero_dashboard.png";
+import canopy_dashboard from "../assets/canopy_height_dashboard.png";
 
 const PROJECTS_DATA = [
   {
@@ -70,7 +71,7 @@ const PROJECTS_DATA = [
     id: 8,
     title: { en: "LiDAR Canopy Mapping", vi: "Bản đồ Chiều cao Tán rừng (LiDAR)" },
     owner: "Open for Lead",
-    image: null,
+    image: canopy_dashboard,
     category: "Remote Sensing",
     summary: { en: "3D canopy height modeling using LiDAR & Machine Learning.", vi: "Mô hình hóa 3D chiều cao tán rừng sử dụng LiDAR & Học máy." },
   status: "Completed",
