@@ -2,38 +2,38 @@ const en = {
   nav: {
     home: "Home",
     about: "About",
-    projects: "Projects",
-    videos: "Videos",
+    projects: "Research",
+    videos: "Resources",
     internship: "Careers",
     contact: "Contact",
-    cta: "Get Involved"
+    cta: "Collaborate"
   },
   hero: {
-    tagline: "EMPOWERING FARMERS • RESTORING PLANET",
-    title_prefix: "Democratizing the",
-    title_highlight: "Global Carbon Market",
-    desc: "We're democratizing the carbon market for smallholder farmers with our revolutionary, low-cost, AI-powered MMRV platform.",
-    btn_explore: "Explore Platform",
-    btn_mission: "Our Solution"
+    tagline: "RESEARCH • EDUCATION • INNOVATION",
+    title_prefix: "Pioneering Research in",
+    title_highlight: "Regenerative Agriculture",
+    desc: "RegenLab is a dedicated research hub applying AI, remote sensing, and data science to advance sustainable farming practices and train the next generation of ag-tech leaders.",
+    btn_explore: "Our Research",
+    btn_mission: "Training Programs"
   },
   highlights: {
-    ai_title: "Scientifically-Credible",
-    ai_desc: "Built on the DayCent model (Colorado State University), ensuring high-quality carbon credits that meet rigorous registry standards.",
-    climate_title: "AI-Powered Automation",
-    climate_desc: "Our AI-driven pipelines and Model Context Protocol (MCP) automate the entire MMRV process, enabling unprecedented scale.",
-    origin_title: "Drastic Cost Reduction",
-    origin_desc: "Leveraging AI agents to reduce MMRV costs by 80%, making carbon markets economically viable for smallholders."
+    ai_title: "Scientific Excellence",
+    ai_desc: "Conducting rigorous research on soil health, crop resilience, and carbon sequestration using advanced modeling tools like DayCent.",
+    climate_title: "Tech Transfer",
+    climate_desc: "Bridging the gap between academic research and practical application through technology transfer and pilot programs.",
+    origin_title: "Capacity Building",
+    origin_desc: "Empowering students, researchers, and local communities with cutting-edge knowledge in AgTech and data science."
   },
   about: {
-    title: "The RegenAI Advantage",
-    lead: "The global carbon market holds immense promise, but high costs and complex science create barriers. RegenAI removes them.",
+    title: "Our Mission",
+    lead: "RegenLab operates at the intersection of technology and ecology, fostering innovation to solve critical agricultural challenges.",
     vision_title: "Validated by Leading Institutions",
     vision_desc: "We've partnered with The Center for Regenerative Agriculture (CRARS) at California State University, Chico. This collaboration validates our robustness in real-world, academic settings.",
-    focus: "A Simple Path to Credits",
+    focus: "Research Carbon Credits",
     values: "Core Capabilities"
   },
   projects: {
-    title: "Projects & Deployments",
+    title: "Research Projects",
     filter_all: "All",
     lead: "Lead",
     status: "Status",
@@ -67,7 +67,7 @@ const en = {
     }
   },
   footer: {
-    desc: "Empowering farmers with low-cost, AI-powered MMRV tools. Validated by science, driven by impact.",
+    desc: "A research laboratory dedicated to advancing regenerative agriculture through science and technology.",
     links: "Quick Links",
     areas: "Technology",
     contact: "Contact",

@@ -304,7 +304,7 @@ export default function App() {
 
   const VideosPage = () => (
     <div className="max-w-6xl mx-auto px-6 py-16 animate-fade-in">
-      <SectionTitle subtitle={t.videos.title} />
+      <SectionTitle subtitle>{t.videos.title}</SectionTitle>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         {VIDEOS.map(video => (
           <div key={video.id} className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">

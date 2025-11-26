@@ -2,38 +2,38 @@ const vi = {
   nav: {
     home: "Trang chủ",
     about: "Giới thiệu",
-    projects: "Dự án",
-    videos: "Video",
-    internship: "Hợp tác",
+    projects: "Nghiên cứu",
+    videos: "Tài nguyên",
+    internship: "Đào tạo",
     contact: "Liên hệ",
-    cta: "Tham gia ngay"
+    cta: "Hợp tác"
   },
   hero: {
-    tagline: "TRAO QUYỀN NÔNG DÂN • PHỤC HỒI HÀNH TINH",
-    title_prefix: "Dân chủ hóa",
-    title_highlight: "Thị trường Carbon",
-    desc: "Chúng tôi mang thị trường tín chỉ carbon đến với các nông hộ nhỏ bằng nền tảng MMRV ứng dụng AI chi phí thấp.",
-    btn_explore: "Khám phá Nền tảng",
-    btn_mission: "Giải pháp"
+    tagline: "NGHIÊN CỨU • GIÁO DỤC • ĐỔI MỚI",
+    title_prefix: "Tiên phong Nghiên cứu",
+    title_highlight: "Nông nghiệp Tái sinh",
+    desc: "RegenLab là trung tâm nghiên cứu chuyên sâu, ứng dụng AI và khoa học dữ liệu để thúc đẩy nông nghiệp bền vững và đào tạo nguồn nhân lực công nghệ cao.",
+    btn_explore: "Khám phá Nghiên cứu",
+    btn_mission: "Chương trình Đào tạo"
   },
   highlights: {
-    ai_title: "Khoa học Uy tín (DayCent)",
-    ai_desc: "Xây dựng trên mô hình DayCent (ĐH Bang Colorado) phát triển hơn 45 năm, đảm bảo tín chỉ carbon đạt chuẩn quốc tế cao nhất.",
-    climate_title: "Tự động hóa bằng AI",
-    climate_desc: "Quy trình AI và giao thức MCP tự động hóa toàn bộ việc Đo đạc & Báo cáo (MMRV), mở rộng quy mô chưa từng có.",
-    origin_title: "Cắt giảm 80% Chi phí",
-    origin_desc: "Sử dụng AI Agents giúp giảm 80% chi phí vận hành, biến thị trường carbon thành cơ hội thực tế cho nông dân nhỏ."
+    ai_title: "Nghiên cứu Khoa học",
+    ai_desc: "Thực hiện các nghiên cứu chuyên sâu về sức khỏe đất, mô hình hóa carbon và đa dạng sinh học sử dụng các công cụ tiên tiến như DayCent.",
+    climate_title: "Chuyển giao Công nghệ",
+    climate_desc: "Cầu nối giữa nghiên cứu học thuật và ứng dụng thực tiễn thông qua các dự án thí điểm và chuyển giao kỹ thuật cho địa phương.",
+    origin_title: "Đào tạo & Phát triển",
+    origin_desc: "Nâng cao năng lực cho sinh viên, nhà nghiên cứu và cộng đồng thông qua các chương trình đào tạo thực chiến về AgTech."
   },
   about: {
-    title: "Lợi thế RegenAI",
-    lead: "Thị trường carbon toàn cầu đầy tiềm năng nhưng rào cản chi phí quá lớn. RegenAI sinh ra để phá bỏ những rào cản đó.",
+    title: "Sứ mệnh của Chúng tôi",
+    lead: "RegenLab hoạt động tại giao điểm của công nghệ và sinh thái học, thúc đẩy đổi mới sáng tạo để giải quyết các thách thức nông nghiệp.",
     vision_title: "Kiểm chứng bởi Tổ chức Hàng đầu",
     vision_desc: "Đối tác chiến lược với Trung tâm Nông nghiệp Tái sinh (CRARS) tại ĐH California State, Chico. Công nghệ của chúng tôi đã được kiểm chứng thực tế về độ tin cậy và khả năng mở rộng.",
-    focus: "Đường đến Tín chỉ Carbon",
+    focus: "Nghiên cứu Tín chỉ Carbon",
     values: "Năng lực Cốt lõi"
   },
   projects: {
-    title: "Dự án & Triển khai",
+    title: "Dự án Nghiên cứu",
     filter_all: "Tất cả",
     lead: "Phụ trách",
     status: "Trạng thái",
@@ -67,7 +67,7 @@ const vi = {
     }
   },
   footer: {
-    desc: "Trao quyền cho nông dân với công cụ MMRV AI chi phí thấp. Được kiểm chứng khoa học, thúc đẩy bởi tác động xã hội.",
+    desc: "Phòng thí nghiệm nghiên cứu chuyên sâu về nông nghiệp tái sinh, ứng dụng khoa học để kiến tạo tương lai bền vững.",
     links: "Liên kết nhanh",
     areas: "Công nghệ",
     contact: "Thông tin",
