@@ -242,9 +242,6 @@ const GujaratDashboard = ({ onBack, lang = 'vi' }) => {
         <button onClick={onBack} className="flex items-center gap-2 text-slate-500 hover:text-emerald-600 font-medium transition-colors">
           <ArrowLeft size={20} /> {t.back}
         </button>
-         <span className="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-bold border border-indigo-200">
-          Project: GUJ-03
-         </span>
       </div>
 
       {/* Title & Stats Section (Matches Canopy Layout) */}
