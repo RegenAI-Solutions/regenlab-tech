@@ -248,9 +248,6 @@ const VietnamCornDashboard = ({ onBack, lang = 'vi' }) => {
         <button onClick={onBack} className="flex items-center gap-2 text-slate-500 hover:text-emerald-600 font-medium transition-colors">
           <ArrowLeft size={20} /> {t.back}
         </button>
-         <span className="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-xs font-bold border border-emerald-200">
-          Project: VNC-24
-         </span>
       </div>
 
       {/* --- HERO SECTION (Metrics + Vertical Map) --- */}
@@ -258,36 +255,40 @@ const VietnamCornDashboard = ({ onBack, lang = 'vi' }) => {
         <div className="flex flex-col md:flex-row gap-8 items-stretch">
           
           {/* Left: Metrics & Intro */}
-          <div className="flex-1 flex flex-col justify-between">
-            <div className="mb-8">
-              <h1 className="text-3xl font-bold text-slate-900 mb-2 leading-tight">{t.title}</h1>
-              <p className="text-slate-500 text-lg">{t.subtitle}</p>
+          <div className="flex-1 flex flex-col justify-between space-y-6">
+            {/* Title Section */}
+            <div>
+              <h1 className="text-4xl font-bold text-slate-900 mb-3 leading-tight">{t.title}</h1>
+              <p className="text-slate-600 text-base leading-relaxed">{t.subtitle}</p>
             </div>
-            
-            {/* Metrics Grid */}
-            <div className="grid grid-cols-2 gap-4">
+
+            {/* Metrics - Vertical Stack */}
+            <div className="space-y-4">
               <MetricCard label={t.metric_sites} value={VN_METRICS.sites} icon={MapPin} colorClass="bg-red-500 text-red-500" />
               <MetricCard label={t.metric_regions} value={VN_METRICS.regions} icon={Globe} colorClass="bg-blue-500 text-blue-500" />
               <MetricCard label={t.metric_scenarios} value={VN_METRICS.scenarios} icon={Layers} colorClass="bg-emerald-500 text-emerald-500" />
               <MetricCard label={t.metric_period} value="41 Yrs" icon={Activity} colorClass="bg-purple-500 text-purple-500" />
             </div>
 
-            {/* Quick Tech Specs (Optional filler for balance) */}
-            <div className="mt-6 p-4 bg-slate-50 rounded-xl border border-slate-100 hidden md:block">
-               <div className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
-                  <Cpu size={14}/> Technology Stack
-               </div>
-               <div className="flex gap-2">
-                  <span className="px-2 py-1 bg-white border border-slate-200 rounded text-xs text-slate-600 font-mono">DayCent</span>
-                  <span className="px-2 py-1 bg-white border border-slate-200 rounded text-xs text-slate-600 font-mono">FastAPI</span>
-                  <span className="px-2 py-1 bg-white border border-slate-200 rounded text-xs text-slate-600 font-mono">Python</span>
+            {/* Additional Info */}
+            <div className="p-5 bg-amber-50 rounded-xl border border-amber-100">
+               <div className="flex items-start gap-3">
+                 <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+                   <Sprout className="text-amber-600" size={20} />
+                 </div>
+                 <div>
+                   <h3 className="font-bold text-slate-800 text-sm mb-1">Regional Coverage</h3>
+                   <p className="text-xs text-slate-600 leading-relaxed">
+                     Analysis spans from Northern highlands to Mekong Delta, covering major corn-producing provinces
+                   </p>
+                 </div>
                </div>
             </div>
           </div>
 
           {/* Right: Vertical Map Container */}
           {/* Changed from aspect-video to a taller fixed height or aspect ratio suitable for Vietnam's shape */}
-          <div className="w-full md:w-[450px] h-[550px] bg-slate-100 rounded-xl overflow-hidden relative shadow-lg border border-slate-200 group shrink-0">
+          <div className="w-full md:w-[550px] h-[700px] bg-slate-100 rounded-xl overflow-hidden relative shadow-lg border border-slate-200 group shrink-0">
             <iframe 
               src={`${import.meta.env.BASE_URL}vietnam_map.html`}
               title="Vietnam Corn GHG Map"
