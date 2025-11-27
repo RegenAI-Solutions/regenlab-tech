@@ -12,8 +12,8 @@ import {
 const VN_CORN_TEXT = {
   en: {
     back: "Back to Projects",
-    title: "Vietnam Corn Optimization Project",
-    subtitle: "Biogeochemical modeling of corn production systems across Vietnam's major ecological regions. Using DayCent to simulate soil carbon dynamics, GHG emissions, and yield optimization under different management practices from 1983-2024 across 320 sampling points in 8 ecological zones.",
+    title: "Vietnam Corn Sustainability Optimization Project",
+    subtitle: "A large-scale DayCent-based modeling framework using 320 geospatial sample points and 8 management scenarios per point (2,560 simulations) to assess soil organic carbon (SOC), crop yield, and greenhouse gas (GHG) emissions across Vietnam’s major maize-growing regions for sustainable agricultural optimization.",
     
     // Metrics
     metric_sites: "Sample Points",
@@ -54,8 +54,8 @@ const VN_CORN_TEXT = {
   },
   vi: {
     back: "Quay lại Danh sách",
-    title: "Dự án Tối ưu hóa Ngô Việt Nam",
-    subtitle: "Mô hình hóa sinh địa hóa hệ thống sản xuất ngô trên các vùng sinh thái chính của Việt Nam. Sử dụng DayCent để mô phỏng động thái carbon trong đất, phát thải khí nhà kính và tối ưu hóa năng suất với các phương pháp quản lý khác nhau từ 1983-2024 trên 320 điểm mẫu thuộc 8 vùng sinh thái.",
+    title: "Dự án Tối ưu hóa Bền vững Canh tác Ngô Việt Nam",
+    subtitle: "Khuôn khổ mô hình hóa quy mô lớn dựa trên DayCent với 320 điểm mẫu địa lý và 8 kịch bản canh tác cho mỗi điểm (2.560 mô phỏng), nhằm đánh giá Carbon hữu cơ đất (SOC), năng suất và phát thải khí nhà kính (GHG) trên các vùng trồng ngô trọng điểm của Việt Nam, phục vụ tối ưu hóa nông nghiệp bền vững.",
     
     // Metrics
     metric_sites: "Điểm Mẫu",
