@@ -28,7 +28,7 @@ const GUJ_TEXT = {
     step1_details: ["SoilGrids", "NASA Power", "43 Sites"],
     step2: "Sensitivity Analysis",
     step2_desc: "Identify Key Parameters",
-    step2_details: ["PRDX (Potential)", "PPDF (Temp)", "Crop Specific"],
+    step2_details: ["prdx (Potential)", "ppdf (Temp)", "Crop Specific"],
     step3: "Calibration",
     step3_desc: "Adjust Model Params",
     step3_details: ["Minimize MSE", "Correct Bias", "Temp Response"],
@@ -42,7 +42,7 @@ const GUJ_TEXT = {
     // Charts
     sens_title: "Parameter Sensitivity",
     sens_subtitle: "Top Drivers of Yield",
-    sens_desc: "Cotton is highly sensitive to Temperature (PPDF), while Wheat & Groundnut depend on Potential Production (PRDX).",
+    sens_desc: "Cotton is highly sensitive to Temperature (ppdf), while Wheat & Groundnut depend on Potential Production (prdx).",
     
     calib_title: "Calibration Performance",
     calib_cotton: "Cotton (Temp Adjusted)",
@@ -78,7 +78,7 @@ const GUJ_TEXT = {
     step1_details: ["SoilGrids", "NASA Power", "43 Điểm"],
     step2: "Phân tích Độ nhạy",
     step2_desc: "Xác định Tham số chính",
-    step2_details: ["PRDX (Tiềm năng)", "PPDF (Nhiệt độ)", "Theo cây trồng"],
+    step2_details: ["prdx (Tiềm năng)", "ppdf (Nhiệt độ)", "Theo cây trồng"],
     step3: "Hiệu chỉnh",
     step3_desc: "Điều chỉnh Mô hình",
     step3_details: ["Tối thiểu MSE", "Khử sai số", "Phản ứng nhiệt"],
@@ -92,7 +92,7 @@ const GUJ_TEXT = {
     // Charts
     sens_title: "Độ nhạy Tham số",
     sens_subtitle: "Yếu tố quyết định năng suất",
-    sens_desc: "Bông nhạy cảm nhất với Nhiệt độ (PPDF), trong khi Lúa mì & Lạc phụ thuộc vào Tiềm năng sản xuất (PRDX).",
+    sens_desc: "Bông nhạy cảm nhất với Nhiệt độ (ppdf), trong khi Lúa mì & Lạc phụ thuộc vào Tiềm năng sản xuất (prdx).",
     
     calib_title: "Hiệu suất Hiệu chỉnh",
     calib_cotton: "Bông (Chỉnh nhiệt độ)",
@@ -121,15 +121,15 @@ const GUJ_METRICS = {
 
 const SENSITIVITY_DATA = {
   cotton: [
-    { param: "PPDF(2) - Max Temp", val: 6.5, highlight: true },
-    { param: "PRDX(1) - Potential", val: 4.0, highlight: false },
-    { param: "PPDF(1) - Opt Temp", val: 4.0, highlight: true },
-    { param: "PPDF(3) - Curve Shape", val: 1.8, highlight: false },
+    { param: "ppdf(2) - Max Temp", val: 6.5, highlight: true },
+    { param: "prdx(1) - Potential", val: 4.0, highlight: false },
+    { param: "ppdf(1) - Opt Temp", val: 4.0, highlight: true },
+    { param: "ppdf(3) - Curve Shape", val: 1.8, highlight: false },
   ],
   wheat: [
-    { param: "PRDX(1) - Potential", val: 170, highlight: true },
-    { param: "PPDF(2) - Max Temp", val: 100, highlight: false },
-    { param: "PPDF(3) - Curve Shape", val: 90, highlight: false },
+    { param: "prdx(1) - Potential", val: 170, highlight: true },
+    { param: "ppdf(2) - Max Temp", val: 100, highlight: false },
+    { param: "ppdf(3) - Curve Shape", val: 90, highlight: false },
   ]
 };
 

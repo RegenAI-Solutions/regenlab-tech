@@ -2,6 +2,7 @@ import californiaImg from "../assets/california_dashboard.jpeg";
 import quangtriImg from "../assets/quangtri_dashboard.jpg";
 import netzero_dashboard from "../assets/netzero_dashboard.png";
 import canopy_dashboard from "../assets/canopy_height_dashboard.png";
+import gujarat_dashboard from "../assets/gujarat_dashboard.jpg"
 
 const PROJECTS_DATA = [
   {
@@ -26,11 +27,14 @@ const PROJECTS_DATA = [
   },
   {
     id: 3,
-    title: { en: "Indian IGP & Gujarat Analysis", vi: "Phân tích Khu vực IGP & Gujarat Ấn Độ" },
+    title: { en: "Gujarat Cropping Systems Analysis", vi: "Phân tích Hệ thống Canh tác Gujarat" },
     owner: "Lab Team",
-    image: null,
-    category: "Regional Analysis",
-    summary: { en: "Satellite imagery processing for water efficiency.", vi: "Xử lý ảnh vệ tinh để đánh giá hiệu quả sử dụng nước." },
+    image: gujarat_dashboard,
+    category: "Climate Modeling",
+    summary: { 
+      en: "DayCent simulation for GHG mitigation & crop yield potential.", 
+      vi: "Mô phỏng DayCent đánh giá tiềm năng giảm phát thải & năng suất." 
+    },
     status: "Active",
     dashboardComponent: "GujaratDashboard"
   },
