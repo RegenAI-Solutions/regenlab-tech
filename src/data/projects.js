@@ -11,16 +11,18 @@ const PROJECTS_DATA = [
     image: null,
     category: "Crop Science",
     summary: { en: "Optimizing corn yield using data-driven genetic selection.", vi: "Tối ưu hóa năng suất ngô bằng chọn lọc di truyền dựa trên dữ liệu." },
-    status: "Active"
+    status: "Active",
+    dashboardComponent: null
   },
   {
     id: 2,
-    title: { en: "California’s Regen Ag Planner", vi: "Quy hoạch Nông nghiệp Tái sinh California" },
+    title: { en: "California's Regen Ag Planner", vi: "Quy hoạch Nông nghiệp Tái sinh California" },
     owner: "Lab Team",
     image: californiaImg,
     category: "Software Tool",
     summary: { en: "Digital planner for regenerative transition.", vi: "Công cụ lập kế hoạch kỹ thuật số cho chuyển đổi tái sinh." },
-    status: "Active"
+    status: "Active",
+    dashboardComponent: "CaliforniaDashboard"
   },
   {
     id: 3,
@@ -29,7 +31,8 @@ const PROJECTS_DATA = [
     image: null,
     category: "Regional Analysis",
     summary: { en: "Satellite imagery processing for water efficiency.", vi: "Xử lý ảnh vệ tinh để đánh giá hiệu quả sử dụng nước." },
-    status: "Active"
+    status: "Active",
+    dashboardComponent: "GujaratDashboard"
   },
   {
     id: 4,
@@ -38,7 +41,8 @@ const PROJECTS_DATA = [
     image: null,
     category: "AI Assistant",
     summary: { en: "LLM-powered chatbot for Vietnamese agriculture.", vi: "Chatbot AI chuyên biệt cho kiến thức nông nghiệp Việt Nam." },
-    status: "Beta"
+    status: "Beta",
+    dashboardComponent: null
   },
   {
     id: 5,
@@ -47,16 +51,18 @@ const PROJECTS_DATA = [
     image: quangtriImg,
     category: "Digital Transformation",
     summary: { en: "Blockchain traceability for organic chains.", vi: "Truy xuất nguồn gốc Blockchain cho chuỗi cung ứng hữu cơ." },
-    status: "Active"
+    status: "Active",
+    dashboardComponent: "QuangTriDashboard"
   },
   {
     id: 6,
-    title: { en: "Thang’s Project", vi: "Dự án Nghiên cứu Đất (Thắng)" },
+    title: { en: "Thang's Project", vi: "Dự án Nghiên cứu Đất (Thắng)" },
     owner: "Lab Team",
     image: null,
     category: "Research",
     summary: { en: "Advanced soil microbiome analysis.", vi: "Phân tích hệ vi sinh vật đất tiên tiến." },
-    status: "Research"
+    status: "Research",
+    dashboardComponent: null
   },
   {
     id: 7,
@@ -65,7 +71,8 @@ const PROJECTS_DATA = [
     image: netzero_dashboard,
     category: "Carbon Market",
     summary: { en: "A scalable, AI-powered carbon framework for Vietnam.", vi: "Khung dự án tín chỉ carbon quy mô quốc gia ứng dụng AI." },
-    status: "Pilot"
+    status: "Pilot",
+    dashboardComponent: "NetzeroDashboard"
   },
   {
     id: 8,
@@ -74,7 +81,8 @@ const PROJECTS_DATA = [
     image: canopy_dashboard,
     category: "Remote Sensing",
     summary: { en: "3D canopy height modeling using LiDAR & Machine Learning.", vi: "Mô hình hóa 3D chiều cao tán rừng sử dụng LiDAR & Học máy." },
-  status: "Completed",
+    status: "Completed",
+    dashboardComponent: "CanopyDashboard"
   },
   {
     id: 9,
@@ -83,7 +91,8 @@ const PROJECTS_DATA = [
     image: null,
     category: "Climate Modeling",
     summary: { en: "Predictive modeling of sequestration.", vi: "Mô hình dự báo khả năng hấp thụ carbon." },
-    status: "Proposal"
+    status: "Proposal",
+    dashboardComponent: null
   },
   {
     id: 10,
@@ -92,7 +101,8 @@ const PROJECTS_DATA = [
     image: null,
     category: "Remote Sensing",
     summary: { en: "Detecting abiotic stress using Sentinel-2.", vi: "Phát hiện căng thẳng phi sinh học bằng dữ liệu Sentinel-2." },
-    status: "Proposal"
+    status: "Proposal",
+    dashboardComponent: null
   }
 ];
 

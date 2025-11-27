@@ -11,6 +11,7 @@ import CaliforniaDashboard from './components/CaliforniaDashboard';
 import QuangTriDashboard from './components/QuangTriDashboard';
 import NetzeroDashboard from './components/NetzeroDashboard';
 import CanopyDashboard from './components/CanopyHeightDashboard';
+import GujaratDashboard from './components/GujaratDashboard';
 
 // IMG
 import logoImg from './assets/logo.png';
@@ -136,40 +137,28 @@ export default function App() {
   );
 
   const ProjectsPage = () => {
-    // CaliforniaDashboard
-    if (activeProject && activeProject.id === 2) {
-      return (
-        <div className="max-w-7xl mx-auto px-6 py-16 animate-fade-in">
-          <CaliforniaDashboard onBack={() => setActiveProject(null)} lang={lang} />
-        </div>
-      );
-    }
-    // QuangTriDashboard
-    if (activeProject && activeProject.id === 5) {
-      return (
-        <div className="max-w-7xl mx-auto px-6 py-16 animate-fade-in">
-          <QuangTriDashboard onBack={() => setActiveProject(null)} lang={lang} />
-        </div>
-      );
-    }
-    // NetzeroDashboard
-    if (activeProject && activeProject.id === 7) {
-      return (
-        <div className="max-w-7xl mx-auto px-6 py-16 animate-fade-in">
-          <NetzeroDashboard onBack={() => setActiveProject(null)} lang={lang} />
-        </div>
-      );
-    }
-    // CanopyDashboard
-    if (activeProject && activeProject.id === 8) {
-      return (
-        <div className="max-w-7xl mx-auto px-6 py-16 animate-fade-in">
-          <CanopyDashboard onBack={() => setActiveProject(null)} lang={lang} />
-        </div>
-      );
+    // Component mapping
+    const dashboardComponents = {
+      CaliforniaDashboard: CaliforniaDashboard,
+      QuangTriDashboard: QuangTriDashboard,
+      NetzeroDashboard: NetzeroDashboard,
+      CanopyDashboard: CanopyDashboard,
+      GujaratDashboard: GujaratDashboard
+    };
+
+    // Case 1: Show dashboard if project has one configured
+    if (activeProject && activeProject.dashboardComponent) {
+      const DashboardComponent = dashboardComponents[activeProject.dashboardComponent];
+      if (DashboardComponent) {
+        return (
+          <div className="max-w-7xl mx-auto px-6 py-16 animate-fade-in">
+            <DashboardComponent onBack={() => setActiveProject(null)} lang={lang} />
+          </div>
+        );
+      }
     }
 
-    // Case 3: Các dự án khác (Placeholder - Chưa có Dashboard)
+    // Case 2: Show placeholder for projects without dashboard
     if (activeProject) {
       return (
         <div className="max-w-4xl mx-auto px-6 py-16 animate-fade-in text-center">
@@ -183,7 +172,7 @@ export default function App() {
       );
     }
 
-    // Case 4: Danh sách tất cả dự án (Giao diện mặc định)
+    // Case 3: Show list of all projects
     return (
       <div className="max-w-7xl mx-auto px-6 py-16 animate-fade-in">
         <SectionTitle subtitle>{t.projects.title}</SectionTitle>
