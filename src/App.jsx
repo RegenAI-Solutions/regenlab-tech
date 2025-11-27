@@ -6,13 +6,8 @@ import {
   ArrowLeft, Loader2, CheckCircle
 } from 'lucide-react';
 
-// Dashboard for Projects 
-import CaliforniaDashboard from './components/CaliforniaDashboard';
-import QuangTriDashboard from './components/QuangTriDashboard';
-import NetzeroDashboard from './components/NetzeroDashboard';
-import CanopyDashboard from './components/CanopyHeightDashboard';
-import GujaratDashboard from './components/GujaratDashboard';
-import VietnamCornDashboard from './components/VietnamCornDashboard';
+// Dashboard for Projects
+import { DASHBOARD_COMPONENTS } from './config/dashboardMapping';
 
 // IMG
 import logoImg from './assets/logo.png';
@@ -138,19 +133,9 @@ export default function App() {
   );
 
   const ProjectsPage = () => {
-    // Component mapping
-    const dashboardComponents = {
-      CaliforniaDashboard: CaliforniaDashboard,
-      QuangTriDashboard: QuangTriDashboard,
-      NetzeroDashboard: NetzeroDashboard,
-      CanopyDashboard: CanopyDashboard,
-      GujaratDashboard: GujaratDashboard,
-      VietnamCornDashboard: VietnamCornDashboard,
-    };
-
     // Case 1: Show dashboard if project has one configured
     if (activeProject && activeProject.dashboardComponent) {
-      const DashboardComponent = dashboardComponents[activeProject.dashboardComponent];
+      const DashboardComponent = DASHBOARD_COMPONENTS[activeProject.dashboardComponent];
       if (DashboardComponent) {
         return (
           <div className="max-w-7xl mx-auto px-6 py-16 animate-fade-in">

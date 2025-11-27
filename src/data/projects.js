@@ -12,7 +12,8 @@ const PROJECTS_DATA = [
     owner: "Lab Team",
     image: vietnam_corn_dashboard,
     category: "Crop Science",
-    summary: { en: "Optimizing corn yield using data-driven genetic selection.", vi: "Tối ưu hóa năng suất ngô bằng chọn lọc di truyền dựa trên dữ liệu." },
+    summary: { en: "DayCent modeling to optimize tillage and fertilization for GHG reduction across 8 ecological regions.", vi: "Mô hình hóa DayCent tối ưu hóa làm đất và phân bón nhằm giảm phát thải GHG trên 8 vùng sinh thái." 
+    },
     status: "Active",
     dashboardComponent: "VietnamCornDashboard"
   },
