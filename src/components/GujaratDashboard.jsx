@@ -264,7 +264,7 @@ const GujaratDashboard = ({ onBack, lang = 'vi' }) => {
           <div className="w-full md:w-1/2 aspect-video bg-slate-100 rounded-xl overflow-hidden relative shadow-lg border border-slate-200">
             {/* Interactive HTML Map */}
             <iframe
-              src="/map_ghg_gujarat.html"
+              src={`${import.meta.env.BASE_URL}map_ghg_gujarat.html`}
               className="w-full h-full border-0"
               title="Gujarat GHG Emission Map"
               allowFullScreen
