@@ -13,7 +13,7 @@ const VN_CORN_TEXT = {
   en: {
     back: "Back to Projects",
     title: "Vietnam Corn Optimization Project",
-    subtitle: "DayCent Modeling for Sustainable Corn Production (8 Regions, 320 Sites)",
+    subtitle: "Biogeochemical modeling of corn production systems across Vietnam's major ecological regions. Using DayCent to simulate soil carbon dynamics, GHG emissions, and yield optimization under different management practices from 1983-2024 across 320 sampling points in 8 ecological zones.",
     
     // Metrics
     metric_sites: "Sample Points",
@@ -55,7 +55,7 @@ const VN_CORN_TEXT = {
   vi: {
     back: "Quay lại Danh sách",
     title: "Dự án Tối ưu hóa Ngô Việt Nam",
-    subtitle: "Mô hình hóa DayCent cho Sản xuất Ngô Bền vững (8 Vùng, 320 Điểm)",
+    subtitle: "Mô hình hóa sinh địa hóa hệ thống sản xuất ngô trên các vùng sinh thái chính của Việt Nam. Sử dụng DayCent để mô phỏng động thái carbon trong đất, phát thải khí nhà kính và tối ưu hóa năng suất với các phương pháp quản lý khác nhau từ 1983-2024 trên 320 điểm mẫu thuộc 8 vùng sinh thái.",
     
     // Metrics
     metric_sites: "Điểm Mẫu",
@@ -259,7 +259,7 @@ const VietnamCornDashboard = ({ onBack, lang = 'vi' }) => {
             {/* Title Section */}
             <div>
               <h1 className="text-4xl font-bold text-slate-900 mb-3 leading-tight">{t.title}</h1>
-              <p className="text-slate-600 text-base leading-relaxed">{t.subtitle}</p>
+              <p className="text-slate-600 text-base leading-relaxed text-justify">{t.subtitle}</p>
             </div>
 
             {/* Metrics - Vertical Stack */}
