@@ -55,7 +55,7 @@ const GUJ_TEXT = {
     res_insight: "Residue Incorporation shows the highest mitigation potential (-1.51 Mg CO2e/ha), significantly outperforming other strategies.",
     chart_y: "Mg CO2e/ha (Negative = Reduction)",
     
-    viz_title: "Interactive Map",
+    viz_title: "Simulation Map",
     viz_processing: "Loading 43 sites...",
     viz_points: "Spatial Random Sampling"
   },
@@ -106,7 +106,7 @@ const GUJ_TEXT = {
     chart_y: "Mg CO2e/ha (Âm = Giảm)",
     
     viz_title: "Bản đồ Mô phỏng",
-    viz_processing: "Đã tải bản đồ",
+    viz_processing: "Đang tải 43 điểm...",
     viz_points: "Lấy mẫu ngẫu nhiên không gian"
   }
 };
@@ -263,29 +263,15 @@ const GujaratDashboard = ({ onBack, lang = 'vi' }) => {
             </div>
           </div>
 
-          <div className="w-full md:w-1/2 aspect-video bg-slate-100 rounded-xl overflow-hidden relative shadow-lg border border-slate-200 group">
-            <iframe 
-              src="./map_ghg_gujarat.html" 
-              title="Gujarat GHG Interactive Map"
+          {/* Visualizer (Map) - Interactive HTML Map */}
+          <div className="w-full md:w-1/2 aspect-video bg-slate-100 rounded-xl overflow-hidden relative shadow-lg border border-slate-200">
+            {/* Interactive HTML Map */}
+            <iframe
+              src="/map_ghg_gujarat.html"
               className="w-full h-full border-0"
-              loading="lazy"
+              title="Gujarat GHG Emission Map"
+              allowFullScreen
             />
-            
-            {/* Overlay UI */}
-            {/* <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-               <div className="bg-white/90 px-4 py-2 rounded-full text-slate-700 text-sm font-bold backdrop-blur-sm border border-slate-200 flex items-center gap-2 shadow-sm">
-                 <Globe size={16} className="text-blue-500"/> {t.viz_title}
-               </div>
-            </div> */}
-             {/* <div className="absolute bottom-4 left-4 right-4 pointer-events-none">
-              <div className="h-1 bg-slate-300 rounded-full overflow-hidden">
-                <div className="h-full bg-blue-500 w-full animate-pulse"></div>
-              </div>
-              <div className="flex justify-between text-[10px] text-slate-600 mt-1 font-medium bg-white/50 px-2 rounded">
-                <span>{t.viz_processing}</span>
-                <span>{t.viz_points}</span>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>
