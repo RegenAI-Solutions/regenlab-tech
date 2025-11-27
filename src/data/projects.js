@@ -8,11 +8,16 @@ import vietnam_corn_dashboard from "../assets/vietnam_corn_dashboard.jpeg";
 const PROJECTS_DATA = [
   {
     id: 1,
-    title: { en: "Vietnam Corn Optimization", vi: "Tối ưu hóa Giống Ngô Việt Nam" },
+    title: {
+      en: "Vietnam Corn Sustainability Optimization Project",
+      vi: "Dự án Tối ưu hóa Bền vững Canh tác Ngô Việt Nam"
+    },
     owner: "Lab Team",
     image: vietnam_corn_dashboard,
     category: "Crop Science",
-    summary: { en: "DayCent modeling to optimize tillage and fertilization for GHG reduction across 8 ecological regions.", vi: "Mô hình hóa DayCent tối ưu hóa làm đất và phân bón nhằm giảm phát thải GHG trên 8 vùng sinh thái." 
+    summary: {
+      en: "A large-scale DayCent-based modeling framework using 320 geospatial sample points and 8 management scenarios per point (2,560 simulations) to assess soil organic carbon (SOC), crop yield, and greenhouse gas (GHG) emissions across Vietnam’s major maize-growing regions for sustainable agricultural optimization.",
+      vi: "Khuôn khổ mô hình hóa quy mô lớn dựa trên DayCent với 320 điểm mẫu địa lý và 8 kịch bản canh tác cho mỗi điểm (2.560 mô phỏng), nhằm đánh giá Carbon hữu cơ đất (SOC), năng suất và phát thải khí nhà kính (GHG) trên các vùng trồng ngô trọng điểm của Việt Nam, phục vụ tối ưu hóa nông nghiệp bền vững."
     },
     status: "Active",
     dashboardComponent: "VietnamCornDashboard"
