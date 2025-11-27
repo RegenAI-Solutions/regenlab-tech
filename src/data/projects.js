@@ -2,18 +2,19 @@ import californiaImg from "../assets/california_dashboard.jpeg";
 import quangtriImg from "../assets/quangtri_dashboard.jpg";
 import netzero_dashboard from "../assets/netzero_dashboard.png";
 import canopy_dashboard from "../assets/canopy_height_dashboard.png";
-import gujarat_dashboard from "../assets/gujarat_dashboard.jpg"
+import gujarat_dashboard from "../assets/gujarat_dashboard.jpg";
+import vietnam_corn_dashboard from "../assets/vietnam_corn_dashboard.jpeg";
 
 const PROJECTS_DATA = [
   {
     id: 1,
     title: { en: "Vietnam Corn Optimization", vi: "Tối ưu hóa Giống Ngô Việt Nam" },
     owner: "Lab Team",
-    image: null,
+    image: vietnam_corn_dashboard,
     category: "Crop Science",
     summary: { en: "Optimizing corn yield using data-driven genetic selection.", vi: "Tối ưu hóa năng suất ngô bằng chọn lọc di truyền dựa trên dữ liệu." },
     status: "Active",
-    dashboardComponent: null
+    dashboardComponent: "VietnamCornDashboard"
   },
   {
     id: 2,

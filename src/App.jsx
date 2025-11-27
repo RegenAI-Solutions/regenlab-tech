@@ -12,6 +12,7 @@ import QuangTriDashboard from './components/QuangTriDashboard';
 import NetzeroDashboard from './components/NetzeroDashboard';
 import CanopyDashboard from './components/CanopyHeightDashboard';
 import GujaratDashboard from './components/GujaratDashboard';
+import VietnamCornDashboard from './components/VietnamCornDashboard';
 
 // IMG
 import logoImg from './assets/logo.png';
@@ -143,7 +144,8 @@ export default function App() {
       QuangTriDashboard: QuangTriDashboard,
       NetzeroDashboard: NetzeroDashboard,
       CanopyDashboard: CanopyDashboard,
-      GujaratDashboard: GujaratDashboard
+      GujaratDashboard: GujaratDashboard,
+      VietnamCornDashboard: VietnamCornDashboard,
     };
 
     // Case 1: Show dashboard if project has one configured
