@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { 
-  Menu, X, ChevronRight, Leaf, Cpu, Globe, 
-  Play, Users, Mail, MapPin, ExternalLink, 
+import { useState } from 'react';
+import { HashRouter, Routes, Route, Link, useNavigate, useParams } from 'react-router-dom';
+import {
+  Menu, ChevronRight, Leaf, Cpu, Globe,
+  Play, Users, Mail, MapPin,
   BarChart, Sprout, Database, Microscope,
   ArrowLeft, Loader2, CheckCircle
 } from 'lucide-react';
@@ -16,75 +17,137 @@ import CONTENT from './data/content';
 import PROJECTS_DATA from './data/projects';
 import VIDEOS from './data/videos';
 
-// --- MAIN APP COMPONENT ---
+// --- SUB-COMPONENTS ---
+const SectionTitle = ({ children, subtitle }) => (
+  <div className="mb-10 text-center">
+    <h2 className="text-3xl font-bold text-slate-800 font-display">{children}</h2>
+    {subtitle && <div className="w-24 h-1 mx-auto mt-4 bg-emerald-600 rounded-full"></div>}
+  </div>
+);
 
-export default function App() {
-  const [currentPage, setCurrentPage] = useState('home');
+const ProjectCard = ({ project, onClick, lang }) => (
+  <div onClick={onClick} className="flex flex-col h-full transition-all duration-300 bg-white border border-slate-200 shadow-sm hover:shadow-lg hover:border-emerald-300 rounded-xl overflow-hidden group cursor-pointer">
+    <div className="h-48 bg-slate-100 relative overflow-hidden">
+      {project.image ? (
+        <>
+          <img
+            src={project.image}
+            alt={project.title.en}
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+        </>
+      ): (
+        <>
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-900 to-slate-800 opacity-90 group-hover:opacity-100 transition-opacity"></div>
+          <div className="absolute inset-0 flex items-center justify-center text-emerald-100">
+            {project.category === 'AI/Computer Vision' || project.category === 'AI Assistant' ? <Cpu size={48} className="opacity-50" /> :
+            project.category === 'Software Tool' ? <Database size={48} className="opacity-50" /> :
+            <Sprout size={48} className="opacity-50" />}
+          </div>
+        </>
+      )}
+      <span className="absolute top-3 right-3 bg-white/20 backdrop-blur-md text-white text-xs font-semibold px-2 py-1 rounded">
+        {project.category}
+      </span>
+    </div>
+
+    <div className="p-6 flex-1 flex flex-col">
+      <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-emerald-700 transition-colors">{project.title[lang]}</h3>
+      <p className="text-sm text-slate-600 mb-4 flex-grow">{project.summary[lang]}</p>
+      <div className="pt-4 mt-auto border-t border-slate-100 flex items-center justify-between">
+        <div className="text-xs text-slate-400 truncate max-w-[180px]">{CONTENT[lang].projects.lead}: {project.owner}</div>
+        <div className={`text-xs px-2 py-1 rounded-full ${project.status === 'Active' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}`}>{project.status}</div>
+      </div>
+    </div>
+  </div>
+);
+
+// --- NAVIGATION COMPONENT ---
+function Navigation({ lang, setLang }) {
+  const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [lang, setLang] = useState('vi'); 
-  const [activeProject, setActiveProject] = useState(null);
-
   const t = CONTENT[lang];
+  const toggleLang = () => setLang(prev => prev === 'en' ? 'vi' : 'en');
 
-  const navigate = (pageId) => {
-    setCurrentPage(pageId);
-    setActiveProject(null);
+  const handleNavigate = (path) => {
+    navigate(path);
     setIsMobileMenuOpen(false);
     window.scrollTo(0, 0);
   };
 
-  const toggleLang = () => setLang(prev => prev === 'en' ? 'vi' : 'en');
-
-  // Sub-components (Internal)
-  const SectionTitle = ({ children, subtitle }) => (
-    <div className="mb-10 text-center">
-      <h2 className="text-3xl font-bold text-slate-800 font-display">{children}</h2>
-      {subtitle && <div className="w-24 h-1 mx-auto mt-4 bg-emerald-600 rounded-full"></div>}
-    </div>
-  );
-
-  const ProjectCard = ({ project, onClick }) => (
-    <div onClick={onClick} className="flex flex-col h-full transition-all duration-300 bg-white border border-slate-200 shadow-sm hover:shadow-lg hover:border-emerald-300 rounded-xl overflow-hidden group cursor-pointer">
-      <div className="h-48 bg-slate-100 relative overflow-hidden">
-        
-        {project.image ? (
-          <>
-            <img
-              src={project.image}
-              alt={project.title.en}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
-          </>
-        ): (
-          <>
-            <div className="absolute inset-0 bg-gradient-to-br from-emerald-900 to-slate-800 opacity-90 group-hover:opacity-100 transition-opacity"></div>
-            <div className="absolute inset-0 flex items-center justify-center text-emerald-100">
-              {project.category === 'AI/Computer Vision' || project.category === 'AI Assistant' ? <Cpu size={48} className="opacity-50" /> :
-              project.category === 'Software Tool' ? <Database size={48} className="opacity-50" /> :
-              <Sprout size={48} className="opacity-50" />}
+  return (
+    <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex items-center justify-between h-20">
+          <div className="flex items-center gap-2 cursor-pointer group" onClick={() => handleNavigate('/')}>
+            <div className="w-10 h-10 bg-emerald-600 rounded-lg flex items-center justify-center text-white shadow-lg group-hover:bg-emerald-700 transition-colors overflow-hidden">
+              <img src={logoImg} alt="Logo" />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-xl font-bold text-slate-900 leading-none">RegenLab</span>
+              <span className="text-xs text-emerald-600 font-medium tracking-widest">TECH</span>
+            </div>
           </div>
-          </>
-        )}
-
-        <span className="absolute top-3 right-3 bg-white/20 backdrop-blur-md text-white text-xs font-semibold px-2 py-1 rounded">{project.category}
-          {project.category}
-        </span>
-      </div>
-
-      <div className="p-6 flex-1 flex flex-col">
-        <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-emerald-700 transition-colors">{project.title[lang]}</h3>
-        <p className="text-sm text-slate-600 mb-4 flex-grow">{project.summary[lang]}</p>
-        <div className="pt-4 mt-auto border-t border-slate-100 flex items-center justify-between">
-          <div className="text-xs text-slate-400 truncate max-w-[180px]">{t.projects.lead}: {project.owner}</div>
-          <div className={`text-xs px-2 py-1 rounded-full ${project.status === 'Active' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}`}>{project.status}</div>
+          <div className="hidden md:flex items-center gap-8">
+            {[
+              { key: 'home', path: '/' },
+              { key: 'about', path: '/about' },
+              { key: 'projects', path: '/projects' },
+              { key: 'videos', path: '/videos' },
+              { key: 'internship', path: '/internship' },
+              { key: 'contact', path: '/contact' }
+            ].map(({ key, path }) => (
+              <Link key={key} to={path} className="text-sm font-medium transition-colors hover:text-emerald-600 text-slate-600">
+                {t.nav[key]}
+              </Link>
+            ))}
+            <button onClick={toggleLang} className="flex items-center gap-1 px-3 py-1 border border-slate-200 rounded-full text-xs font-bold hover:bg-slate-50 transition-colors">
+              <Globe size={14}/> {lang === 'en' ? 'EN' : 'VI'}
+            </button>
+            <button onClick={() => handleNavigate('/contact')} className="px-5 py-2 bg-slate-900 text-white text-sm font-semibold rounded-full hover:bg-emerald-600 transition-colors">{t.nav.cta}</button>
+          </div>
+          <button className="md:hidden p-2 text-slate-600 hover:bg-slate-100 rounded-lg" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}><Menu size={24} /></button>
         </div>
       </div>
-    </div>
+    </nav>
   );
+}
 
-  // Page Renderers
-  const HomePage = () => (
+// --- FOOTER COMPONENT ---
+function Footer({ lang }) {
+  const navigate = useNavigate();
+  const t = CONTENT[lang];
+
+  return (
+    <footer className="bg-slate-900 text-slate-300 py-16">
+      <div className="max-w-7xl mx-auto px-6 text-center md:text-left">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          <div className="col-span-1 md:col-span-1">
+            <div className="flex items-center gap-2 mb-6 text-white justify-center md:justify-start">
+              <img src={logoImg} alt="Logo" className="w-6 h-6 object-contain" />
+              <span className="text-xl font-bold">RegenLab</span>
+            </div>
+            <p className="text-slate-400 text-sm leading-relaxed mb-6">{t.footer.desc}</p>
+          </div>
+          <div><h4 className="text-white font-bold mb-6">{t.footer.links}</h4><ul className="space-y-3 text-sm"><li><button onClick={() => navigate('/about')}>{t.nav.about}</button></li><li><button onClick={() => navigate('/projects')}>{t.nav.projects}</button></li></ul></div>
+          <div><h4 className="text-white font-bold mb-6">{t.footer.areas}</h4><ul className="space-y-3 text-sm"><li>Carbon Modeling</li><li>Remote Sensing</li></ul></div>
+          <div><h4 className="text-white font-bold mb-6">{t.footer.contact}</h4><ul className="space-y-3 text-sm text-slate-400"><li>info@regenlab.tech</li></ul></div>
+        </div>
+        <div className="border-t border-slate-800 pt-8 text-xs text-slate-500 text-center">
+          &copy; {new Date().getFullYear()} RegenLab Technology. {t.footer.rights}
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+// --- PAGE COMPONENTS ---
+function HomePage({ lang }) {
+  const navigate = useNavigate();
+  const t = CONTENT[lang];
+
+  return (
     <div className="animate-fade-in">
       <section className="relative h-[600px] flex items-center justify-center text-white overflow-hidden">
         <div className="absolute inset-0 bg-slate-900">
@@ -99,10 +162,10 @@ export default function App() {
           </h1>
           <p className="text-lg md:text-xl text-slate-200 mb-10 max-w-2xl mx-auto leading-relaxed">{t.hero.desc}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button onClick={() => navigate('projects')} className="px-8 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-lg transition-all shadow-lg hover:shadow-emerald-500/30 flex items-center justify-center gap-2">
+            <button onClick={() => navigate('/projects')} className="px-8 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-lg transition-all shadow-lg hover:shadow-emerald-500/30 flex items-center justify-center gap-2">
               {t.hero.btn_explore} <ChevronRight size={18} />
             </button>
-            <button onClick={() => navigate('about')} className="px-8 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-semibold rounded-lg transition-all border border-white/20">
+            <button onClick={() => navigate('/about')} className="px-8 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-semibold rounded-lg transition-all border border-white/20">
               {t.hero.btn_mission}
             </button>
           </div>
@@ -131,46 +194,63 @@ export default function App() {
       </section>
     </div>
   );
+}
 
-  const ProjectsPage = () => {
-    // Case 1: Show dashboard if project has one configured
-    if (activeProject && activeProject.dashboardComponent) {
-      const DashboardComponent = DASHBOARD_COMPONENTS[activeProject.dashboardComponent];
-      if (DashboardComponent) {
-        return (
-          <div className="max-w-7xl mx-auto px-6 py-16 animate-fade-in">
-            <DashboardComponent onBack={() => setActiveProject(null)} lang={lang} />
-          </div>
-        );
-      }
-    }
+function ProjectsPage({ lang }) {
+  const navigate = useNavigate();
+  const { projectSlug } = useParams();
+  const t = CONTENT[lang];
 
-    // Case 2: Show placeholder for projects without dashboard
-    if (activeProject) {
+  const activeProject = projectSlug ? PROJECTS_DATA.find(p => p.slug === projectSlug) : null;
+
+  // Case 1: Show dashboard if project has one configured
+  if (activeProject && activeProject.dashboardComponent) {
+    const DashboardComponent = DASHBOARD_COMPONENTS[activeProject.dashboardComponent];
+    if (DashboardComponent) {
       return (
-        <div className="max-w-4xl mx-auto px-6 py-16 animate-fade-in text-center">
-           <button onClick={() => setActiveProject(null)} className="mb-6 flex items-center gap-2 text-slate-500 hover:text-emerald-600 mx-auto font-medium"><ArrowLeft size={20} /> {t.back || "Back"}</button>
-          <h2 className="text-3xl font-bold mb-4">{activeProject.title[lang]}</h2>
-          <div className="bg-slate-100 p-12 rounded-xl">
-            <p className="text-slate-500">{t.projects.dev_msg}</p>
-            <p className="text-sm text-slate-400 mt-2">{t.projects.check_cali}</p>
-          </div>
+        <div className="max-w-7xl mx-auto px-6 py-16 animate-fade-in">
+          <DashboardComponent onBack={() => navigate('/projects')} lang={lang} />
         </div>
       );
     }
+  }
 
-    // Case 3: Show list of all projects
+  // Case 2: Show placeholder for projects without dashboard
+  if (activeProject) {
     return (
-      <div className="max-w-7xl mx-auto px-6 py-16 animate-fade-in">
-        <SectionTitle subtitle>{t.projects.title}</SectionTitle>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {PROJECTS_DATA.map(project => <ProjectCard key={project.id} project={project} onClick={() => setActiveProject(project)} />)}
+      <div className="max-w-4xl mx-auto px-6 py-16 animate-fade-in text-center">
+        <button onClick={() => navigate('/projects')} className="mb-6 flex items-center gap-2 text-slate-500 hover:text-emerald-600 mx-auto font-medium"><ArrowLeft size={20} /> {t.back || "Back"}</button>
+        <h2 className="text-3xl font-bold mb-4">{activeProject.title[lang]}</h2>
+        <div className="bg-slate-100 p-12 rounded-xl">
+          <p className="text-slate-500">{t.projects.dev_msg}</p>
+          <p className="text-sm text-slate-400 mt-2">{t.projects.check_cali}</p>
         </div>
       </div>
     );
-  };
+  }
 
-  const AboutPage = () => (
+  // Case 3: Show list of all projects
+  return (
+    <div className="max-w-7xl mx-auto px-6 py-16 animate-fade-in">
+      <SectionTitle subtitle>{t.projects.title}</SectionTitle>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {PROJECTS_DATA.map(project => (
+          <ProjectCard
+            key={project.id}
+            project={project}
+            lang={lang}
+            onClick={() => navigate(`/projects/${project.slug}`)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function AboutPage({ lang }) {
+  const t = CONTENT[lang];
+
+  return (
     <div className="max-w-4xl mx-auto px-6 py-16 animate-fade-in">
       <SectionTitle subtitle>{t.about.title}</SectionTitle>
       <div className="prose prose-lg text-slate-600 mx-auto">
@@ -197,8 +277,12 @@ export default function App() {
       </div>
     </div>
   );
+}
 
-  const InternshipPage = () => (
+function InternshipPage({ lang }) {
+  const t = CONTENT[lang];
+
+  return (
     <div className="max-w-4xl mx-auto px-6 py-16 animate-fade-in">
       <SectionTitle subtitle>{t.internship.title}</SectionTitle>
       <div className="bg-gradient-to-br from-emerald-900 to-slate-800 rounded-2xl p-8 md:p-12 text-white mb-12 shadow-xl">
@@ -238,65 +322,70 @@ export default function App() {
       </div>
     </div>
   );
+}
 
-  const ContactPage = () => {
-    const [status, setStatus] = useState('idle'); 
+function ContactPage({ lang }) {
+  const [status, setStatus] = useState('idle');
+  const t = CONTENT[lang];
 
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      setStatus('submitting');
-      
-      setTimeout(() => {
-        setStatus('success');
-      }, 1500);
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setStatus('submitting');
 
-    return (
-      <div className="max-w-4xl mx-auto px-6 py-16 animate-fade-in">
-        <SectionTitle subtitle>{t.contact.title}</SectionTitle>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div className="space-y-8">
-            <div><h3 className="text-xl font-bold text-slate-800 mb-2">{t.contact.get_in_touch}</h3><p className="text-slate-600">{t.contact.desc}</p></div>
-            <div className="flex items-start gap-4"><div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-700 shrink-0"><Mail size={20}/></div><div><h4 className="font-bold text-slate-800">Email</h4><p className="text-slate-600">info@regenlab.tech</p></div></div>
-          </div>
-          
-          {status === 'success' ? (
-            <div className="bg-emerald-50 border border-emerald-100 p-8 rounded-xl text-center flex flex-col items-center justify-center h-full shadow-sm">
-              <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 mb-4">
-                <CheckCircle size={32} />
-              </div>
-              <h4 className="text-2xl font-bold text-emerald-800 mb-2">{t.contact.form.success_title}</h4>
-              <p className="text-emerald-600">{t.contact.form.success_desc}</p>
-              <button onClick={() => setStatus('idle')} className="mt-6 px-6 py-2 bg-white text-emerald-600 font-semibold rounded-lg border border-emerald-200 hover:bg-emerald-50 transition-colors text-sm">
-                Send Another
-              </button>
-            </div>
-          ) : (
-            <form className="bg-white p-6 rounded-xl shadow-lg border border-slate-100" onSubmit={handleSubmit}>
-              <div className="space-y-4">
-                <div><label className="block text-sm font-semibold text-slate-700 mb-1">{t.contact.form.name}</label><input type="text" required className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none" /></div>
-                <div><label className="block text-sm font-semibold text-slate-700 mb-1">{t.contact.form.email}</label><input type="email" required className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none" /></div>
-                <div><label className="block text-sm font-semibold text-slate-700 mb-1">{t.contact.form.subject}</label><select className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none"><option>General Inquiry</option><option>Project Collaboration</option><option>Internship Application</option></select></div>
-                <div><label className="block text-sm font-semibold text-slate-700 mb-1">{t.contact.form.msg}</label><textarea required className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none h-32"></textarea></div>
-                <button 
-                  disabled={status === 'submitting'}
-                  className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition-colors shadow-md flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
-                >
-                  {status === 'submitting' ? (
-                    <><Loader2 size={20} className="animate-spin" /> {t.contact.form.sending}</>
-                  ) : (
-                    t.contact.form.send
-                  )}
-                </button>
-              </div>
-            </form>
-          )}
-        </div>
-      </div>
-    );
+    setTimeout(() => {
+      setStatus('success');
+    }, 1500);
   };
 
-  const VideosPage = () => (
+  return (
+    <div className="max-w-4xl mx-auto px-6 py-16 animate-fade-in">
+      <SectionTitle subtitle>{t.contact.title}</SectionTitle>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="space-y-8">
+          <div><h3 className="text-xl font-bold text-slate-800 mb-2">{t.contact.get_in_touch}</h3><p className="text-slate-600">{t.contact.desc}</p></div>
+          <div className="flex items-start gap-4"><div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-700 shrink-0"><Mail size={20}/></div><div><h4 className="font-bold text-slate-800">Email</h4><p className="text-slate-600">info@regenlab.tech</p></div></div>
+        </div>
+
+        {status === 'success' ? (
+          <div className="bg-emerald-50 border border-emerald-100 p-8 rounded-xl text-center flex flex-col items-center justify-center h-full shadow-sm">
+            <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 mb-4">
+              <CheckCircle size={32} />
+            </div>
+            <h4 className="text-2xl font-bold text-emerald-800 mb-2">{t.contact.form.success_title}</h4>
+            <p className="text-emerald-600">{t.contact.form.success_desc}</p>
+            <button onClick={() => setStatus('idle')} className="mt-6 px-6 py-2 bg-white text-emerald-600 font-semibold rounded-lg border border-emerald-200 hover:bg-emerald-50 transition-colors text-sm">
+              Send Another
+            </button>
+          </div>
+        ) : (
+          <form className="bg-white p-6 rounded-xl shadow-lg border border-slate-100" onSubmit={handleSubmit}>
+            <div className="space-y-4">
+              <div><label className="block text-sm font-semibold text-slate-700 mb-1">{t.contact.form.name}</label><input type="text" required className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none" /></div>
+              <div><label className="block text-sm font-semibold text-slate-700 mb-1">{t.contact.form.email}</label><input type="email" required className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none" /></div>
+              <div><label className="block text-sm font-semibold text-slate-700 mb-1">{t.contact.form.subject}</label><select className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none"><option>General Inquiry</option><option>Project Collaboration</option><option>Internship Application</option></select></div>
+              <div><label className="block text-sm font-semibold text-slate-700 mb-1">{t.contact.form.msg}</label><textarea required className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none h-32"></textarea></div>
+              <button
+                disabled={status === 'submitting'}
+                className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition-colors shadow-md flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+              >
+                {status === 'submitting' ? (
+                  <><Loader2 size={20} className="animate-spin" /> {t.contact.form.sending}</>
+                ) : (
+                  t.contact.form.send
+                )}
+              </button>
+            </div>
+          </form>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function VideosPage({ lang }) {
+  const t = CONTENT[lang];
+
+  return (
     <div className="max-w-6xl mx-auto px-6 py-16 animate-fade-in">
       <SectionTitle subtitle>{t.videos.title}</SectionTitle>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -321,63 +410,31 @@ export default function App() {
       </div>
     </div>
   );
+}
+
+// --- MAIN APP COMPONENT ---
+export default function App() {
+  const [lang, setLang] = useState('vi');
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 flex flex-col">
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between h-20">
-            <div className="flex items-center gap-2 cursor-pointer group" onClick={() => navigate('home')}>
-              <div className="w-10 h-10 bg-emerald-600 rounded-lg flex items-center justify-center text-white shadow-lg group-hover:bg-emerald-700 transition-colors overflow-hidden">
-                <img src={logoImg} alt="Logo" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-bold text-slate-900 leading-none">RegenLab</span>
-                <span className="text-xs text-emerald-600 font-medium tracking-widest">TECH</span>
-              </div>
-            </div>
-            <div className="hidden md:flex items-center gap-8">
-              {['home','about','projects','videos','internship','contact'].map(key => (
-                <button key={key} onClick={() => navigate(key)} className={`text-sm font-medium transition-colors hover:text-emerald-600 ${currentPage === key ? 'text-emerald-600' : 'text-slate-600'}`}>{t.nav[key]}</button>
-              ))}
-              <button onClick={toggleLang} className="flex items-center gap-1 px-3 py-1 border border-slate-200 rounded-full text-xs font-bold hover:bg-slate-50 transition-colors">
-                <Globe size={14}/> {lang === 'en' ? 'EN' : 'VI'}
-              </button>
-              <button onClick={() => navigate('contact')} className="px-5 py-2 bg-slate-900 text-white text-sm font-semibold rounded-full hover:bg-emerald-600 transition-colors">{t.nav.cta}</button>
-            </div>
-            <button className="md:hidden p-2 text-slate-600 hover:bg-slate-100 rounded-lg" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}><Menu size={24} /></button>
-          </div>
-        </div>
-      </nav>
+    <HashRouter>
+      <div className="min-h-screen bg-slate-50 font-sans text-slate-900 flex flex-col">
+        <Navigation lang={lang} setLang={setLang} />
 
-      <main className="flex-grow">
-        {currentPage === 'home' && <HomePage />}
-        {currentPage === 'about' && <AboutPage />}
-        {currentPage === 'projects' && <ProjectsPage />}
-        {currentPage === 'videos' && <VideosPage />}
-        {currentPage === 'internship' && <InternshipPage />}
-        {currentPage === 'contact' && <ContactPage />}
-      </main>
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<HomePage lang={lang} />} />
+            <Route path="/about" element={<AboutPage lang={lang} />} />
+            <Route path="/projects" element={<ProjectsPage lang={lang} />} />
+            <Route path="/projects/:projectSlug" element={<ProjectsPage lang={lang} />} />
+            <Route path="/videos" element={<VideosPage lang={lang} />} />
+            <Route path="/internship" element={<InternshipPage lang={lang} />} />
+            <Route path="/contact" element={<ContactPage lang={lang} />} />
+          </Routes>
+        </main>
 
-      <footer className="bg-slate-900 text-slate-300 py-16">
-        <div className="max-w-7xl mx-auto px-6 text-center md:text-left">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-            <div className="col-span-1 md:col-span-1">
-              <div className="flex items-center gap-2 mb-6 text-white justify-center md:justify-start">
-                <img src={logoImg} alt="Logo" className="w-6 h-6 object-contain" /> 
-                <span className="text-xl font-bold">RegenLab</span>
-              </div>
-              <p className="text-slate-400 text-sm leading-relaxed mb-6">{t.footer.desc}</p>
-            </div>
-            <div><h4 className="text-white font-bold mb-6">{t.footer.links}</h4><ul className="space-y-3 text-sm"><li><button onClick={() => navigate('about')}>{t.nav.about}</button></li><li><button onClick={() => navigate('projects')}>{t.nav.projects}</button></li></ul></div>
-            <div><h4 className="text-white font-bold mb-6">{t.footer.areas}</h4><ul className="space-y-3 text-sm"><li>Carbon Modeling</li><li>Remote Sensing</li></ul></div>
-            <div><h4 className="text-white font-bold mb-6">{t.footer.contact}</h4><ul className="space-y-3 text-sm text-slate-400"><li>info@regenlab.tech</li></ul></div>
-          </div>
-          <div className="border-t border-slate-800 pt-8 text-xs text-slate-500 text-center">
-            &copy; {new Date().getFullYear()} RegenLab Technology. {t.footer.rights}
-          </div>
-        </div>
-      </footer>
-    </div>
+        <Footer lang={lang} />
+      </div>
+    </HashRouter>
   );
 }

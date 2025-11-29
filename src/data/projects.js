@@ -4,10 +4,12 @@ import netzero_dashboard from "../assets/netzero_dashboard.png";
 import canopy_dashboard from "../assets/canopy_height_dashboard.png";
 import gujarat_dashboard from "../assets/gujarat_dashboard.jpg";
 import vietnam_corn_dashboard from "../assets/vietnam_corn_dashboard.jpeg";
+import hue_soil_dashboard from "../assets/hue_soil_dashboard.png";
 
 const PROJECTS_DATA = [
   {
     id: 1,
+    slug: "vietnam-corn",
     title: {
       en: "Vietnam Corn Sustainability Optimization Project",
       vi: "Dự án Tối ưu hóa Bền vững Canh tác Ngô Việt Nam"
@@ -15,13 +17,14 @@ const PROJECTS_DATA = [
     owner: "Lab Team",
     image: vietnam_corn_dashboard,
     category: "Crop Science",
-    summary: { en: "DayCent modeling to optimize tillage and fertilization for GHG reduction across 8 ecological regions.", vi: "Mô hình hóa DayCent tối ưu hóa làm đất và phân bón nhằm giảm phát thải GHG trên 8 vùng sinh thái." 
+    summary: { en: "DayCent modeling to optimize tillage and fertilization for GHG reduction across 8 ecological regions.", vi: "Mô hình hóa DayCent tối ưu hóa làm đất và phân bón nhằm giảm phát thải GHG trên 8 vùng sinh thái."
     },
     status: "Active",
     dashboardComponent: "VietnamCornDashboard"
   },
   {
     id: 2,
+    slug: "california-regen-ag",
     title: { en: "California's Regen Ag Planner", vi: "Quy hoạch Nông nghiệp Tái sinh California" },
     owner: "Lab Team",
     image: californiaImg,
@@ -32,19 +35,21 @@ const PROJECTS_DATA = [
   },
   {
     id: 3,
+    slug: "gujarat-cropping",
     title: { en: "Gujarat Cropping Systems Analysis", vi: "Phân tích Hệ thống Canh tác Gujarat" },
     owner: "Lab Team",
     image: gujarat_dashboard,
     category: "Climate Modeling",
-    summary: { 
-      en: "DayCent simulation for GHG mitigation & crop yield potential.", 
-      vi: "Mô phỏng DayCent đánh giá tiềm năng giảm phát thải & năng suất." 
+    summary: {
+      en: "DayCent simulation for GHG mitigation & crop yield potential.",
+      vi: "Mô phỏng DayCent đánh giá tiềm năng giảm phát thải & năng suất."
     },
     status: "Active",
     dashboardComponent: "GujaratDashboard"
   },
   {
     id: 4,
+    slug: "regenai-chatbot",
     title: { en: "Hỏi RegenAI", vi: "Hỏi RegenAI" },
     owner: "Lab Team",
     image: null,
@@ -55,6 +60,7 @@ const PROJECTS_DATA = [
   },
   {
     id: 5,
+    slug: "quangtri-digital",
     title: { en: "Digital Transformation: Quảng Trị", vi: "Chuyển đổi số Nông nghiệp Quảng Trị" },
     owner: "Lab Team",
     image: quangtriImg,
@@ -65,16 +71,18 @@ const PROJECTS_DATA = [
   },
   {
     id: 6,
+    slug: "hue-soil-research",
     title: { en: "Thang's Project", vi: "Dự án Nghiên cứu Đất (Thắng)" },
     owner: "Lab Team",
-    image: null,
+    image: hue_soil_dashboard,
     category: "Research",
     summary: { en: "Advanced soil microbiome analysis.", vi: "Phân tích hệ vi sinh vật đất tiên tiến." },
     status: "Research",
-    dashboardComponent: null
+    dashboardComponent: "HueSoilDashboard"
   },
   {
     id: 7,
+    slug: "net-zero-carbon",
     title: { en: "Net Zero Carbon", vi: "Net Zero Carbon" },
     owner: "Lab Team",
     image: netzero_dashboard,
@@ -85,6 +93,7 @@ const PROJECTS_DATA = [
   },
   {
     id: 8,
+    slug: "lidar-canopy",
     title: { en: "LiDAR Canopy Mapping", vi: "Bản đồ Chiều cao Tán rừng (LiDAR)" },
     owner: "Open for Lead",
     image: canopy_dashboard,
@@ -95,6 +104,7 @@ const PROJECTS_DATA = [
   },
   {
     id: 9,
+    slug: "soil-carbon-modeling",
     title: { en: "Soil Carbon Modeling", vi: "Mô hình hóa Carbon trong Đất" },
     owner: "Open for Lead",
     image: null,
@@ -105,6 +115,7 @@ const PROJECTS_DATA = [
   },
   {
     id: 10,
+    slug: "rice-stress-analysis",
     title: { en: "Rice Stress Analysis", vi: "Phân tích Đa phổ Lúa" },
     owner: "Open for Lead",
     image: null,

@@ -5,6 +5,7 @@ import NetzeroDashboard from '../components/NetzeroDashboard';
 import CanopyDashboard from '../components/CanopyHeightDashboard';
 import GujaratDashboard from '../components/GujaratDashboard';
 import VietnamCornDashboard from '../components/VietnamCornDashboard';
+import HueSoilDashboard from '../components/HueSoilDashboard';
 
 export const DASHBOARD_COMPONENTS = {
   CaliforniaDashboard,
@@ -13,4 +14,5 @@ export const DASHBOARD_COMPONENTS = {
   CanopyDashboard,
   GujaratDashboard,
   VietnamCornDashboard,
+  HueSoilDashboard
 };
