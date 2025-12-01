@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState, useMemo, useCallback } from 'react';
 import {
     Users, Target, Globe, Award, BookOpen, Sprout,
     ArrowRight, MapPin, Plane, Factory, Flag, Code, Link2, ExternalLink,
@@ -81,66 +81,32 @@ const ProjectCard = ({ project }) => {
     );
 };
 
-export default function AboutPage({ lang, showHero = true }) {
-    const t = CONTENT[lang].about;
-    const projectsContainerRef = useRef(null);
-    const teamContainerRef = useRef(null);
+const useInfiniteCarousel = (items, itemWidth, autoPlayInterval = 2500) => {
+    const containerRef = useRef(null);
+    const [isPaused, setIsPaused] = useState(false);
 
-    // Create a "virtual" infinite list by repeating the items multiple times
-    // We use 6 sets to ensure plenty of buffer space
-    const extendedItems = [
-        ...t.projects.items, ...t.projects.items,
-        ...t.projects.items, ...t.projects.items,
-        ...t.projects.items, ...t.projects.items
-    ];
+    // Create extended items (6 sets)
+    const extendedItems = useMemo(() => [
+        ...items, ...items, ...items, ...items, ...items, ...items
+    ], [items]);
 
-    const extendedTeamItems = [
-        ...t.team.members, ...t.team.members,
-        ...t.team.members, ...t.team.members,
-        ...t.team.members, ...t.team.members
-    ];
-
-    useEffect(() => {
-        const container = projectsContainerRef.current;
-        if (!container) return;
-
-        // Calculate the width of one single set of items
-        // Card width (300px) + gap (24px/1.5rem) = 324px
-        const itemWidth = 324;
-        const singleSetWidth = itemWidth * t.projects.items.length;
-
-        // Initial positioning: Start at the beginning of the 3rd set (middle-ish)
-        // This gives user plenty of room to scroll left or right immediately
-        if (container.scrollLeft === 0) {
-            container.scrollLeft = singleSetWidth * 2;
+    const scroll = useCallback((direction) => {
+        const container = containerRef.current;
+        if (container) {
+            if (direction === 'left') {
+                container.scrollBy({ left: -itemWidth, behavior: 'smooth' });
+            } else {
+                container.scrollBy({ left: itemWidth, behavior: 'smooth' });
+            }
         }
+    }, [itemWidth]);
 
-        const handleScroll = () => {
-            const scrollLeft = container.scrollLeft;
-            const totalWidth = container.scrollWidth;
-
-            // If we get too close to the start (1st set), jump forward to 3rd set
-            if (scrollLeft < singleSetWidth) {
-                container.scrollLeft = scrollLeft + singleSetWidth * 2;
-            }
-            // If we get too close to the end (last set), jump backward to 4th set
-            else if (scrollLeft > totalWidth - singleSetWidth * 2) {
-                container.scrollLeft = scrollLeft - singleSetWidth * 2;
-            }
-        };
-
-        container.addEventListener('scroll', handleScroll);
-        return () => container.removeEventListener('scroll', handleScroll);
-    }, [t.projects.items]);
-
+    // Initial positioning & Infinite Loop Logic
     useEffect(() => {
-        const container = teamContainerRef.current;
+        const container = containerRef.current;
         if (!container) return;
 
-        // Calculate the width of one single set of items
-        // Card width (280px) + gap (24px/1.5rem) = 304px
-        const itemWidth = 304;
-        const singleSetWidth = itemWidth * t.team.members.length;
+        const singleSetWidth = itemWidth * items.length;
 
         // Initial positioning
         if (container.scrollLeft === 0) {
@@ -153,39 +119,47 @@ export default function AboutPage({ lang, showHero = true }) {
 
             if (scrollLeft < singleSetWidth) {
                 container.scrollLeft = scrollLeft + singleSetWidth * 2;
-            }
-            else if (scrollLeft > totalWidth - singleSetWidth * 2) {
+            } else if (scrollLeft > totalWidth - singleSetWidth * 2) {
                 container.scrollLeft = scrollLeft - singleSetWidth * 2;
             }
         };
 
         container.addEventListener('scroll', handleScroll);
         return () => container.removeEventListener('scroll', handleScroll);
-    }, [t.team.members]);
+    }, [items, itemWidth]);
 
-    const scrollProjects = (direction) => {
-        const container = projectsContainerRef.current;
-        if (container) {
-            const scrollAmount = 324; // Card width + gap
-            if (direction === 'left') {
-                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-            } else {
-                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    // Auto-play Logic
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (!isPaused) {
+                scroll('right');
             }
-        }
-    };
+        }, autoPlayInterval);
 
-    const scrollTeam = (direction) => {
-        const container = teamContainerRef.current;
-        if (container) {
-            const scrollAmount = 304; // Card width (280) + gap (24)
-            if (direction === 'left') {
-                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-            } else {
-                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-            }
-        }
-    };
+        return () => clearInterval(interval);
+    }, [isPaused, scroll, autoPlayInterval]);
+
+    return { containerRef, extendedItems, scroll, setIsPaused };
+};
+
+export default function AboutPage({ lang, showHero = true }) {
+    const t = CONTENT[lang].about;
+
+    // Projects Carousel Logic
+    const {
+        containerRef: projectsContainerRef,
+        extendedItems: extendedProjectItems,
+        scroll: scrollProjects,
+        setIsPaused: setIsProjectsPaused
+    } = useInfiniteCarousel(t.projects.items, 324); // 300px card + 24px gap
+
+    // Team Carousel Logic
+    const {
+        containerRef: teamContainerRef,
+        extendedItems: extendedTeamItems,
+        scroll: scrollTeam,
+        setIsPaused: setIsTeamPaused
+    } = useInfiniteCarousel(t.team.members, 304); // 280px card + 24px gap
 
     return (
         <div id="about-section" className="animate-fade-in">
@@ -408,6 +382,8 @@ export default function AboutPage({ lang, showHero = true }) {
                             ref={teamContainerRef}
                             className="flex overflow-x-auto gap-6 py-4 px-2 snap-x snap-mandatory scrollbar-hide"
                             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                            onMouseEnter={() => setIsTeamPaused(true)}
+                            onMouseLeave={() => setIsTeamPaused(false)}
                         >
                             {extendedTeamItems.map((member, index) => {
                                 const colors = getColorClasses(member.color);
@@ -458,8 +434,10 @@ export default function AboutPage({ lang, showHero = true }) {
                             ref={projectsContainerRef}
                             className="flex overflow-x-auto gap-6 py-4 px-2 snap-x snap-mandatory scrollbar-hide"
                             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                            onMouseEnter={() => setIsProjectsPaused(true)}
+                            onMouseLeave={() => setIsProjectsPaused(false)}
                         >
-                            {extendedItems.map((project, index) => (
+                            {extendedProjectItems.map((project, index) => (
                                 <ProjectCard key={`${index}`} project={project} />
                             ))}
                         </div>
