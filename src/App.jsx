@@ -4,7 +4,7 @@ import {
   Menu, ChevronRight, Leaf, Cpu, Globe,
   Play, Users, Mail, MapPin,
   BarChart, Sprout, Database, Microscope,
-  ArrowLeft, Loader2, CheckCircle
+  ArrowLeft, Loader2, CheckCircle, Clock, Send
 } from 'lucide-react';
 
 // Dashboard for Projects
@@ -18,6 +18,7 @@ import PROJECTS_DATA from './data/projects';
 import VIDEOS from './data/videos';
 
 // --- SUB-COMPONENTS ---
+import AboutPage from './components/AboutPage';
 const SectionTitle = ({ children, subtitle }) => (
   <div className="mb-10 text-center">
     <h2 className="text-3xl font-bold text-slate-800 font-display">{children}</h2>
@@ -37,13 +38,13 @@ const ProjectCard = ({ project, onClick, lang }) => (
           />
           <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
         </>
-      ): (
+      ) : (
         <>
           <div className="absolute inset-0 bg-gradient-to-br from-emerald-900 to-slate-800 opacity-90 group-hover:opacity-100 transition-opacity"></div>
           <div className="absolute inset-0 flex items-center justify-center text-emerald-100">
             {project.category === 'AI/Computer Vision' || project.category === 'AI Assistant' ? <Cpu size={48} className="opacity-50" /> :
-            project.category === 'Software Tool' ? <Database size={48} className="opacity-50" /> :
-            <Sprout size={48} className="opacity-50" />}
+              project.category === 'Software Tool' ? <Database size={48} className="opacity-50" /> :
+                <Sprout size={48} className="opacity-50" />}
           </div>
         </>
       )}
@@ -91,19 +92,27 @@ function Navigation({ lang, setLang }) {
           </div>
           <div className="hidden md:flex items-center gap-8">
             {[
-              { key: 'home', path: '/' },
-              { key: 'about', path: '/about' },
+              { key: 'about', path: '/' },
               { key: 'projects', path: '/projects' },
               { key: 'videos', path: '/videos' },
               { key: 'internship', path: '/internship' },
               { key: 'contact', path: '/contact' }
-            ].map(({ key, path }) => (
-              <Link key={key} to={path} className="text-sm font-medium transition-colors hover:text-emerald-600 text-slate-600">
+            ].map(({ key, path, isScroll }) => (
+              <Link
+                key={key}
+                to={path}
+                onClick={() => {
+                  if (isScroll) {
+                    setTimeout(() => document.getElementById('about-section')?.scrollIntoView({ behavior: 'smooth' }), 100);
+                  }
+                }}
+                className="text-sm font-medium transition-colors hover:text-emerald-600 text-slate-600"
+              >
                 {t.nav[key]}
               </Link>
             ))}
             <button onClick={toggleLang} className="flex items-center gap-1 px-3 py-1 border border-slate-200 rounded-full text-xs font-bold hover:bg-slate-50 transition-colors">
-              <Globe size={14}/> {lang === 'en' ? 'EN' : 'VI'}
+              <Globe size={14} /> {lang === 'en' ? 'EN' : 'VI'}
             </button>
             <button onClick={() => handleNavigate('/contact')} className="px-5 py-2 bg-slate-900 text-white text-sm font-semibold rounded-full hover:bg-emerald-600 transition-colors">{t.nav.cta}</button>
           </div>
@@ -130,7 +139,7 @@ function Footer({ lang }) {
             </div>
             <p className="text-slate-400 text-sm leading-relaxed mb-6">{t.footer.desc}</p>
           </div>
-          <div><h4 className="text-white font-bold mb-6">{t.footer.links}</h4><ul className="space-y-3 text-sm"><li><button onClick={() => navigate('/about')}>{t.nav.about}</button></li><li><button onClick={() => navigate('/projects')}>{t.nav.projects}</button></li></ul></div>
+          <div><h4 className="text-white font-bold mb-6">{t.footer.links}</h4><ul className="space-y-3 text-sm"><li><button onClick={() => navigate('/')}>{t.nav.about}</button></li><li><button onClick={() => navigate('/projects')}>{t.nav.projects}</button></li></ul></div>
           <div><h4 className="text-white font-bold mb-6">{t.footer.areas}</h4><ul className="space-y-3 text-sm"><li>Carbon Modeling</li><li>Remote Sensing</li></ul></div>
           <div><h4 className="text-white font-bold mb-6">{t.footer.contact}</h4><ul className="space-y-3 text-sm text-slate-400"><li>info@regenlab.tech</li></ul></div>
         </div>
@@ -144,56 +153,8 @@ function Footer({ lang }) {
 
 // --- PAGE COMPONENTS ---
 function HomePage({ lang }) {
-  const navigate = useNavigate();
-  const t = CONTENT[lang];
-
-  return (
-    <div className="animate-fade-in">
-      <section className="relative h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <div className="absolute inset-0 bg-slate-900">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1625246333195-58197bd47d26?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-40"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/50 via-slate-900/20 to-slate-900"></div>
-        </div>
-        <div className="relative z-10 max-w-4xl px-6 text-center">
-          <div className="inline-block px-4 py-1.5 mb-6 border border-emerald-400/50 rounded-full bg-emerald-900/30 backdrop-blur-sm text-emerald-300 text-sm font-medium tracking-wide">{t.hero.tagline}</div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight">
-            {t.hero.title_prefix} <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">{t.hero.title_highlight}</span>
-          </h1>
-          <p className="text-lg md:text-xl text-slate-200 mb-10 max-w-2xl mx-auto leading-relaxed">{t.hero.desc}</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button onClick={() => navigate('/projects')} className="px-8 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-lg transition-all shadow-lg hover:shadow-emerald-500/30 flex items-center justify-center gap-2">
-              {t.hero.btn_explore} <ChevronRight size={18} />
-            </button>
-            <button onClick={() => navigate('/about')} className="px-8 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-semibold rounded-lg transition-all border border-white/20">
-              {t.hero.btn_mission}
-            </button>
-          </div>
-        </div>
-      </section>
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div className="p-6 bg-slate-50 rounded-xl border border-slate-100 hover:border-emerald-200 transition-colors">
-              <div className="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center text-emerald-700 mb-4"><Cpu size={24} /></div>
-              <h3 className="text-xl font-bold text-slate-800 mb-2">{t.highlights.ai_title}</h3>
-              <p className="text-slate-600">{t.highlights.ai_desc}</p>
-            </div>
-            <div className="p-6 bg-slate-50 rounded-xl border border-slate-100 hover:border-emerald-200 transition-colors">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-700 mb-4"><Globe size={24} /></div>
-              <h3 className="text-xl font-bold text-slate-800 mb-2">{t.highlights.climate_title}</h3>
-              <p className="text-slate-600">{t.highlights.climate_desc}</p>
-            </div>
-            <div className="p-6 bg-slate-50 rounded-xl border border-slate-100 hover:border-emerald-200 transition-colors">
-              <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center text-amber-700 mb-4"><Users size={24} /></div>
-              <h3 className="text-xl font-bold text-slate-800 mb-2">{t.highlights.origin_title}</h3>
-              <p className="text-slate-600">{t.highlights.origin_desc}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
+  // Redirect to show AboutPage content
+  return <AboutPage lang={lang} showHero={true} />;
 }
 
 function ProjectsPage({ lang }) {
@@ -247,37 +208,7 @@ function ProjectsPage({ lang }) {
   );
 }
 
-function AboutPage({ lang }) {
-  const t = CONTENT[lang];
 
-  return (
-    <div className="max-w-4xl mx-auto px-6 py-16 animate-fade-in">
-      <SectionTitle subtitle>{t.about.title}</SectionTitle>
-      <div className="prose prose-lg text-slate-600 mx-auto">
-        <p className="lead text-xl text-slate-800 font-medium mb-6">{t.about.lead}</p>
-        <div className="my-10 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-emerald-50 p-6 rounded-xl border border-emerald-100">
-            <h4 className="text-emerald-800 font-bold text-lg mb-2 flex items-center gap-2"><Microscope size={20}/> {t.about.focus}</h4>
-            <ul className="list-disc pl-5 space-y-2 text-sm">
-              <li>Machine Learning</li>
-              <li>Carbon Modeling</li>
-            </ul>
-          </div>
-          <div className="bg-blue-50 p-6 rounded-xl border border-blue-100">
-            <h4 className="text-blue-800 font-bold text-lg mb-2 flex items-center gap-2"><Users size={20}/> {t.about.values}</h4>
-            <ul className="list-disc pl-5 space-y-2 text-sm">
-              <li>Transparency</li>
-              <li>Sustainability</li>
-              <li>Farmer-First</li>
-            </ul>
-          </div>
-        </div>
-        <h3 className="text-2xl font-bold text-slate-800 mb-4">{t.about.vision_title}</h3>
-        <p className="mb-6">{t.about.vision_desc}</p>
-      </div>
-    </div>
-  );
-}
 
 function InternshipPage({ lang }) {
   const t = CONTENT[lang];
@@ -299,10 +230,10 @@ function InternshipPage({ lang }) {
           <div className="bg-white/10 p-6 rounded-xl border border-white/10 backdrop-blur-md min-w-[280px]">
             <h4 className="font-bold text-xl mb-4 border-b border-white/20 pb-2">{t.internship.details}</h4>
             <ul className="space-y-3 text-sm text-emerald-50">
-              <li className="flex items-center gap-2"><Leaf size={16}/> Real-world project impact</li>
-              <li className="flex items-center gap-2"><Users size={16}/> Mentorship from senior engineers</li>
-              <li className="flex items-center gap-2"><BarChart size={16}/> Research publication support</li>
-              <li className="flex items-center gap-2"><MapPin size={16}/> Remote & On-site (Vietnam)</li>
+              <li className="flex items-center gap-2"><Leaf size={16} /> Real-world project impact</li>
+              <li className="flex items-center gap-2"><Users size={16} /> Mentorship from senior engineers</li>
+              <li className="flex items-center gap-2"><BarChart size={16} /> Research publication support</li>
+              <li className="flex items-center gap-2"><MapPin size={16} /> Remote & On-site (Vietnam)</li>
             </ul>
           </div>
         </div>
@@ -316,7 +247,7 @@ function InternshipPage({ lang }) {
           <h4 className="text-xl font-bold text-slate-800 mb-4">{t.internship.apply_title}</h4>
           <div className="bg-slate-50 p-6 rounded-xl border border-slate-200">
             <p className="text-sm text-slate-600 mb-4">{t.internship.apply_msg}</p>
-            <a href="mailto:info@regenlab.tech" className="flex items-center gap-2 text-emerald-600 font-bold hover:underline mb-4"><Mail size={18}/> info@regenlab.tech</a>
+            <a href="mailto:info@regenlab.tech" className="flex items-center gap-2 text-emerald-600 font-bold hover:underline mb-4"><Mail size={18} /> info@regenlab.tech</a>
           </div>
         </div>
       </div>
@@ -338,32 +269,105 @@ function ContactPage({ lang }) {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-16 animate-fade-in">
+    <div className="max-w-5xl mx-auto px-6 py-16 animate-fade-in">
       <SectionTitle subtitle>{t.contact.title}</SectionTitle>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        {/* Contact Info */}
         <div className="space-y-8">
-          <div><h3 className="text-xl font-bold text-slate-800 mb-2">{t.contact.get_in_touch}</h3><p className="text-slate-600">{t.contact.desc}</p></div>
-          <div className="flex items-start gap-4"><div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-700 shrink-0"><Mail size={20}/></div><div><h4 className="font-bold text-slate-800">Email</h4><p className="text-slate-600">info@regenlab.tech</p></div></div>
+          <div>
+            <h3 className="text-xl font-bold text-slate-800 mb-2">{t.contact.get_in_touch}</h3>
+            <p className="text-slate-600">{t.contact.desc}</p>
+          </div>
+
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-700 shrink-0">
+              <MapPin size={22} />
+            </div>
+            <div>
+              <h4 className="font-bold text-slate-800 mb-1">{t.contact.office_title}</h4>
+              <p className="text-slate-600 text-sm leading-relaxed">{t.contact.office_address}</p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-700 shrink-0">
+              <Mail size={22} />
+            </div>
+            <div>
+              <h4 className="font-bold text-slate-800 mb-1">{t.contact.email_title}</h4>
+              <p className="text-slate-600">{t.contact.email_address}</p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center text-amber-700 shrink-0">
+              <Clock size={22} />
+            </div>
+            <div>
+              <h4 className="font-bold text-slate-800 mb-1">{t.contact.hours_title}</h4>
+              <p className="text-slate-600">{t.contact.hours_desc}</p>
+            </div>
+          </div>
         </div>
 
+        {/* Contact Form */}
         {status === 'success' ? (
           <div className="bg-emerald-50 border border-emerald-100 p-8 rounded-xl text-center flex flex-col items-center justify-center h-full shadow-sm">
             <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 mb-4">
               <CheckCircle size={32} />
             </div>
             <h4 className="text-2xl font-bold text-emerald-800 mb-2">{t.contact.form.success_title}</h4>
-            <p className="text-emerald-600">{t.contact.form.success_desc}</p>
-            <button onClick={() => setStatus('idle')} className="mt-6 px-6 py-2 bg-white text-emerald-600 font-semibold rounded-lg border border-emerald-200 hover:bg-emerald-50 transition-colors text-sm">
-              Send Another
+            <p className="text-emerald-600 mb-6">{t.contact.form.success_desc}</p>
+            <button
+              onClick={() => setStatus('idle')}
+              className="px-6 py-2 bg-white text-emerald-600 font-semibold rounded-lg border border-emerald-200 hover:bg-emerald-50 transition-colors text-sm"
+            >
+              {t.contact.form.send_another}
             </button>
           </div>
         ) : (
           <form className="bg-white p-6 rounded-xl shadow-lg border border-slate-100" onSubmit={handleSubmit}>
             <div className="space-y-4">
-              <div><label className="block text-sm font-semibold text-slate-700 mb-1">{t.contact.form.name}</label><input type="text" required className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none" /></div>
-              <div><label className="block text-sm font-semibold text-slate-700 mb-1">{t.contact.form.email}</label><input type="email" required className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none" /></div>
-              <div><label className="block text-sm font-semibold text-slate-700 mb-1">{t.contact.form.subject}</label><select className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none"><option>General Inquiry</option><option>Project Collaboration</option><option>Internship Application</option></select></div>
-              <div><label className="block text-sm font-semibold text-slate-700 mb-1">{t.contact.form.msg}</label><textarea required className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none h-32"></textarea></div>
+              <div>
+                <label className="block text-sm font-semibold text-slate-700 mb-1">{t.contact.form.name}</label>
+                <input
+                  type="text"
+                  required
+                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none"
+                  placeholder="Nguyễn Văn A"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-slate-700 mb-1">{t.contact.form.email}</label>
+                <input
+                  type="email"
+                  required
+                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none"
+                  placeholder="email@example.com"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-slate-700 mb-1">{t.contact.form.subject}</label>
+                <select className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none">
+                  <option>{t.contact.form.subject_general}</option>
+                  <option>{t.contact.form.subject_collaboration}</option>
+                  <option>{t.contact.form.subject_internship}</option>
+                  <option>{t.contact.form.subject_training}</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-slate-700 mb-1">{t.contact.form.msg}</label>
+                <textarea
+                  required
+                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none h-32 resize-none"
+                  placeholder="Nhập nội dung tin nhắn..."
+                ></textarea>
+              </div>
+
               <button
                 disabled={status === 'submitting'}
                 className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition-colors shadow-md flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
@@ -424,7 +428,7 @@ export default function App() {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage lang={lang} />} />
-            <Route path="/about" element={<AboutPage lang={lang} />} />
+            <Route path="/about" element={<AboutPage lang={lang} showHero={true} />} />
             <Route path="/projects" element={<ProjectsPage lang={lang} />} />
             <Route path="/projects/:projectSlug" element={<ProjectsPage lang={lang} />} />
             <Route path="/videos" element={<VideosPage lang={lang} />} />
