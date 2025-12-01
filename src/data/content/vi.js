@@ -120,7 +120,7 @@ const vi = {
           color: "purple"
         },
         {
-          name: "Dao Thi Hang",
+          name: "Dao Thi Hang - Anna",
           role: "Carbon Market Expert",
           bio: "Thạc sĩ Quản lý Carbon (Adelaide). Giám đốc Global Expert Pty Ltd. Có kinh nghiệm thực tiễn vận hành trang trại và tư vấn thương mại carbon.",
           color: "yellow"
@@ -144,10 +144,34 @@ const vi = {
           color: "pink"
         },
         {
-          name: "Vũ Trọng Nghĩa (Vince)",
+          name: "Vũ Trọng Nghĩa - Vince",
           role: "Project Management",
           bio: "MBA (Thunderbird, Mỹ). Co-founder Bizzi Bots. Hơn 15 năm kinh nghiệm quản trị chiến lược, vận hành startup và quỹ đầu tư.",
           color: "gray"
+        },
+        {
+          name: "Trần Văn Tuấn Phong",
+          role: "Technical Leader",
+          bio: "Kỹ sư Khoa học Dữ liệu & AI. Hơn 2 năm kinh nghiệm Python/AWS, dẫn dắt đội ngũ kỹ thuật xây dựng hạ tầng AI & Backend cốt lõi cho RegenAI Solutions.",
+          color: "blue"
+        },
+        {
+          name: "Đặng Văn Thắng",
+          role: "Data Engineer",
+          bio: "Kỹ sư Khoa học Dữ liệu & AI. Chuyên gia hạ tầng dữ liệu với 2 năm kinh nghiệm, đảm nhiệm thiết kế và tối ưu hóa kiến trúc AWS cho các luồng dữ liệu lớn.",
+          color: "purple"
+        },
+        {
+          name: "Trần Cao Thục Uyên",
+          role: "Data Scientist",
+          bio: "Kỹ sư Khoa học Dữ liệu & AI. Chuyên sâu về LLM và trích xuất dữ liệu, nghiên cứu giải pháp xử lý dữ liệu phi cấu trúc từ các tài liệu phức tạp.",
+          color: "teal"
+        },
+        {
+          name: "Hồ Thị Thanh Ngân",
+          role: "Jr. Data Scientist",
+          bio: "Kỹ sư Khoa học Dữ liệu & AI. Tài năng trẻ hỗ trợ phát triển các mô hình học máy, đam mê ứng dụng AI giải quyết các bài toán nông nghiệp thực tiễn.",
+          color: "green"
         }
       ]
     },
@@ -158,12 +182,20 @@ const vi = {
         {
           country: "California, USA",
           flag: "🇺🇸",
-          desc: "Phát triển ứng dụng \"Regen Ag Planner\" cho Chương trình Đất khỏe của tiểu bang California. Giúp nông dân lập kế hoạch canh tác bền vững."
+          desc: "Phát triển ứng dụng \"Regen Ag Planner\" cho Chương trình Đất khỏe của tiểu bang California. Giúp nông dân lập kế hoạch canh tác bền vững.",
+          url: "https://regenagplanner.org/login"
         },
         {
           country: "Canada",
           flag: "🇨🇦",
-          desc: "Xây dựng hệ thống khuyến nghị đạm tự động cho cây Canola cùng đối tác Ukko.ag, tối ưu hóa chi phí đầu vào cho nông dân."
+          desc: "Xây dựng hệ thống khuyến nghị đạm tự động cho cây Canola cùng đối tác Ukko.ag, tối ưu hóa chi phí đầu vào cho nông dân.",
+          url: "https://ukko.ag/ukko-product/"
+        },
+        {
+          country: "Úc",
+          flag: "🇦🇺",
+          desc: "Mô hình hóa 3D chiều cao tán rừng sử dụng LiDAR & Học máy để giám sát tài nguyên rừng hiệu quả.",
+          url: "/projects/lidar-canopy"
         },
         {
           country: "Ấn Độ",

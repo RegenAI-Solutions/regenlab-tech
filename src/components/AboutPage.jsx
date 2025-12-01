@@ -1,7 +1,10 @@
+import { useRef, useEffect } from 'react';
 import {
     Users, Target, Globe, Award, BookOpen, Sprout,
-    ArrowRight, MapPin, Plane, Factory, Flag, Code, Link2
+    ArrowRight, MapPin, Plane, Factory, Flag, Code, Link2, ExternalLink,
+    ChevronLeft, ChevronRight
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import CONTENT from '../data/content';
 import nguyenMinhHieuImg from '../assets/nguyen_minh_hieu.png';
 import nguyenHuuTrungImg from '../assets/nguyen_huu_trung.jpg';
@@ -37,8 +40,103 @@ const getColorClasses = (color) => {
     return colors[color] || colors.green;
 };
 
+const ProjectCard = ({ project }) => {
+    const isInternal = project.url && project.url.startsWith('/');
+    const cardClasses = `${project.highlight ? 'bg-gradient-to-br from-emerald-600 to-emerald-800 text-white' : 'bg-gray-50 hover:bg-white'} rounded-xl p-6 hover:shadow-lg transition border ${project.highlight ? '' : 'border-gray-100 group'} flex-shrink-0 snap-center flex flex-col`;
+    const cardStyle = { minWidth: '300px', width: '300px' };
+
+    const CardContent = () => (
+        <>
+            <div className="flex items-center justify-between mb-4">
+                <div className="text-3xl">{project.flag}</div>
+                {project.highlight && <div className="text-yellow-400">⭐</div>}
+                {project.url && !isInternal && !project.highlight && <ExternalLink size={18} className="text-slate-400 group-hover:text-emerald-600 transition-colors" />}
+                {project.url && !isInternal && project.highlight && <ExternalLink size={18} className="text-white/70 group-hover:text-white transition-colors" />}
+                {project.url && isInternal && <ArrowRight size={18} className="text-slate-400 group-hover:text-emerald-600 transition-colors" />}
+            </div>
+            <h3 className={`font-bold text-lg mb-2 ${project.highlight ? 'text-white' : 'text-slate-900 group-hover:text-emerald-600 transition-colors'}`}>{project.country}</h3>
+            <p className={`text-sm ${project.highlight ? 'text-white/90' : 'text-slate-600'} flex-grow`}>{project.desc}</p>
+        </>
+    );
+
+    if (project.url) {
+        if (isInternal) {
+            return (
+                <Link to={project.url} className={`${cardClasses} block cursor-pointer`} style={cardStyle}>
+                    <CardContent />
+                </Link>
+            );
+        }
+        return (
+            <a href={project.url} target="_blank" rel="noopener noreferrer" className={`${cardClasses} block cursor-pointer`} style={cardStyle}>
+                <CardContent />
+            </a>
+        );
+    }
+
+    return (
+        <div className={cardClasses} style={cardStyle}>
+            <CardContent />
+        </div>
+    );
+};
+
 export default function AboutPage({ lang, showHero = true }) {
     const t = CONTENT[lang].about;
+    const projectsContainerRef = useRef(null);
+
+    // Create a "virtual" infinite list by repeating the items multiple times
+    // We use 6 sets to ensure plenty of buffer space
+    const extendedItems = [
+        ...t.projects.items, ...t.projects.items,
+        ...t.projects.items, ...t.projects.items,
+        ...t.projects.items, ...t.projects.items
+    ];
+
+    useEffect(() => {
+        const container = projectsContainerRef.current;
+        if (!container) return;
+
+        // Calculate the width of one single set of items
+        // Card width (300px) + gap (24px/1.5rem) = 324px
+        const itemWidth = 324;
+        const singleSetWidth = itemWidth * t.projects.items.length;
+
+        // Initial positioning: Start at the beginning of the 3rd set (middle-ish)
+        // This gives user plenty of room to scroll left or right immediately
+        if (container.scrollLeft === 0) {
+            container.scrollLeft = singleSetWidth * 2;
+        }
+
+        const handleScroll = () => {
+            const scrollLeft = container.scrollLeft;
+            const totalWidth = container.scrollWidth;
+
+            // If we get too close to the start (1st set), jump forward to 3rd set
+            if (scrollLeft < singleSetWidth) {
+                container.scrollLeft = scrollLeft + singleSetWidth * 2;
+            }
+            // If we get too close to the end (last set), jump backward to 4th set
+            else if (scrollLeft > totalWidth - singleSetWidth * 2) {
+                container.scrollLeft = scrollLeft - singleSetWidth * 2;
+            }
+        };
+
+        container.addEventListener('scroll', handleScroll);
+        return () => container.removeEventListener('scroll', handleScroll);
+    }, [t.projects.items]);
+
+    const scrollProjects = (direction) => {
+        const container = projectsContainerRef.current;
+        if (container) {
+            const scrollAmount = 324; // Card width + gap
+            if (direction === 'left') {
+                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
+    };
 
     return (
         <div id="about-section" className="animate-fade-in">
@@ -268,17 +366,32 @@ export default function AboutPage({ lang, showHero = true }) {
                         <p className="text-slate-600">{t.projects.subtitle}</p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {t.projects.items.map((project, index) => (
-                            <div key={index} className={`${project.highlight ? 'bg-gradient-to-br from-emerald-600 to-emerald-800 text-white' : 'bg-gray-50'} rounded-xl p-6 hover:shadow-lg transition border ${project.highlight ? '' : 'border-gray-100'}`}>
-                                <div className="flex items-center justify-between mb-4">
-                                    <div className="text-3xl">{project.flag}</div>
-                                    {project.highlight && <div className="text-yellow-400">⭐</div>}
-                                </div>
-                                <h3 className={`font-bold text-lg mb-2 ${project.highlight ? 'text-white' : 'text-slate-900'}`}>{project.country}</h3>
-                                <p className={`text-sm ${project.highlight ? 'text-white/90' : 'text-slate-600'}`}>{project.desc}</p>
-                            </div>
-                        ))}
+                    <div className="relative group px-4 md:px-12">
+                        {/* Navigation Buttons */}
+                        <button
+                            onClick={() => scrollProjects('left')}
+                            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-white/80 backdrop-blur-sm border border-slate-200 rounded-full shadow-lg text-slate-600 hover:text-emerald-600 hover:bg-white transition-all hidden md:flex"
+                        >
+                            <ChevronLeft size={24} />
+                        </button>
+
+                        <button
+                            onClick={() => scrollProjects('right')}
+                            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-white/80 backdrop-blur-sm border border-slate-200 rounded-full shadow-lg text-slate-600 hover:text-emerald-600 hover:bg-white transition-all hidden md:flex"
+                        >
+                            <ChevronRight size={24} />
+                        </button>
+
+                        {/* Carousel Container */}
+                        <div
+                            ref={projectsContainerRef}
+                            className="flex overflow-x-auto gap-6 py-4 px-2 snap-x snap-mandatory scrollbar-hide"
+                            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                        >
+                            {extendedItems.map((project, index) => (
+                                <ProjectCard key={`${index}`} project={project} />
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>

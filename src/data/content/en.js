@@ -120,7 +120,7 @@ const en = {
           color: "purple"
         },
         {
-          name: "Dao Thi Hang",
+          name: "Dao Thi Hang - Anna",
           role: "Carbon Market Expert",
           bio: "Master of Carbon Management (Adelaide). Director of Global Expert Pty Ltd. Practical experience in farm operations and carbon trading consulting.",
           color: "yellow"
@@ -144,10 +144,34 @@ const en = {
           color: "pink"
         },
         {
-          name: "Vu Trong Nghia (Vince)",
+          name: "Vu Trong Nghia - Vince",
           role: "Project Management",
           bio: "MBA (Thunderbird, USA). Co-founder of Bizzi Bots. Over 15 years of experience in strategic management, startup operations, and investment funds.",
           color: "gray"
+        },
+        {
+          name: "Tran Van Tuan Phong",
+          role: "Technical Leader",
+          bio: "Engineer in Data Science & AI. Over 2 years of Python/AWS experience, leading the technical team in building core AI & Backend infrastructure for RegenAI Solutions.",
+          color: "blue"
+        },
+        {
+          name: "Dang Van Thang",
+          role: "Data Engineer",
+          bio: "Engineer in Data Science & AI. Data infrastructure specialist with 2 years of experience, responsible for designing and optimizing AWS architecture for large data pipelines.",
+          color: "purple"
+        },
+        {
+          name: "Tran Cao Thuc Uyen",
+          role: "Data Scientist",
+          bio: "Engineer in Data Science & AI. Specialized in LLM and data extraction, researching solutions to process unstructured data from complex documents.",
+          color: "teal"
+        },
+        {
+          name: "Ho Thi Thanh Ngan",
+          role: "Jr. Data Scientist",
+          bio: "Engineer in Data Science & AI. Young talent supporting machine learning model development, passionate about applying AI to solve practical agricultural challenges.",
+          color: "green"
         }
       ]
     },
@@ -158,12 +182,20 @@ const en = {
         {
           country: "California, USA",
           flag: "🇺🇸",
-          desc: "Developed the \"Regen Ag Planner\" application for California's Healthy Soils Program. Helping farmers plan sustainable farming."
+          desc: "Developed the \"Regen Ag Planner\" application for California's Healthy Soils Program. Helping farmers plan sustainable farming.",
+          url: "https://regenagplanner.org/login"
         },
         {
           country: "Canada",
           flag: "🇨🇦",
-          desc: "Built an automated nitrogen recommendation system for Canola crops with partner Ukko.ag, optimizing input costs for farmers."
+          desc: "Built an automated nitrogen recommendation system for Canola crops with partner Ukko.ag, optimizing input costs for farmers.",
+          url: "https://ukko.ag/ukko-product/"
+        },
+        {
+          country: "Australia",
+          flag: "🇦🇺",
+          desc: "3D canopy height modeling using LiDAR & Machine Learning for effective forest resource monitoring.",
+          url: "/projects/lidar-canopy"
         },
         {
           country: "India",
