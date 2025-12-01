@@ -98,8 +98,8 @@ const vi = {
       }
     },
     team: {
-      title: "Đội Ngũ Chuyên Gia Nòng Cốt",
-      subtitle: "Sự kết hợp đa ngành giữa Khoa học đất, Viễn thám, Công nghệ phần mềm và Phát triển xã hội.",
+      title: "Đội ngũ Chuyên gia Nòng cốt",
+      subtitle: "Sự kết hợp giữa các nhà khoa học hàng đầu và các kỹ sư công nghệ tài năng.",
       members: [
         {
           name: "TS. Nguyễn Trung Hải",

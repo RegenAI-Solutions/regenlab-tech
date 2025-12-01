@@ -84,6 +84,7 @@ const ProjectCard = ({ project }) => {
 export default function AboutPage({ lang, showHero = true }) {
     const t = CONTENT[lang].about;
     const projectsContainerRef = useRef(null);
+    const teamContainerRef = useRef(null);
 
     // Create a "virtual" infinite list by repeating the items multiple times
     // We use 6 sets to ensure plenty of buffer space
@@ -91,6 +92,12 @@ export default function AboutPage({ lang, showHero = true }) {
         ...t.projects.items, ...t.projects.items,
         ...t.projects.items, ...t.projects.items,
         ...t.projects.items, ...t.projects.items
+    ];
+
+    const extendedTeamItems = [
+        ...t.team.members, ...t.team.members,
+        ...t.team.members, ...t.team.members,
+        ...t.team.members, ...t.team.members
     ];
 
     useEffect(() => {
@@ -126,10 +133,52 @@ export default function AboutPage({ lang, showHero = true }) {
         return () => container.removeEventListener('scroll', handleScroll);
     }, [t.projects.items]);
 
+    useEffect(() => {
+        const container = teamContainerRef.current;
+        if (!container) return;
+
+        // Calculate the width of one single set of items
+        // Card width (280px) + gap (24px/1.5rem) = 304px
+        const itemWidth = 304;
+        const singleSetWidth = itemWidth * t.team.members.length;
+
+        // Initial positioning
+        if (container.scrollLeft === 0) {
+            container.scrollLeft = singleSetWidth * 2;
+        }
+
+        const handleScroll = () => {
+            const scrollLeft = container.scrollLeft;
+            const totalWidth = container.scrollWidth;
+
+            if (scrollLeft < singleSetWidth) {
+                container.scrollLeft = scrollLeft + singleSetWidth * 2;
+            }
+            else if (scrollLeft > totalWidth - singleSetWidth * 2) {
+                container.scrollLeft = scrollLeft - singleSetWidth * 2;
+            }
+        };
+
+        container.addEventListener('scroll', handleScroll);
+        return () => container.removeEventListener('scroll', handleScroll);
+    }, [t.team.members]);
+
     const scrollProjects = (direction) => {
         const container = projectsContainerRef.current;
         if (container) {
             const scrollAmount = 324; // Card width + gap
+            if (direction === 'left') {
+                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
+    };
+
+    const scrollTeam = (direction) => {
+        const container = teamContainerRef.current;
+        if (container) {
+            const scrollAmount = 304; // Card width (280) + gap (24)
             if (direction === 'left') {
                 container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
             } else {
@@ -338,22 +387,44 @@ export default function AboutPage({ lang, showHero = true }) {
                         <p className="text-slate-600">{t.team.subtitle}</p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {t.team.members.map((member, index) => {
-                            const colors = getColorClasses(member.color);
-                            const initial = member.name.split(' ').pop()[0];
+                    <div className="relative group px-4 md:px-12">
+                        {/* Navigation Buttons */}
+                        <button
+                            onClick={() => scrollTeam('left')}
+                            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-white/80 backdrop-blur-sm border border-slate-200 rounded-full shadow-lg text-slate-600 hover:text-emerald-600 hover:bg-white transition-all hidden md:flex"
+                        >
+                            <ChevronLeft size={24} />
+                        </button>
 
-                            return (
-                                <div key={index} className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
-                                    <div className={`h-12 w-12 ${colors.bg} rounded-full flex items-center justify-center ${colors.text} mb-4 text-xl font-bold`}>
-                                        {initial}
+                        <button
+                            onClick={() => scrollTeam('right')}
+                            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-white/80 backdrop-blur-sm border border-slate-200 rounded-full shadow-lg text-slate-600 hover:text-emerald-600 hover:bg-white transition-all hidden md:flex"
+                        >
+                            <ChevronRight size={24} />
+                        </button>
+
+                        {/* Carousel Container */}
+                        <div
+                            ref={teamContainerRef}
+                            className="flex overflow-x-auto gap-6 py-4 px-2 snap-x snap-mandatory scrollbar-hide"
+                            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                        >
+                            {extendedTeamItems.map((member, index) => {
+                                const colors = getColorClasses(member.color);
+                                const initial = member.name.split(' ').pop()[0];
+
+                                return (
+                                    <div key={`${index}`} className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition min-w-[280px] w-[280px] flex-shrink-0 snap-center flex flex-col border border-slate-100">
+                                        <div className={`h-12 w-12 ${colors.bg} rounded-full flex items-center justify-center ${colors.text} mb-4 text-xl font-bold shrink-0`}>
+                                            {initial}
+                                        </div>
+                                        <h3 className="font-bold text-lg mb-1">{member.name}</h3>
+                                        <p className={`text-xs ${colors.text} font-bold uppercase mb-2`}>{member.role}</p>
+                                        <p className="text-sm text-slate-600 leading-relaxed flex-grow">{member.bio}</p>
                                     </div>
-                                    <h3 className="font-bold text-lg mb-1">{member.name}</h3>
-                                    <p className={`text-xs ${colors.text} font-bold uppercase mb-2`}>{member.role}</p>
-                                    <p className="text-sm text-slate-600 leading-relaxed">{member.bio}</p>
-                                </div>
-                            );
-                        })}
+                                );
+                            })}
+                        </div>
                     </div>
                 </div>
             </section>

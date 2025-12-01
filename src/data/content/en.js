@@ -99,7 +99,7 @@ const en = {
     },
     team: {
       title: "Core Team of Experts",
-      subtitle: "A multidisciplinary combination of Soil Science, Remote Sensing, Software Technology, and Social Development.",
+      subtitle: "A combination of leading scientists and talented technology engineers.",
       members: [
         {
           name: "Dr. Nguyen Trung Hai",
