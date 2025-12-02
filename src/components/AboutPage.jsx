@@ -6,8 +6,8 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CONTENT from '../data/content';
-import nguyenMinhHieuImg from '../assets/nguyen_minh_hieu.png';
-import nguyenHuuTrungImg from '../assets/nguyen_huu_trung.jpg';
+import nguyenMinhHieuImg from '../assets/members/nguyen_minh_hieu.png';
+import nguyenHuuTrungImg from '../assets/members/nguyen_huu_trung.jpg';
 
 const SectionTitle = ({ children, subtitle, light = false }) => (
     <div className="mb-12 text-center">

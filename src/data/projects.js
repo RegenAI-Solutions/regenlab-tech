@@ -1,10 +1,10 @@
-import californiaImg from "../assets/california_dashboard.jpeg";
-import quangtriImg from "../assets/quangtri_dashboard.jpg";
-import netzero_dashboard from "../assets/netzero_dashboard.png";
-import canopy_dashboard from "../assets/canopy_height_dashboard.png";
-import gujarat_dashboard from "../assets/gujarat_dashboard.jpg";
-import vietnam_corn_dashboard from "../assets/vietnam_corn_dashboard.jpeg";
-import hue_soil_dashboard from "../assets/hue_soil_dashboard.png";
+import californiaImg from "../assets/dashboards/california_dashboard.jpeg";
+import quangtriImg from "../assets/dashboards/quangtri_dashboard.jpg";
+import netzero_dashboard from "../assets/dashboards/netzero_dashboard.png";
+import canopy_dashboard from "../assets/dashboards/canopy_height_dashboard.png";
+import gujarat_dashboard from "../assets/dashboards/gujarat_dashboard.jpg";
+import vietnam_corn_dashboard from "../assets/dashboards/vietnam_corn_dashboard.jpeg";
+import hue_soil_dashboard from "../assets/dashboards/hue_soil_dashboard.png";
 
 const PROJECTS_DATA = [
   {

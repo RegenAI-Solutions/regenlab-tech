@@ -7,7 +7,7 @@ import {
   Satellite, MonitorPlay, Eye
 } from 'lucide-react';
 
-import canopyGif from '../assets/canopy_3d.gif';
+import canopyGif from '../assets/dashboards/canopy_3d.gif';
 
 
 // --- 1. TRANSLATIONS ---
