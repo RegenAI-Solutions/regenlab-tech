@@ -1,3 +1,15 @@
+import nguyenTrungHaiImg from '../../assets/members/nguyen_trung_hai.jpeg';
+import lapTranImg from '../../assets/members/lap_tran.jpeg';
+import daoThiHangImg from '../../assets/members/dao_thi_hang.jpeg';
+import phanKieuDiemImg from '../../assets/members/phan_kieu_diem.webp';
+import nguyenVanHienImg from '../../assets/members/nguyen_van_hien.jpeg';
+import maiLeQuyenImg from '../../assets/members/mai_le_quyen.jpg';
+import vuTrongNghiaImg from '../../assets/members/vu_trong_nghia.jpeg';
+import tranVanTuanPhongImg from '../../assets/members/tran_van_tuan_phong.png';
+import dangVanThangImg from '../../assets/members/dang_van_thang.jpeg';
+import hoThiThanhNganImg from '../../assets/members/ho_thi_thanh_ngan.jpeg';
+import tranCaoThucUyenImg from '../../assets/members/tran_cao_thuc_uyen.jpg';
+
 const en = {
   nav: {
     home: "Home",
@@ -105,73 +117,85 @@ const en = {
           name: "Dr. Nguyen Trung Hai",
           role: "Senior Modeller",
           bio: "Deputy Director of Central Climate Change Center. Expert in DayCent modeling, MRV framework under Verra standards, and remote sensing integration in agriculture.",
-          color: "green"
+          color: "green",
+          image: nguyenTrungHaiImg
         },
         {
           name: "Lap Tran",
           role: "Senior Software Engineer",
           bio: "Over 10 years of Backend/Cloud experience at international tech companies (Skedulo, FPT). Expert in building large-scale and secure systems.",
-          color: "blue"
+          color: "blue",
+          image: lapTranImg
         },
         {
           name: "Helen Tran",
           role: "Protocol Expert",
           bio: "Master of Environment (Melbourne). Expert consultant on carbon projects, greenhouse gas inventory (ISO 14064) in Australia and Asia.",
-          color: "purple"
+          color: "purple",
+          // image: helenTranImg // Missing image
         },
         {
           name: "Dao Thi Hang - Anna",
           role: "Carbon Market Expert",
           bio: "Master of Carbon Management (Adelaide). Director of Global Expert Pty Ltd. Practical experience in farm operations and carbon trading consulting.",
-          color: "yellow"
+          color: "yellow",
+          image: daoThiHangImg
         },
         {
           name: "Assoc. Prof. Phan Kieu Diem",
           role: "Remote Sensing Expert",
           bio: "Lecturer at Can Tho University. Specialized in GIS and Remote Sensing applications for land resource monitoring and climate change.",
-          color: "teal"
+          color: "teal",
+          image: phanKieuDiemImg
         },
         {
           name: "Dr. Nguyen Van Hien",
           role: "Soil Scientist",
           bio: "Soil scientist at Institute of Soil Science and Agricultural Chemistry. PhD from University of Birmingham (UK). Expert in Biochar and carbon sequestration in soil.",
-          color: "orange"
+          color: "orange",
+          image: nguyenVanHienImg
         },
         {
           name: "Dr. Mai Le Quyen",
           role: "Social Expert",
           bio: "PhD in Sociology (Bonn, Germany). Deputy Director of CKC Center. Expert in social impact assessment, community development, and gender equality.",
-          color: "pink"
+          color: "pink",
+          image: maiLeQuyenImg
         },
         {
           name: "Vu Trong Nghia - Vince",
           role: "Project Management",
           bio: "MBA (Thunderbird, USA). Co-founder of Bizzi Bots. Over 15 years of experience in strategic management, startup operations, and investment funds.",
-          color: "gray"
+          color: "gray",
+          image: vuTrongNghiaImg
         },
         {
           name: "Tran Van Tuan Phong",
           role: "Technical Leader",
           bio: "Engineer in Data Science & AI. Over 2 years of Python/AWS experience, leading the technical team in building core AI & Backend infrastructure for RegenAI Solutions.",
-          color: "blue"
+          color: "blue",
+          image: tranVanTuanPhongImg
         },
         {
           name: "Dang Van Thang",
           role: "Data Engineer",
           bio: "Engineer in Data Science & AI. Data infrastructure specialist with 2 years of experience, responsible for designing and optimizing AWS architecture for large data pipelines.",
-          color: "purple"
+          color: "purple",
+          image: dangVanThangImg
         },
         {
           name: "Tran Cao Thuc Uyen",
           role: "Data Scientist",
           bio: "Engineer in Data Science & AI. Specialized in LLM and data extraction, researching solutions to process unstructured data from complex documents.",
-          color: "teal"
+          color: "teal",
+          image: tranCaoThucUyenImg
         },
         {
           name: "Ho Thi Thanh Ngan",
           role: "Jr. Data Scientist",
           bio: "Engineer in Data Science & AI. Young talent supporting machine learning model development, passionate about applying AI to solve practical agricultural challenges.",
-          color: "green"
+          color: "green",
+          image: hoThiThanhNganImg
         }
       ]
     },

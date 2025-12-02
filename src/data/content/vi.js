@@ -1,3 +1,15 @@
+import nguyenTrungHaiImg from '../../assets/members/nguyen_trung_hai.jpeg';
+import lapTranImg from '../../assets/members/lap_tran.jpeg';
+import daoThiHangImg from '../../assets/members/dao_thi_hang.jpeg';
+import phanKieuDiemImg from '../../assets/members/phan_kieu_diem.webp';
+import nguyenVanHienImg from '../../assets/members/nguyen_van_hien.jpeg';
+import maiLeQuyenImg from '../../assets/members/mai_le_quyen.jpg';
+import vuTrongNghiaImg from '../../assets/members/vu_trong_nghia.jpeg';
+import tranVanTuanPhongImg from '../../assets/members/tran_van_tuan_phong.png';
+import dangVanThangImg from '../../assets/members/dang_van_thang.jpeg';
+import hoThiThanhNganImg from '../../assets/members/ho_thi_thanh_ngan.jpeg';
+import tranCaoThucUyenImg from '../../assets/members/tran_cao_thuc_uyen.jpg';
+
 const vi = {
   nav: {
     home: "Trang chủ",
@@ -105,73 +117,85 @@ const vi = {
           name: "TS. Nguyễn Trung Hải",
           role: "Senior Modeller",
           bio: "Phó Giám đốc Trung tâm BĐKH miền Trung. Chuyên gia về mô hình DayCent, khung MRV theo chuẩn Verra và tích hợp viễn thám trong nông nghiệp.",
-          color: "green"
+          color: "green",
+          image: nguyenTrungHaiImg
         },
         {
           name: "Lap Tran",
           role: "Senior Software Engineer",
           bio: "Hơn 10 năm kinh nghiệm Backend/Cloud tại các công ty công nghệ quốc tế (Skedulo, FPT). Chuyên gia xây dựng hệ thống quy mô lớn và bảo mật.",
-          color: "blue"
+          color: "blue",
+          image: lapTranImg
         },
         {
           name: "Helen Tran",
           role: "Protocol Expert",
           bio: "Thạc sĩ Môi trường (Melbourne). Chuyên gia tư vấn dự án carbon, kiểm kê khí nhà kính (ISO 14064) tại Úc và Châu Á.",
-          color: "purple"
+          color: "purple",
+          // image: helenTranImg // Missing image
         },
         {
           name: "Dao Thi Hang - Anna",
           role: "Carbon Market Expert",
           bio: "Thạc sĩ Quản lý Carbon (Adelaide). Giám đốc Global Expert Pty Ltd. Có kinh nghiệm thực tiễn vận hành trang trại và tư vấn thương mại carbon.",
-          color: "yellow"
+          color: "yellow",
+          image: daoThiHangImg
         },
         {
           name: "PGS.TS Phan Kiều Diễm",
           role: "Remote Sensing Expert",
           bio: "Giảng viên ĐH Cần Thơ. Chuyên sâu về ứng dụng GIS và Viễn thám trong giám sát tài nguyên đất đai và biến đổi khí hậu.",
-          color: "teal"
+          color: "teal",
+          image: phanKieuDiemImg
         },
         {
           name: "TS. Nguyễn Văn Hiển",
           role: "Soil Scientist",
           bio: "Nhà khoa học đất tại Viện Thổ nhưỡng Nông hóa. Tiến sĩ tại ĐH Birmingham (Anh). Chuyên gia về Biochar và cô lập carbon trong đất.",
-          color: "orange"
+          color: "orange",
+          image: nguyenVanHienImg
         },
         {
           name: "TS. Mai Lệ Quyên",
           role: "Social Expert",
           bio: "Tiến sĩ Xã hội học (Bonn, Đức). Phó GĐ Trung tâm CKC. Chuyên gia đánh giá tác động xã hội, phát triển cộng đồng và bình đẳng giới.",
-          color: "pink"
+          color: "pink",
+          image: maiLeQuyenImg
         },
         {
           name: "Vũ Trọng Nghĩa - Vince",
           role: "Project Management",
           bio: "MBA (Thunderbird, Mỹ). Co-founder Bizzi Bots. Hơn 15 năm kinh nghiệm quản trị chiến lược, vận hành startup và quỹ đầu tư.",
-          color: "gray"
+          color: "gray",
+          image: vuTrongNghiaImg
         },
         {
           name: "Trần Văn Tuấn Phong",
           role: "Technical Leader",
           bio: "Kỹ sư Khoa học Dữ liệu & AI. Hơn 2 năm kinh nghiệm Python/AWS, dẫn dắt đội ngũ kỹ thuật xây dựng hạ tầng AI & Backend cốt lõi cho RegenAI Solutions.",
-          color: "blue"
+          color: "blue",
+          image: tranVanTuanPhongImg
         },
         {
           name: "Đặng Văn Thắng",
           role: "Data Engineer",
           bio: "Kỹ sư Khoa học Dữ liệu & AI. Chuyên gia hạ tầng dữ liệu với 2 năm kinh nghiệm, đảm nhiệm thiết kế và tối ưu hóa kiến trúc AWS cho các luồng dữ liệu lớn.",
-          color: "purple"
+          color: "purple",
+          image: dangVanThangImg
         },
         {
           name: "Trần Cao Thục Uyên",
           role: "Data Scientist",
           bio: "Kỹ sư Khoa học Dữ liệu & AI. Chuyên sâu về LLM và trích xuất dữ liệu, nghiên cứu giải pháp xử lý dữ liệu phi cấu trúc từ các tài liệu phức tạp.",
-          color: "teal"
+          color: "teal",
+          image: tranCaoThucUyenImg
         },
         {
           name: "Hồ Thị Thanh Ngân",
           role: "Jr. Data Scientist",
           bio: "Kỹ sư Khoa học Dữ liệu & AI. Tài năng trẻ hỗ trợ phát triển các mô hình học máy, đam mê ứng dụng AI giải quyết các bài toán nông nghiệp thực tiễn.",
-          color: "green"
+          color: "green",
+          image: hoThiThanhNganImg
         }
       ]
     },

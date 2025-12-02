@@ -380,23 +380,37 @@ export default function AboutPage({ lang, showHero = true }) {
                         {/* Carousel Container */}
                         <div
                             ref={teamContainerRef}
-                            className="flex overflow-x-auto gap-6 py-4 px-2 snap-x snap-mandatory scrollbar-hide"
+                            className="flex overflow-x-auto gap-6 py-16 px-4 snap-x snap-mandatory scrollbar-hide" // Increased py to accommodate overflowing avatar
                             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                             onMouseEnter={() => setIsTeamPaused(true)}
                             onMouseLeave={() => setIsTeamPaused(false)}
                         >
                             {extendedTeamItems.map((member, index) => {
                                 const colors = getColorClasses(member.color);
-                                const initial = member.name.split(' ').pop()[0];
+                                const memberImg = member.image;
 
                                 return (
-                                    <div key={`${index}`} className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition min-w-[280px] w-[280px] flex-shrink-0 snap-center flex flex-col border border-slate-100">
-                                        <div className={`h-12 w-12 ${colors.bg} rounded-full flex items-center justify-center ${colors.text} mb-4 text-xl font-bold shrink-0`}>
-                                            {initial}
+                                    <div key={`${index}`} className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition min-w-[280px] w-[280px] flex-shrink-0 snap-center flex flex-col border border-slate-100 relative mt-6">
+                                        {/* Avatar */}
+                                        <div className={`absolute -top-10 -right-4 w-24 h-24 rounded-full border-2 ${colors.border} shadow-lg overflow-hidden bg-gray-200`}>
+                                            {memberImg ? (
+                                                <img
+                                                    src={memberImg}
+                                                    alt={member.name}
+                                                    className="w-full h-full object-cover"
+                                                />
+                                            ) : (
+                                                <div className={`w-full h-full flex items-center justify-center ${colors.bg} ${colors.text} text-2xl font-bold`}>
+                                                    {member.name.split(' ').pop()[0]}
+                                                </div>
+                                            )}
                                         </div>
-                                        <h3 className="font-bold text-lg mb-1">{member.name}</h3>
-                                        <p className={`text-xs ${colors.text} font-bold uppercase mb-2`}>{member.role}</p>
-                                        <p className="text-sm text-slate-600 leading-relaxed flex-grow">{member.bio}</p>
+
+                                        <div className="mt-8"> {/* Spacer for avatar */}
+                                            <h3 className="font-bold text-lg mb-1 pr-8">{member.name}</h3>
+                                            <p className={`text-xs ${colors.text} font-bold uppercase mb-4`}>{member.role}</p>
+                                            <p className="text-sm text-slate-600 leading-relaxed flex-grow">{member.bio}</p>
+                                        </div>
                                     </div>
                                 );
                             })}
