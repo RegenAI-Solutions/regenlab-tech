@@ -178,7 +178,7 @@ const en = {
         },
         {
           name: "Dang Van Thang",
-          role: "Data Engineer",
+          role: "Software/Data Engineer",
           bio: "Engineer in Data Science & AI. Data infrastructure specialist with 2 years of experience, responsible for designing and optimizing AWS architecture for large data pipelines.",
           color: "purple",
           image: dangVanThangImg
