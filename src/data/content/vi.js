@@ -104,7 +104,7 @@ const vi = {
         bio: "Nguyên Hiệu trưởng Đại học Nông Lâm Huế với 40 năm cống hiến. Người đặt nền móng kết nối nông nghiệp Việt Nam với thị trường tài chính khí hậu toàn cầu. Ông thành lập RegenAI với niềm tin rằng công nghệ là chìa khóa để giải quyết biến đổi khí hậu."
       },
       trung: {
-        name: "GS. TS Nguyễn Hữu Trung",
+        name: "GS.TS Nguyễn Hữu Trung",
         role: "Founder & Principal Scientist",
         bio: "Chuyên gia mô hình hóa DayCent và MMRV. Từng là Fulbright Scholar (CSU), Quản lý kỹ thuật tại Shell, và chuyên gia khoa học tại Regrow & Varaha. Ông trực tiếp xây dựng hạ tầng kỹ thuật và cơ sở dữ liệu để hiện thực hóa tầm nhìn Net Zero."
       }
