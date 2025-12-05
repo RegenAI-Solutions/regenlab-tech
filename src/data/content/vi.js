@@ -178,7 +178,7 @@ const vi = {
         },
         {
           name: "Đặng Văn Thắng",
-          role: "Data Engineer",
+          role: "Software/Data Engineer",
           bio: "Kỹ sư Khoa học Dữ liệu & AI. Chuyên gia hạ tầng dữ liệu với 2 năm kinh nghiệm, đảm nhiệm thiết kế và tối ưu hóa kiến trúc AWS cho các luồng dữ liệu lớn.",
           color: "purple",
           image: dangVanThangImg
