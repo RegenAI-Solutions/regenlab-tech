@@ -172,28 +172,28 @@ const vi = {
         {
           name: "Trần Văn Tuấn Phong",
           role: "Technical Leader",
-          bio: "Kỹ sư Khoa học Dữ liệu & AI. Hơn 2 năm kinh nghiệm Python/AWS, dẫn dắt đội ngũ kỹ thuật xây dựng hạ tầng AI & Backend cốt lõi cho RegenAI Solutions.",
+          bio: "Gắn bó với RegenAI từ những ngày đầu, Phong trực tiếp xây dựng nền móng cho hạ tầng AI & Backend. Với nền tảng vững chắc là Kỹ sư Khoa học Dữ liệu & AI, anh hiện đóng vai trò dẫn dắt đội ngũ kỹ thuật, định hình các giải pháp cốt lõi cho RegenAI Solutions.",
           color: "blue",
           image: tranVanTuanPhongImg
         },
         {
           name: "Đặng Văn Thắng",
           role: "Software/Data Engineer",
-          bio: "Kỹ sư Khoa học Dữ liệu & AI. Chuyên gia hạ tầng dữ liệu với 2 năm kinh nghiệm, đảm nhiệm thiết kế và tối ưu hóa kiến trúc AWS cho các luồng dữ liệu lớn.",
+          bio: "Là một Kỹ sư Khoa học Dữ liệu & AI, Thắng đã có hơn 1 năm đồng hành cùng công ty, chuyên sâu vào thiết kế kiến trúc AWS xử lý dữ liệu lớn. Hiện nay, anh tiếp tục tối ưu hóa hạ tầng dữ liệu, đảm bảo sự ổn định và hiệu quả cho hành trình mở rộng hệ thống.",
           color: "purple",
           image: dangVanThangImg
         },
         {
           name: "Trần Cao Thục Uyên",
           role: "Data Scientist",
-          bio: "Kỹ sư Khoa học Dữ liệu & AI. Chuyên sâu về LLM và trích xuất dữ liệu, nghiên cứu giải pháp xử lý dữ liệu phi cấu trúc từ các tài liệu phức tạp.",
+          bio: "Uyên dành phần lớn thời gian hơn 1 năm qua tại RegenAI để chinh phục các thách thức về dữ liệu phi cấu trúc. Xuất phát điểm là Kỹ sư AI, cô hiện đang tập trung nghiên cứu và phát triển các ứng dụng LLM tiên tiến để tự động hóa trích xuất thông tin.",
           color: "teal",
           image: tranCaoThucUyenImg
         },
         {
           name: "Hồ Thị Thanh Ngân",
           role: "Jr. Data Scientist",
-          bio: "Kỹ sư Khoa học Dữ liệu & AI. Tài năng trẻ hỗ trợ phát triển các mô hình học máy, đam mê ứng dụng AI giải quyết các bài toán nông nghiệp thực tiễn.",
+          bio: "Với gần 1 năm kinh nghiệm thực chiến phát triển mô hình học máy tại RegenAI, Ngân không ngừng vận dụng tư duy của một Kỹ sư Khoa học Dữ liệu vào thực tế. Cô hiện đang giải quyết các bài toán nông nghiệp cụ thể thông qua các giải pháp AI sáng tạo.",
           color: "green",
           image: hoThiThanhNganImg
         }
