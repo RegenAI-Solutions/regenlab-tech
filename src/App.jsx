@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { HashRouter, Routes, Route, Link, useNavigate, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { HashRouter, Routes, Route, Link, useNavigate, useParams, useLocation, Navigate, Outlet } from 'react-router-dom';
 import {
   Menu, ChevronRight, Leaf, Cpu, Globe,
   Play, Users, Mail, MapPin,
@@ -19,6 +19,15 @@ import VIDEOS from './data/videos';
 
 // --- SUB-COMPONENTS ---
 import AboutPage from './components/AboutPage';
+
+// --- HELPERS ---
+const useAppLang = () => {
+  const { lang: urlLang } = useParams();
+  // Valid languages are 'vn' and 'en' in URL, map 'vn' -> 'vi' for content
+  if (urlLang === 'en') return 'en';
+  return 'vi';
+};
+
 const SectionTitle = ({ children, subtitle }) => (
   <div className="mb-10 text-center">
     <h2 className="text-3xl font-bold text-slate-800 font-display">{children}</h2>
@@ -65,14 +74,39 @@ const ProjectCard = ({ project, onClick, lang }) => (
 );
 
 // --- NAVIGATION COMPONENT ---
-function Navigation({ lang, setLang }) {
+function Navigation() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { lang: urlLang } = useParams(); // 'vn' or 'en'
+  const lang = useAppLang(); // 'vi' or 'en'
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const t = CONTENT[lang];
-  const toggleLang = () => setLang(prev => prev === 'en' ? 'vi' : 'en');
+
+  const toggleLang = () => {
+    // Switch between /vn and /en
+    const currentUrlPrefix = urlLang || 'vn';
+    const newUrlPrefix = currentUrlPrefix === 'en' ? 'vn' : 'en';
+
+    // Replace the first segment
+    const currentPath = location.pathname;
+    // Assuming structure matches /:lang/... 
+    // We regex replace the start
+    const newPath = currentPath.replace(/^\/(vn|en|vi)/, `/${newUrlPrefix}`);
+    navigate(newPath);
+  };
+
+  const currentPrefix = `/${urlLang || 'vn'}`;
 
   const handleNavigate = (path) => {
-    navigate(path);
+    // path is key like '/' or '/projects'
+    // append to prefix
+    let targetPath = path;
+    if (path === '/') targetPath = `${currentPrefix}`;
+    else if (path.startsWith('/')) targetPath = `${currentPrefix}${path}`;
+    else targetPath = `${currentPrefix}/${path}`;
+
+    navigate(targetPath);
     setIsMobileMenuOpen(false);
     window.scrollTo(0, 0);
   };
@@ -98,18 +132,18 @@ function Navigation({ lang, setLang }) {
               { key: 'internship', path: '/internship' },
               { key: 'contact', path: '/contact' }
             ].map(({ key, path, isScroll }) => (
-              <Link
+              <span
                 key={key}
-                to={path}
                 onClick={() => {
+                  handleNavigate(path);
                   if (isScroll) {
                     setTimeout(() => document.getElementById('about-section')?.scrollIntoView({ behavior: 'smooth' }), 100);
                   }
                 }}
-                className="text-sm font-medium transition-colors hover:text-emerald-600 text-slate-600"
+                className="text-sm font-medium transition-colors hover:text-emerald-600 text-slate-600 cursor-pointer"
               >
                 {t.nav[key]}
-              </Link>
+              </span>
             ))}
             <button onClick={toggleLang} className="flex items-center gap-1 px-3 py-1 border border-slate-200 rounded-full text-xs font-bold hover:bg-slate-50 transition-colors">
               <Globe size={14} /> {lang === 'en' ? 'EN' : 'VI'}
@@ -124,9 +158,21 @@ function Navigation({ lang, setLang }) {
 }
 
 // --- FOOTER COMPONENT ---
-function Footer({ lang }) {
+function Footer() {
   const navigate = useNavigate();
+  const lang = useAppLang();
+  const { lang: urlLang } = useParams();
   const t = CONTENT[lang];
+
+  const currentPrefix = `/${urlLang || 'vn'}`;
+  const handleNav = (path) => {
+    let targetPath = path;
+    if (path === '/') targetPath = `${currentPrefix}`;
+    else if (path.startsWith('/')) targetPath = `${currentPrefix}${path}`;
+    else targetPath = `${currentPrefix}/${path}`;
+    navigate(targetPath);
+    window.scrollTo(0, 0);
+  }
 
   return (
     <footer className="bg-slate-900 text-slate-300 py-16">
@@ -139,7 +185,7 @@ function Footer({ lang }) {
             </div>
             <p className="text-slate-400 text-sm leading-relaxed mb-6">{t.footer.desc}</p>
           </div>
-          <div><h4 className="text-white font-bold mb-6">{t.footer.links}</h4><ul className="space-y-3 text-sm"><li><button onClick={() => navigate('/')}>{t.nav.about}</button></li><li><button onClick={() => navigate('/projects')}>{t.nav.projects}</button></li></ul></div>
+          <div><h4 className="text-white font-bold mb-6">{t.footer.links}</h4><ul className="space-y-3 text-sm"><li><button onClick={() => handleNav('/')}>{t.nav.about}</button></li><li><button onClick={() => handleNav('/projects')}>{t.nav.projects}</button></li></ul></div>
           <div><h4 className="text-white font-bold mb-6">{t.footer.areas}</h4><ul className="space-y-3 text-sm"><li>Carbon Modeling</li><li>Remote Sensing</li></ul></div>
           <div><h4 className="text-white font-bold mb-6">{t.footer.contact}</h4><ul className="space-y-3 text-sm text-slate-400"><li>info@regenlab.tech</li></ul></div>
         </div>
@@ -152,15 +198,19 @@ function Footer({ lang }) {
 }
 
 // --- PAGE COMPONENTS ---
-function HomePage({ lang }) {
+function HomePage() {
   // Redirect to show AboutPage content
+  const lang = useAppLang();
   return <AboutPage lang={lang} showHero={true} />;
 }
 
-function ProjectsPage({ lang }) {
+function ProjectsPage() {
   const navigate = useNavigate();
-  const { projectSlug } = useParams();
+  const { projectSlug, lang: urlLang } = useParams();
+  const lang = useAppLang();
   const t = CONTENT[lang];
+
+  const currentPrefix = `/${urlLang || 'vn'}`;
 
   const activeProject = projectSlug ? PROJECTS_DATA.find(p => p.slug === projectSlug) : null;
 
@@ -170,7 +220,7 @@ function ProjectsPage({ lang }) {
     if (DashboardComponent) {
       return (
         <div className="max-w-7xl mx-auto px-6 py-16 animate-fade-in">
-          <DashboardComponent onBack={() => navigate('/projects')} lang={lang} />
+          <DashboardComponent onBack={() => navigate(`${currentPrefix}/projects`)} lang={lang} />
         </div>
       );
     }
@@ -180,7 +230,7 @@ function ProjectsPage({ lang }) {
   if (activeProject) {
     return (
       <div className="max-w-4xl mx-auto px-6 py-16 animate-fade-in text-center">
-        <button onClick={() => navigate('/projects')} className="mb-6 flex items-center gap-2 text-slate-500 hover:text-emerald-600 mx-auto font-medium"><ArrowLeft size={20} /> {t.back || "Back"}</button>
+        <button onClick={() => navigate(`${currentPrefix}/projects`)} className="mb-6 flex items-center gap-2 text-slate-500 hover:text-emerald-600 mx-auto font-medium"><ArrowLeft size={20} /> {t.back || "Back"}</button>
         <h2 className="text-3xl font-bold mb-4">{activeProject.title[lang]}</h2>
         <div className="bg-slate-100 p-12 rounded-xl">
           <p className="text-slate-500">{t.projects.dev_msg}</p>
@@ -200,7 +250,7 @@ function ProjectsPage({ lang }) {
             key={project.id}
             project={project}
             lang={lang}
-            onClick={() => navigate(`/projects/${project.slug}`)}
+            onClick={() => navigate(`${currentPrefix}/projects/${project.slug}`)}
           />
         ))}
       </div>
@@ -208,9 +258,8 @@ function ProjectsPage({ lang }) {
   );
 }
 
-
-
-function InternshipPage({ lang }) {
+function InternshipPage() {
+  const lang = useAppLang();
   const t = CONTENT[lang];
 
   return (
@@ -255,7 +304,8 @@ function InternshipPage({ lang }) {
   );
 }
 
-function ContactPage({ lang }) {
+function ContactPage() {
+  const lang = useAppLang();
   const [status, setStatus] = useState('idle');
   const t = CONTENT[lang];
 
@@ -386,7 +436,8 @@ function ContactPage({ lang }) {
   );
 }
 
-function VideosPage({ lang }) {
+function VideosPage() {
+  const lang = useAppLang();
   const t = CONTENT[lang];
 
   return (
@@ -416,29 +467,48 @@ function VideosPage({ lang }) {
   );
 }
 
-// --- MAIN APP COMPONENT ---
-export default function App() {
-  const [lang, setLang] = useState('vi');
+// --- APP & LAYOUT ---
+
+function AppLayout() {
+  const navigate = useNavigate();
+  const { lang } = useParams();
+
+  // Validate Lang in Layout
+  useEffect(() => {
+    if (lang !== 'vn' && lang !== 'en') {
+      navigate('/vn', { replace: true });
+    }
+  }, [lang, navigate]);
+
+  if (lang !== 'vn' && lang !== 'en') return null;
 
   return (
+    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 flex flex-col">
+      <Navigation />
+      <main className="flex-grow">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
+  );
+}
+
+export default function App() {
+  return (
     <HashRouter>
-      <div className="min-h-screen bg-slate-50 font-sans text-slate-900 flex flex-col">
-        <Navigation lang={lang} setLang={setLang} />
-
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<HomePage lang={lang} />} />
-            <Route path="/about" element={<AboutPage lang={lang} showHero={true} />} />
-            <Route path="/projects" element={<ProjectsPage lang={lang} />} />
-            <Route path="/projects/:projectSlug" element={<ProjectsPage lang={lang} />} />
-            {/* <Route path="/videos" element={<VideosPage lang={lang} />} /> */}
-            <Route path="/internship" element={<InternshipPage lang={lang} />} />
-            <Route path="/contact" element={<ContactPage lang={lang} />} />
-          </Routes>
-        </main>
-
-        <Footer lang={lang} />
-      </div>
+      <Routes>
+        <Route path="/" element={<Navigate to="/vn" replace />} />
+        <Route path="/:lang" element={<AppLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="about" element={<Navigate to="" replace />} />
+          <Route path="projects" element={<ProjectsPage />} />
+          <Route path="projects/:projectSlug" element={<ProjectsPage />} />
+          {/* <Route path="videos" element={<VideosPage />} /> */}
+          <Route path="internship" element={<InternshipPage />} />
+          <Route path="contact" element={<ContactPage />} />
+        </Route>
+        <Route path="*" element={<Navigate to="/vn" replace />} />
+      </Routes>
     </HashRouter>
   );
 }

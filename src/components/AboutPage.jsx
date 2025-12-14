@@ -40,7 +40,7 @@ const getColorClasses = (color) => {
     return colors[color] || colors.green;
 };
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project, lang }) => {
     const isInternal = project.url && project.url.startsWith('/');
     const cardClasses = `${project.highlight ? 'bg-gradient-to-br from-emerald-600 to-emerald-800 text-white' : 'bg-gray-50 hover:bg-white'} rounded-xl p-6 hover:shadow-lg transition border ${project.highlight ? '' : 'border-gray-100 group'} flex-shrink-0 snap-center flex flex-col`;
     const cardStyle = { minWidth: '300px', width: '300px' };
@@ -61,8 +61,10 @@ const ProjectCard = ({ project }) => {
 
     if (project.url) {
         if (isInternal) {
+            const urlLang = lang === 'en' ? 'en' : 'vn';
+            const linkPath = `/${urlLang}${project.url}`;
             return (
-                <Link to={project.url} className={`${cardClasses} block cursor-pointer`} style={cardStyle}>
+                <Link to={linkPath} className={`${cardClasses} block cursor-pointer`} style={cardStyle}>
                     <CardContent />
                 </Link>
             );
@@ -452,7 +454,7 @@ export default function AboutPage({ lang, showHero = true }) {
                             onMouseLeave={() => setIsProjectsPaused(false)}
                         >
                             {extendedProjectItems.map((project, index) => (
-                                <ProjectCard key={`${index}`} project={project} />
+                                <ProjectCard key={`${index}`} project={project} lang={lang} />
                             ))}
                         </div>
                     </div>
