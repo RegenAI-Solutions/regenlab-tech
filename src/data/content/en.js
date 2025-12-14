@@ -172,28 +172,28 @@ const en = {
         {
           name: "Tran Van Tuan Phong",
           role: "Technical Leader",
-          bio: "Having been with RegenAI since the early days (over 1.5 years), Phong has been instrumental in building the core AI & Backend foundation. Leveraging his solid background as a Data Science & AI Engineer, he now leads the technical team, shaping the core solutions for RegenAI.",
+          bio: "Been with RegenAI since the early days, the person directly building the foundation for AI & Backend infrastructure and shaping the core solutions for RegenAI Solutions.",
           color: "blue",
           image: tranVanTuanPhongImg
         },
         {
           name: "Dang Van Thang",
           role: "Software/Data Engineer",
-          bio: "A Data Science & AI Engineer by training, Thang has spent more than 1.5 years with the company, specializing in designing AWS architectures for large-scale data processing. He is currently focused on optimizing data infrastructure to ensure stability and scalability.",
+          bio: "Data Science & AI Engineer, having accompanied the company for over 1 year, specializing deeply in designing AWS architectures for big data processing and optimizing data infrastructure, ensuring stability and efficiency for the system expansion journey.",
           color: "purple",
           image: dangVanThangImg
         },
         {
           name: "Tran Cao Thuc Uyen",
           role: "Data Scientist",
-          bio: "Over the past 1.5 years at RegenAI, Uyen has dedicated herself to mastering unstructured data challenges. Starting as an AI Engineer, she is now spearheading research into advanced LLM applications to automate information extraction.",
+          bio: "Starting point as the first AI Engineer at RegenAI, currently focusing on researching and developing advanced LLM applications to automate information extraction.",
           color: "teal",
           image: tranCaoThucUyenImg
         },
         {
           name: "Ho Thi Thanh Ngan",
           role: "Jr. Data Scientist",
-          bio: "With over 1.5 years of hands-on experience developing machine learning models at RegenAI, Ngan consistently applies her Data Science mindset to real-world problems. She is currently passionate about solving specific agricultural challenges through creative AI solutions.",
+          bio: "Data Science Engineer with nearly 1 year with RegenAI, currently solving specific agricultural challenges through creative AI solutions.",
           color: "green",
           image: hoThiThanhNganImg
         }
