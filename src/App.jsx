@@ -94,7 +94,7 @@ function Navigation({ lang, setLang }) {
             {[
               { key: 'about', path: '/' },
               { key: 'projects', path: '/projects' },
-              { key: 'videos', path: '/videos' },
+              // { key: 'videos', path: '/videos' },
               { key: 'internship', path: '/internship' },
               { key: 'contact', path: '/contact' }
             ].map(({ key, path, isScroll }) => (
@@ -431,7 +431,7 @@ export default function App() {
             <Route path="/about" element={<AboutPage lang={lang} showHero={true} />} />
             <Route path="/projects" element={<ProjectsPage lang={lang} />} />
             <Route path="/projects/:projectSlug" element={<ProjectsPage lang={lang} />} />
-            <Route path="/videos" element={<VideosPage lang={lang} />} />
+            {/* <Route path="/videos" element={<VideosPage lang={lang} />} /> */}
             <Route path="/internship" element={<InternshipPage lang={lang} />} />
             <Route path="/contact" element={<ContactPage lang={lang} />} />
           </Routes>
