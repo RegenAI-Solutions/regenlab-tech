@@ -1,0 +1,20 @@
+<svg viewBox="0 0 320 192" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cr_sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#134e4a"/>
+      <stop offset="1" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="192" fill="url(#cr_sky)"/>
+  <circle cx="252" cy="46" r="24" fill="#fbbf24" opacity="0.9"/>
+  <!-- hills -->
+  <path d="M0 150 Q80 112 160 140 T320 132 V192 H0 Z" fill="#047857"/>
+  <path d="M0 168 Q90 140 180 160 T320 158 V192 H0 Z" fill="#065f46"/>
+  <!-- grazing dots -->
+  <g fill="#0f172a" opacity="0.55"><circle cx="70" cy="150" r="3"/><circle cx="92" cy="156" r="3"/><circle cx="120" cy="150" r="3"/></g>
+  <!-- SOC rising curve -->
+  <polyline points="36,148 84,138 132,118 184,94 240,66" fill="none" stroke="#34d399" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="240" cy="66" r="5.5" fill="#a7f3d0"/>
+  <g fill="#a7f3d0"><circle cx="84" cy="138" r="3"/><circle cx="132" cy="118" r="3"/><circle cx="184" cy="94" r="3"/></g>
+  <text x="36" y="40" fill="#a7f3d0" font-family="Arial, sans-serif" font-size="13" font-weight="700">Soil organic carbon ↑</text>
+</svg>
