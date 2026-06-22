@@ -83,6 +83,14 @@ function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const t = CONTENT[lang];
 
+  const navItems = [
+    { key: 'about', path: '/' },
+    { key: 'projects', path: '/projects' },
+    { key: 'partners', path: '/partners' },
+    { key: 'careers', path: '/careers' },
+    { key: 'contact', path: '/contact' }
+  ];
+
   const toggleLang = () => {
     // Switch between /vn and /en
     const currentUrlPrefix = urlLang || 'vn';
@@ -125,13 +133,7 @@ function Navigation() {
             </div>
           </div>
           <div className="hidden md:flex items-center gap-8">
-            {[
-              { key: 'about', path: '/' },
-              { key: 'projects', path: '/projects' },
-              // { key: 'videos', path: '/videos' },
-              { key: 'internship', path: '/internship' },
-              { key: 'contact', path: '/contact' }
-            ].map(({ key, path, isScroll }) => (
+            {navItems.map(({ key, path, isScroll }) => (
               <span
                 key={key}
                 onClick={() => {
@@ -145,6 +147,7 @@ function Navigation() {
                 {t.nav[key]}
               </span>
             ))}
+            <a href="/app/" className="text-sm font-medium text-slate-600 hover:text-emerald-600 transition-colors">{t.nav.portal}</a>
             <button onClick={toggleLang} className="flex items-center gap-1 px-3 py-1 border border-slate-200 rounded-full text-xs font-bold hover:bg-slate-50 transition-colors">
               <Globe size={14} /> {lang === 'en' ? 'EN' : 'VI'}
             </button>
@@ -152,6 +155,18 @@ function Navigation() {
           </div>
           <button className="md:hidden p-2 text-slate-600 hover:bg-slate-100 rounded-lg" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}><Menu size={24} /></button>
         </div>
+        {isMobileMenuOpen && (
+          <div className="md:hidden pb-4 flex flex-col gap-1 border-t border-slate-100 pt-2">
+            {navItems.map(({ key, path }) => (
+              <span key={key} onClick={() => handleNavigate(path)} className="px-2 py-2 text-sm font-medium text-slate-700 hover:text-emerald-600 cursor-pointer">{t.nav[key]}</span>
+            ))}
+            <a href="/app/" className="px-2 py-2 text-sm font-medium text-slate-700 hover:text-emerald-600">{t.nav.portal}</a>
+            <div className="flex items-center gap-3 mt-2 px-2">
+              <button onClick={toggleLang} className="flex items-center gap-1 px-3 py-1 border border-slate-200 rounded-full text-xs font-bold hover:bg-slate-50"><Globe size={14} /> {lang === 'en' ? 'EN' : 'VI'}</button>
+              <button onClick={() => handleNavigate('/contact')} className="px-4 py-2 bg-slate-900 text-white text-sm font-semibold rounded-full hover:bg-emerald-600 transition-colors">{t.nav.cta}</button>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
@@ -185,12 +200,12 @@ function Footer() {
             </div>
             <p className="text-slate-400 text-sm leading-relaxed mb-6">{t.footer.desc}</p>
           </div>
-          <div><h4 className="text-white font-bold mb-6">{t.footer.links}</h4><ul className="space-y-3 text-sm"><li><button onClick={() => handleNav('/')}>{t.nav.about}</button></li><li><button onClick={() => handleNav('/projects')}>{t.nav.projects}</button></li></ul></div>
-          <div><h4 className="text-white font-bold mb-6">{t.footer.areas}</h4><ul className="space-y-3 text-sm"><li>Carbon Modeling</li><li>Remote Sensing</li></ul></div>
+          <div><h4 className="text-white font-bold mb-6">{t.footer.links}</h4><ul className="space-y-3 text-sm"><li><button onClick={() => handleNav('/')} className="hover:text-emerald-400 transition-colors">{t.nav.about}</button></li><li><button onClick={() => handleNav('/projects')} className="hover:text-emerald-400 transition-colors">{t.nav.projects}</button></li><li><button onClick={() => handleNav('/partners')} className="hover:text-emerald-400 transition-colors">{t.nav.partners}</button></li><li><button onClick={() => handleNav('/careers')} className="hover:text-emerald-400 transition-colors">{t.nav.careers}</button></li><li><a href="/app/" className="hover:text-emerald-400 transition-colors">{t.nav.portal}</a></li></ul></div>
+          <div><h4 className="text-white font-bold mb-6">{t.footer.areas}</h4><ul className="space-y-3 text-sm">{t.footer.area_items.map((a, i) => (<li key={i}>{a}</li>))}</ul></div>
           <div><h4 className="text-white font-bold mb-6">{t.footer.contact}</h4><ul className="space-y-3 text-sm text-slate-400"><li>info@regenlab.tech</li></ul></div>
         </div>
         <div className="border-t border-slate-800 pt-8 text-xs text-slate-500 text-center">
-          &copy; {new Date().getFullYear()} RegenLab Technology. {t.footer.rights}
+          &copy; {new Date().getFullYear()} RegenLab. {t.footer.rights}
         </div>
       </div>
     </footer>
@@ -258,47 +273,85 @@ function ProjectsPage() {
   );
 }
 
-function InternshipPage() {
+function PartnersPage() {
   const lang = useAppLang();
-  const t = CONTENT[lang];
+  const p = CONTENT[lang].partners;
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-16 animate-fade-in">
-      <SectionTitle subtitle>{t.internship.title}</SectionTitle>
+      <SectionTitle subtitle>{p.title}</SectionTitle>
       <div className="bg-gradient-to-br from-emerald-900 to-slate-800 rounded-2xl p-8 md:p-12 text-white mb-12 shadow-xl">
-        <div className="flex flex-col md:flex-row items-center gap-8">
-          <div className="flex-1">
-            <h3 className="text-3xl font-bold mb-4">{t.internship.join}</h3>
-            <p className="text-emerald-100 text-lg mb-6">{t.internship.desc}</p>
-            <div className="flex flex-wrap gap-3">
-              <span className="bg-white/10 px-3 py-1 rounded-full text-sm backdrop-blur-sm border border-white/20">Full-Stack Dev</span>
-              <span className="bg-white/10 px-3 py-1 rounded-full text-sm backdrop-blur-sm border border-white/20">Data Science</span>
-              <span className="bg-white/10 px-3 py-1 rounded-full text-sm backdrop-blur-sm border border-white/20">Agronomy</span>
-            </div>
-          </div>
-          <div className="bg-white/10 p-6 rounded-xl border border-white/10 backdrop-blur-md min-w-[280px]">
-            <h4 className="font-bold text-xl mb-4 border-b border-white/20 pb-2">{t.internship.details}</h4>
-            <ul className="space-y-3 text-sm text-emerald-50">
-              <li className="flex items-center gap-2"><Leaf size={16} /> Real-world project impact</li>
-              <li className="flex items-center gap-2"><Users size={16} /> Mentorship from senior engineers</li>
-              <li className="flex items-center gap-2"><BarChart size={16} /> Research publication support</li>
-              <li className="flex items-center gap-2"><MapPin size={16} /> Remote & On-site (Vietnam)</li>
-            </ul>
-          </div>
-        </div>
+        <h3 className="text-3xl font-bold mb-4">{p.join}</h3>
+        <p className="text-emerald-100 text-lg">{p.desc}</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
-          <h4 className="text-xl font-bold text-slate-800 mb-4">{t.internship.who_title}</h4>
-          <p className="text-slate-600 mb-4">{t.internship.who_desc}</p>
+          <h4 className="text-xl font-bold text-slate-800 mb-4">{p.details}</h4>
+          <ul className="space-y-3">
+            {p.benefits.map((b, i) => (
+              <li key={i} className="flex items-start gap-3 text-slate-600"><CheckCircle size={18} className="text-emerald-600 mt-0.5 shrink-0" /> {b}</li>
+            ))}
+          </ul>
         </div>
         <div>
-          <h4 className="text-xl font-bold text-slate-800 mb-4">{t.internship.apply_title}</h4>
+          <h4 className="text-xl font-bold text-slate-800 mb-4">{p.who_title}</h4>
+          <p className="text-slate-600 mb-6">{p.who_desc}</p>
           <div className="bg-slate-50 p-6 rounded-xl border border-slate-200">
-            <p className="text-sm text-slate-600 mb-4">{t.internship.apply_msg}</p>
-            <a href="mailto:info@regenlab.tech" className="flex items-center gap-2 text-emerald-600 font-bold hover:underline mb-4"><Mail size={18} /> info@regenlab.tech</a>
+            <h5 className="font-bold text-slate-800 mb-2">{p.apply_title}</h5>
+            <p className="text-sm text-slate-600 mb-3">{p.apply_msg}</p>
+            <a href="mailto:info@regenlab.tech" className="flex items-center gap-2 text-emerald-600 font-bold hover:underline"><Mail size={18} /> info@regenlab.tech</a>
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+function CareersPage() {
+  const lang = useAppLang();
+  const c = CONTENT[lang].careers;
+
+  return (
+    <div className="max-w-5xl mx-auto px-6 py-16 animate-fade-in">
+      <SectionTitle subtitle>{c.title}</SectionTitle>
+      <div className="bg-gradient-to-br from-emerald-900 to-slate-800 rounded-2xl p-8 md:p-12 text-white mb-12 shadow-xl">
+        <h3 className="text-3xl font-bold mb-4">{c.intro_title}</h3>
+        <p className="text-emerald-100 text-lg">{c.intro}</p>
+      </div>
+
+      <div className="mb-12">
+        <h4 className="text-2xl font-bold text-slate-800 mb-3">{c.internship_title}</h4>
+        <p className="text-slate-600 mb-5 max-w-3xl">{c.internship_desc}</p>
+        <div className="flex flex-wrap gap-3">
+          {c.internship_tags.map((tag, i) => (
+            <span key={i} className="bg-emerald-50 text-emerald-700 border border-emerald-100 px-3 py-1 rounded-full text-sm font-medium">{tag}</span>
+          ))}
+        </div>
+      </div>
+
+      <div className="mb-12">
+        <h4 className="text-2xl font-bold text-slate-800 mb-1">{c.roles_title}</h4>
+        <p className="text-sm text-slate-400 mb-6">{c.roles_note}</p>
+        <div className="space-y-4">
+          {c.roles.map((role, i) => (
+            <div key={i} className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-emerald-300 transition flex flex-col md:flex-row md:items-center gap-4">
+              <div className="flex-1">
+                <h5 className="text-lg font-bold text-slate-900">{role.title}</h5>
+                <p className="text-sm text-slate-600 mt-1">{role.desc}</p>
+              </div>
+              <div className="flex flex-col items-start md:items-end gap-1 shrink-0">
+                <span className="text-xs font-bold uppercase tracking-wide text-emerald-700 bg-emerald-50 px-2 py-1 rounded">{role.type}</span>
+                <span className="text-xs text-slate-500 flex items-center gap-1"><MapPin size={12} /> {role.location}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="bg-slate-50 p-6 rounded-xl border border-slate-200 max-w-2xl">
+        <h5 className="font-bold text-slate-800 mb-2">{c.apply_title}</h5>
+        <p className="text-sm text-slate-600 mb-3">{c.apply_msg}</p>
+        <a href="mailto:info@regenlab.tech" className="flex items-center gap-2 text-emerald-600 font-bold hover:underline"><Mail size={18} /> info@regenlab.tech</a>
       </div>
     </div>
   );
@@ -385,7 +438,7 @@ function ContactPage() {
                   type="text"
                   required
                   className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none"
-                  placeholder="Nguyễn Văn A"
+                  placeholder={t.contact.form.name_placeholder}
                 />
               </div>
 
@@ -414,7 +467,7 @@ function ContactPage() {
                 <textarea
                   required
                   className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none h-32 resize-none"
-                  placeholder="Nhập nội dung tin nhắn..."
+                  placeholder={t.contact.form.msg_placeholder}
                 ></textarea>
               </div>
 
@@ -504,7 +557,9 @@ export default function App() {
           <Route path="projects" element={<ProjectsPage />} />
           <Route path="projects/:projectSlug" element={<ProjectsPage />} />
           {/* <Route path="videos" element={<VideosPage />} /> */}
-          <Route path="internship" element={<InternshipPage />} />
+          <Route path="partners" element={<PartnersPage />} />
+          <Route path="careers" element={<CareersPage />} />
+          <Route path="internship" element={<Navigate to="../careers" replace />} />
           <Route path="contact" element={<ContactPage />} />
         </Route>
         <Route path="*" element={<Navigate to="/vn" replace />} />

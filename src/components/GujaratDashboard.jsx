@@ -201,19 +201,27 @@ const SensitivityChart = ({ data, color }) => (
 
 // Calibration Scatter Plot (Mini)
 const CalibrationScatter = ({ type, isFixed, t }) => {
-  const points = Array.from({ length: 15 }).map((_, i) => {
-    const x = 300 + i * 20;
-    let y = x; 
-    const noise = (Math.random() - 0.5) * 60;
-    if (!isFixed) {
-      if (type === 'cotton') y = x * 0.75 + noise;
-      if (type === 'wheat') y = x * 0.85 + noise; 
-      if (type === 'groundnut') y = x * 1.35 + noise; 
-    } else {
-      y = x + noise * 0.3;
-    }
-    return { x, y };
-  });
+  // Deterministic data. Calibrated ("isFixed") points are constructed to sit
+  // around the 1:1 line with R² ≈ 0.85 (matching the Model Fit metric card);
+  // uncalibrated points show a systematic slope bias per crop.
+  const n = 15;
+  const xs = Array.from({ length: n }, (_, i) => 300 + i * 20);
+  const seed = type === 'wheat' ? 1.3 : type === 'groundnut' ? 2.6 : 0.4;
+  const detResid = (i) => Math.sin(i * 1.9 + seed) + 0.4 * Math.cos(i * 3.3 + seed);
+  let points;
+  if (isFixed) {
+    const meanX = xs.reduce((a, b) => a + b, 0) / n;
+    const ssTot = xs.reduce((a, x) => a + (x - meanX) ** 2, 0);
+    let e = xs.map((_, i) => detResid(i));
+    const me = e.reduce((a, b) => a + b, 0) / n;
+    e = e.map((v) => v - me);
+    const sse = e.reduce((a, v) => a + v * v, 0) || 1;
+    const k = Math.sqrt(((1 - 0.85) * ssTot) / sse); // R² ≈ 0.85 vs 1:1 line
+    points = xs.map((x, i) => ({ x, y: x + e[i] * k }));
+  } else {
+    const slope = type === 'cotton' ? 0.75 : type === 'wheat' ? 0.85 : type === 'groundnut' ? 1.35 : 0.8;
+    points = xs.map((x, i) => ({ x, y: x * slope + detResid(i) * 12 }));
+  }
 
   return (
     <div className="relative w-full aspect-square bg-slate-50 rounded-lg border border-slate-200 overflow-hidden group">

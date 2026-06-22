@@ -32,7 +32,7 @@ const HUE_TEXT = {
     
     // Insights
     insight_title: "Key Findings",
-    insight_1: "Converting degraded land to Acacia forest increases SOC by 12% over 5 years.",
+    insight_1: "Modeled afforestation with Acacia raises SOC from 56.5 to 68.2 tC/ha — about +21% over the baseline.",
     insight_2: "Low-lying coastal areas show slower carbon accumulation due to salinity constraints.",
     
     // Tech Specs
@@ -65,7 +65,7 @@ const HUE_TEXT = {
     
     // Insights
     insight_title: "Phát hiện Chính",
-    insight_1: "Chuyển đổi đất suy thoái sang rừng Keo tăng SOC thêm 12% sau 5 năm.",
+    insight_1: "Mô hình trồng rừng Keo nâng SOC từ 56.5 lên 68.2 tC/ha — tăng khoảng +21% so với hiện trạng.",
     insight_2: "Khu vực ven biển thấp trũng tích lũy carbon chậm hơn do hạn chế mặn.",
     
     // Tech Specs
@@ -218,7 +218,7 @@ const HueSoilDashboard = ({ onBack, lang = 'vi' }) => {
             <div className="w-full h-px bg-slate-100"></div>
             <div>
               <span className="text-xs text-slate-400 uppercase tracking-wider">{t.metric_seq_rate}</span>
-              <div className="text-2xl font-bold text-emerald-600">+1.2 <span className="text-sm font-normal text-slate-500">tC/ha/yr</span></div>
+              <div className="text-2xl font-bold text-emerald-600">+1.4 <span className="text-sm font-normal text-slate-500">tC/ha/yr</span></div>
             </div>
             <div className="w-full h-px bg-slate-100"></div>
             <div>

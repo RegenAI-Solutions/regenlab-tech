@@ -16,102 +16,101 @@ const vi = {
     about: "Giới thiệu",
     projects: "Nghiên cứu",
     videos: "Tài nguyên",
-    internship: "Đào tạo",
+    partners: "Đối tác",
+    careers: "Tuyển dụng",
+    portal: "Cổng API",
     contact: "Liên hệ",
     cta: "Hợp tác"
   },
   hero: {
-    tagline: "NGHIÊN CỨU • GIÁO DỤC • ĐỔI MỚI",
-    title_prefix: "Tiên phong Nghiên cứu",
+    tagline: "KHOA HỌC • ĐỊNH LƯỢNG • NGHIÊN CỨU",
+    title_prefix: "Định lượng Carbon dựa trên Mô hình cho",
     title_highlight: "Nông nghiệp Tái sinh",
-    desc: "RegenLab là trung tâm nghiên cứu chuyên sâu, ứng dụng AI và khoa học dữ liệu để thúc đẩy nông nghiệp bền vững và đào tạo nguồn nhân lực công nghệ cao.",
-    btn_explore: "Khám phá Nghiên cứu",
-    btn_mission: "Chương trình Đào tạo"
+    desc: "RegenLab xây dựng hạ tầng định lượng carbon và MRV số nghiêm ngặt, đạt chuẩn kiểm toán cho nông nghiệp tái sinh. Chúng tôi cung cấp khoa học và công cụ; chúng tôi không phải là đơn vị phát triển dự án carbon.",
+    btn_explore: "Nghiên cứu",
+    btn_mission: "Phương pháp"
   },
   highlights: {
-    ai_title: "Nghiên cứu Khoa học",
-    ai_desc: "Thực hiện các nghiên cứu chuyên sâu về sức khỏe đất, mô hình hóa carbon và đa dạng sinh học sử dụng các công cụ tiên tiến như DayCent.",
-    climate_title: "Chuyển giao Công nghệ",
-    climate_desc: "Cầu nối giữa nghiên cứu học thuật và ứng dụng thực tiễn thông qua các dự án thí điểm và chuyển giao kỹ thuật cho địa phương.",
-    origin_title: "Đào tạo & Phát triển",
-    origin_desc: "Nâng cao năng lực cho sinh viên, nhà nghiên cứu và cộng đồng thông qua các chương trình đào tạo thực chiến về AgTech."
+    ai_title: "Nghiêm ngặt Khoa học",
+    ai_desc: "Định lượng sinh địa hóa dựa trên mô hình cho carbon đất và phát thải khí nhà kính, xây dựng trên mô hình DayCent đã được bình duyệt và phù hợp các phương pháp luận đăng ký (vd: Verra VM0042 / VMD0053).",
+    climate_title: "Hạ tầng MRV Số",
+    climate_desc: "Quy trình và API định lượng tự động, tái lập được, mà các nhà phát triển, tổ chức đăng ký và đơn vị thẩm định có thể tin cậy để cho ra kết quả minh bạch, kiểm toán được.",
+    origin_title: "Nghiên cứu & Đào tạo",
+    origin_desc: "Mạng lưới hợp tác khoa học mở, kết nối các trường đại học và nhà nghiên cứu để thúc đẩy khoa học nông nghiệp tái sinh và đào tạo thế hệ chuyên gia định lượng kế tiếp."
   },
   about: {
-    title: "Câu Chuyện Của Chúng Tôi",
-    lead: "Hành trình Kết nối",
-    lead_highlight: "Công nghệ & Nông nghiệp",
-    sub_lead: "Chúng tôi đang xây dựng \"hạ tầng con người\" và \"hạ tầng công nghệ\" để đưa Việt Nam trở thành cường quốc về nông nghiệp tái sinh công nghệ cao.",
-    cta_journey: "Hành trình của chúng tôi",
+    title: "Về RegenLab",
+    lead: "Khoa học Độc lập cho",
+    lead_highlight: "Carbon Đáng tin cậy",
+    sub_lead: "RegenLab là chương trình hợp tác học thuật và khoa học. Chúng tôi xây dựng hạ tầng con người và khoa học cho việc định lượng carbon nông nghiệp chất lượng cao.",
+    cta_journey: "Phương pháp",
     cta_team: "Ban Lãnh đạo",
     problem: {
       title: "Trăn trở về \"Ngôn ngữ\"",
-      desc: "Tại Việt Nam, rào cản lớn nhất không chỉ là công nghệ, mà là con người. Các chuyên gia nông nghiệp am hiểu đất đai nhưng xa lạ với số hóa. Ngược lại, kỹ sư công nghệ giỏi lập trình nhưng thiếu thực tế đồng ruộng. Chính khoảng cách này khiến nhiều dự án AgTech thất bại.",
-      ag_expert_title: "Chuyên gia Nông nghiệp",
+      desc: "Rào cản lớn nhất trong carbon nông nghiệp không phải là công nghệ, mà là con người. Các nhà khoa học nông nghiệp am hiểu đất đai nhưng xa lạ với hệ thống số; kỹ sư phần mềm giỏi lập trình nhưng thiếu thực tế đồng ruộng. Khoảng cách này khiến nhiều nỗ lực định lượng không đạt chất lượng kiểm toán.",
+      ag_expert_title: "Nhà khoa học Nông nghiệp",
       ag_expert_desc: "Hiểu ngôn ngữ của Đất & Cây trồng.",
       tech_expert_title: "Chuyên gia Công nghệ",
       tech_expert_desc: "Hiểu ngôn ngữ của Dữ liệu & AI.",
-      bridge_text: "RegenLab là Cầu nối"
+      bridge_text: "RegenLab là Cầu nối",
+      gap_label: "Khoảng cách ngôn ngữ"
     },
     story: {
-      title: "Câu chuyện của Chúng tôi",
-      subtitle: "Từ Giảng đường đến Cánh đồng Quốc tế",
-      desc: "RegenLab ra đời từ khát vọng mang tiêu chuẩn toàn cầu về giải quyết bài toán nông nghiệp Việt Nam.",
+      eyebrow: "Hành trình",
+      title: "Phương pháp của Chúng tôi",
+      subtitle: "Chuẩn mực Học thuật, Định lượng đạt chuẩn Kiểm toán",
+      desc: "RegenLab tồn tại để mang chuẩn mực khoa học toàn cầu vào việc định lượng carbon nông nghiệp — nghiêm ngặt, tái lập được và minh bạch.",
       steps: [
         {
           year: "2010",
-          title: "Khởi đầu tại Huế",
-          subtitle: "Nền tảng học thuật & Sinh hóa",
-          desc: "Xuất phát điểm từ giảng viên sinh hóa tại Đại học Nông Lâm Huế, nhận thấy nông nghiệp cần dữ liệu chính xác hơn là cảm tính.",
+          title: "Nền tảng Khoa học",
+          subtitle: "Sinh địa hóa & Khoa học Đất",
+          desc: "Bắt nguồn từ khoa học đất và sinh địa hóa — niềm tin rằng carbon nông nghiệp phải được định lượng bằng dữ liệu và mô hình, chứ không bằng cảm tính.",
           icon: "seedling"
         },
         {
           year: "plane",
-          title: "Vươn ra Thế giới",
-          subtitle: "Colorado State University (USA)",
-          desc: "Nghiên cứu sinh Fulbright tại ĐH Bang Colorado (Mỹ). Làm chủ mô hình DayCent để dự báo năng suất và khí nhà kính.",
+          title: "Chuẩn mực Toàn cầu",
+          subtitle: "Mô hình hóa dựa trên Mô hình (DayCent)",
+          desc: "Áp dụng mô hình DayCent đã được bình duyệt và các phương pháp luận đạt chuẩn đăng ký để dự báo năng suất, carbon đất và phát thải khí nhà kính với độ chính xác bảo vệ được.",
           icon: "plane"
         },
         {
           year: "industry",
-          title: "Quy mô Công nghiệp",
-          subtitle: "Shell & Clean Energy Regulator (Úc)",
-          desc: "Giải quyết bài toán nhân rộng mô hình bằng Viễn thám/GIS tại Shell. Tham gia xây dựng Phương pháp luận Carbon Đất 2021 tại Úc.",
+          title: "Mở rộng nhờ Công nghệ",
+          subtitle: "Viễn thám & Tự động hóa",
+          desc: "Kết hợp viễn thám, GIS và tự động hóa serverless để mở rộng định lượng trên hàng nghìn cánh đồng mà không mất đi tính tái lập khoa học.",
           icon: "industry"
         },
         {
           year: "flag",
-          title: "Hồi hương & Kiến tạo",
-          subtitle: "RegenLab Vietnam",
-          desc: "Trở về Việt Nam, thành lập RegenLab & RegenAI. Kết hợp kinh nghiệm quốc tế để xây dựng hạ tầng MMRV bản địa.",
+          title: "Hạ tầng, không phải Dự án",
+          subtitle: "RegenLab",
+          desc: "RegenLab cung cấp khoa học cùng phần mềm định lượng và hạ tầng dMRV — cấp phép cho các nhà phát triển, tổ chức đăng ký và đơn vị thẩm định.",
           icon: "flag"
         }
       ]
     },
     mission: {
-      title: "Sứ mệnh: Hai Trụ cột Hạ tầng",
-      subtitle: "Sứ mệnh Chiến lược",
-      desc: "Chúng tôi không chỉ bán giải pháp, chúng tôi xây dựng nền móng.",
+      title: "Hai Trụ cột Hạ tầng",
+      subtitle: "Điều chúng tôi xây dựng",
+      desc: "Chúng tôi xây dựng nền móng, không phải các dự án carbon.",
       pillar1_title: "1. Hạ tầng Con người (RegenLab)",
-      pillar1_desc: "Chúng tôi đào tạo thế hệ \"Kỹ sư Nông nghiệp Số\". Bằng cách kết nối Đại học Nông nghiệp và Đại học Công nghệ, đưa sinh viên vào các dự án quốc tế, chúng tôi tạo ra nguồn nhân lực \"song ngữ\" - vừa hiểu đất, vừa thạo công nghệ.",
-      pillar2_title: "2. Hạ tầng Công nghệ (RegenAI)",
-      pillar2_desc: "Cung cấp giải pháp MMRV (Đo đạc, Báo cáo, Thẩm định) tin cậy. Triết lý của chúng tôi: \"Dùng công nghệ để mang tiền (tài chính khí hậu) đến cho nông dân, chứ không phải bán sản phẩm công nghệ cho nông dân.\""
+      pillar1_desc: "Chúng tôi kết nối các trường đại học nông nghiệp và công nghệ, đưa nhà nghiên cứu vào các dự án khoa học quốc tế thực tế — tạo nguồn nhân lực \"song ngữ\" hiểu cả đất lẫn dữ liệu, và thúc đẩy khoa học nông nghiệp tái sinh mở.",
+      pillar2_title: "2. Hạ tầng Công nghệ",
+      pillar2_desc: "Chúng tôi cung cấp phần mềm MRV số và định lượng dựa trên mô hình, nghiêm ngặt và đạt chuẩn kiểm toán, cho các nhà phát triển, tổ chức đăng ký và đơn vị thẩm định. Nguyên tắc: chúng tôi cung cấp khoa học và công cụ — không tìm nông dân, không viết PDD, không bán tín chỉ carbon."
     },
     leadership: {
-      title: "Ban Lãnh Đạo & Sáng Lập",
+      title: "Ban Lãnh Đạo",
       hieu: {
         name: "GS.TS Nguyễn Minh Hiếu",
-        role: "Visionary Founder & Director",
-        bio: "Nguyên Hiệu trưởng Đại học Nông Lâm Huế với 40 năm cống hiến. Người đặt nền móng kết nối nông nghiệp Việt Nam với thị trường tài chính khí hậu toàn cầu. Ông thành lập RegenAI với niềm tin rằng công nghệ là chìa khóa để giải quyết biến đổi khí hậu."
-      },
-      trung: {
-        name: "GS.TS Nguyễn Hữu Trung",
-        role: "Founder & Principal Scientist",
-        bio: "Chuyên gia mô hình hóa DayCent và MMRV. Từng là Fulbright Scholar (CSU), Quản lý kỹ thuật tại Shell, và chuyên gia khoa học tại Regrow & Varaha. Ông trực tiếp xây dựng hạ tầng kỹ thuật và cơ sở dữ liệu để hiện thực hóa tầm nhìn Net Zero."
+        role: "Nhà sáng lập & Giám đốc, RegenLab",
+        bio: "Nguyên Hiệu trưởng Đại học Nông Lâm Huế với bốn thập kỷ trong khoa học và giáo dục nông nghiệp. Nhà sáng lập và Giám đốc RegenLab, dẫn dắt định hướng chiến lược và chương trình khoa học với niềm tin rằng khoa học nghiêm ngặt, dễ tiếp cận là chìa khóa cho hành động khí hậu đáng tin cậy."
       }
     },
     team: {
-      title: "Đội ngũ Chuyên gia Nòng cốt",
-      subtitle: "Sự kết hợp giữa các nhà khoa học hàng đầu và các kỹ sư công nghệ tài năng.",
+      title: "Đội ngũ Khoa học & Kỹ thuật Nòng cốt",
+      subtitle: "Các nhà khoa học và kỹ sư hàng đầu xây dựng định lượng đạt chuẩn kiểm toán.",
       members: [
         {
           name: "TS. Nguyễn Trung Hải",
@@ -123,21 +122,14 @@ const vi = {
         {
           name: "Lap Tran",
           role: "Senior Software Engineer",
-          bio: "Hơn 10 năm kinh nghiệm Backend/Cloud tại các công ty công nghệ quốc tế (Skedulo, FPT). Chuyên gia xây dựng hệ thống quy mô lớn và bảo mật.",
+          bio: "Hơn 10 năm kinh nghiệm Backend/Cloud tại các công ty công nghệ quốc tế (Skedulo, FPT). Chuyên gia xây dựng hệ thống định lượng quy mô lớn và bảo mật.",
           color: "blue",
           image: lapTranImg
         },
         {
-          name: "Helen Tran",
-          role: "Protocol Expert",
-          bio: "Thạc sĩ Môi trường (Melbourne). Chuyên gia tư vấn dự án carbon, kiểm kê khí nhà kính (ISO 14064) tại Úc và Châu Á.",
-          color: "purple",
-          // image: helenTranImg // Missing image
-        },
-        {
           name: "Dao Thi Hang - Anna",
-          role: "Carbon Market Expert",
-          bio: "Thạc sĩ Quản lý Carbon (Adelaide). Giám đốc Global Expert Pty Ltd. Có kinh nghiệm thực tiễn vận hành trang trại và tư vấn thương mại carbon.",
+          role: "Carbon Methodology Expert",
+          bio: "Thạc sĩ Quản lý Carbon (Adelaide). Chuyên gia về tuân thủ phương pháp luận và kiểm kê khí nhà kính tại Úc và Châu Á - Thái Bình Dương.",
           color: "yellow",
           image: daoThiHangImg
         },
@@ -157,79 +149,79 @@ const vi = {
         },
         {
           name: "TS. Mai Lệ Quyên",
-          role: "Social Expert",
-          bio: "Tiến sĩ Xã hội học (Bonn, Đức). Phó GĐ Trung tâm CKC. Chuyên gia đánh giá tác động xã hội, phát triển cộng đồng và bình đẳng giới.",
+          role: "Social & ESG Expert",
+          bio: "Tiến sĩ Xã hội học (Bonn, Đức). Chuyên gia đánh giá tác động xã hội, phát triển cộng đồng và bình đẳng giới.",
           color: "pink",
           image: maiLeQuyenImg
         },
         {
           name: "Vũ Trọng Nghĩa - Vince",
-          role: "Project Management",
-          bio: "MBA (Thunderbird, Mỹ). Co-founder Bizzi Bots. Hơn 15 năm kinh nghiệm quản trị chiến lược, vận hành startup và quỹ đầu tư.",
+          role: "Operations",
+          bio: "MBA (Thunderbird, Mỹ). Hơn 15 năm kinh nghiệm quản trị chiến lược và vận hành.",
           color: "gray",
           image: vuTrongNghiaImg
         },
         {
           name: "Trần Văn Tuấn Phong",
           role: "Technical Leader",
-          bio: "Gắn bó với RegenAI từ những ngày đầu, người trực tiếp xây dựng nền móng cho hạ tầng AI & Backend và định hình các giải pháp cốt lõi cho RegenAI Solutions.",
+          bio: "Dẫn dắt hạ tầng AI và Backend, định hình nền tảng định lượng cốt lõi của RegenLab.",
           color: "blue",
           image: tranVanTuanPhongImg
         },
         {
           name: "Đặng Văn Thắng",
           role: "Software/Data Engineer",
-          bio: "Kỹ sư Khoa học Dữ liệu & AI, đã có hơn 1 năm đồng hành cùng công ty, chuyên sâu vào thiết kế kiến trúc AWS xử lý dữ liệu lớn và tối ưu hóa hạ tầng dữ liệu, đảm bảo sự ổn định và hiệu quả cho hành trình mở rộng hệ thống.",
+          bio: "Kỹ sư Khoa học Dữ liệu & AI, chuyên thiết kế kiến trúc AWS xử lý dữ liệu lớn và hạ tầng định lượng ổn định, mở rộng được.",
           color: "purple",
           image: dangVanThangImg
         },
         {
           name: "Trần Cao Thục Uyên",
           role: "Data Scientist",
-          bio: "Xuất phát điểm là Kỹ sư AI đầu tiên tại RegenAI, hiện đang tập trung nghiên cứu và phát triển các ứng dụng LLM tiên tiến để tự động hóa trích xuất thông tin.",
+          bio: "Tập trung vào các ứng dụng LLM tiên tiến để tự động hóa trích xuất dữ liệu khoa học và kiểm soát chất lượng.",
           color: "teal",
           image: tranCaoThucUyenImg
         },
         {
           name: "Hồ Thị Thanh Ngân",
           role: "Jr. Data Scientist",
-          bio: "Kỹ sư Khoa học Dữ liệu với gần 1 năm gắn bó với RegenAI, hiện đang giải quyết các bài toán nông nghiệp cụ thể thông qua các giải pháp AI sáng tạo.",
+          bio: "Kỹ sư khoa học dữ liệu giải quyết các bài toán định lượng nông nghiệp bằng AI ứng dụng.",
           color: "green",
           image: hoThiThanhNganImg
         }
       ]
     },
     projects: {
-      title: "Dự án & Tác động Thực tế",
-      subtitle: "Chúng tôi đã xây dựng và triển khai các giải pháp AgTech tại các thị trường khó tính nhất.",
+      title: "Nghiên cứu & Kinh nghiệm",
+      subtitle: "Công việc khoa học đã thực hiện trong các chương trình quốc tế khắt khe.",
       items: [
         {
           country: "California, USA",
           flag: "🇺🇸",
-          desc: "Phát triển ứng dụng \"Regen Ag Planner\" cho Chương trình Đất khỏe của tiểu bang California. Giúp nông dân lập kế hoạch canh tác bền vững.",
+          desc: "Đồng phát triển ứng dụng \"Regen Ag Planner\" cho Chương trình Đất khỏe California — khoa học định lượng hỗ trợ nông nghiệp tái sinh do nhà nước bảo trợ.",
           url: "https://regenagplanner.org/login"
         },
         {
           country: "Canada",
           flag: "🇨🇦",
-          desc: "Xây dựng hệ thống khuyến nghị đạm tự động cho cây Canola cùng đối tác Ukko.ag, tối ưu hóa chi phí đầu vào cho nông dân.",
+          desc: "Xây dựng hệ thống khuyến nghị đạm và giảm phát thải N₂O tự động cho cây Canola cùng đối tác Ukko.ag.",
           url: "https://ukko.ag/ukko-product/"
         },
         {
           country: "Úc",
           flag: "🇦🇺",
-          desc: "Mô hình hóa 3D chiều cao tán rừng sử dụng LiDAR & Học máy để giám sát tài nguyên rừng hiệu quả.",
+          desc: "Mô hình hóa 3D chiều cao tán rừng sử dụng LiDAR & Học máy để giám sát tài nguyên rừng.",
           url: "/projects/lidar-canopy"
         },
         {
           country: "Ấn Độ",
           flag: "🇮🇳",
-          desc: "Cung cấp hỗ trợ kỹ thuật MMRV cho dự án tín chỉ carbon đất quy mô lớn theo tiêu chuẩn Verra, mở khóa nguồn tài chính khí hậu."
+          desc: "Cung cấp hỗ trợ kỹ thuật dMRV và định lượng DayCent cho các chương trình carbon đất quy mô lớn theo tiêu chuẩn Verra."
         },
         {
           country: "Việt Nam",
           flag: "🇻🇳",
-          desc: "Phát triển \"Hỏi RegenAI\" - Trợ lý ảo nông nghiệp. Xây dựng cơ sở dữ liệu đầu vào cho mô hình DayCent tại Việt Nam.",
+          desc: "Xây dựng cơ sở dữ liệu đầu vào DayCent và công cụ nghiên cứu cho các vùng sinh thái nông nghiệp Việt Nam.",
           highlight: true
         }
       ]
@@ -244,24 +236,48 @@ const vi = {
     check_cali: "Xem demo tại dự án California’s Regen Ag Planner."
   },
   videos: { title: "Video Demo", owner: "Người đăng" },
-  internship: {
-    title: "Tham gia Cách mạng Tái sinh",
-    join: "Hợp tác cùng RegenLab",
-    desc: "Bạn là nông dân, hợp tác xã hoặc nhà đầu tư tác động?",
-    details: "Tại sao chọn RegenAI?",
-    apply_title: "Liên hệ Hợp tác",
-    apply_msg: "Bạn muốn thử nghiệm MMRV Suite? Liên hệ:",
-    who_title: "Ứng viên tiềm năng",
-    who_desc: "Sinh viên đại học hoặc cao học có nền tảng vững chắc về Khoa học Máy tính hoặc Khoa học Nông nghiệp."
+  partners: {
+    title: "Hợp tác cùng Chúng tôi",
+    join: "Hợp tác với RegenLab",
+    desc: "Nhà phát triển dự án, tổ chức đăng ký và đơn vị thẩm định: hãy hợp tác cùng chúng tôi về định lượng carbon và MRV số nghiêm ngặt, đạt chuẩn kiểm toán. Chúng tôi cung cấp khoa học và công cụ — không phải các dự án carbon.",
+    details: "Vì sao hợp tác",
+    benefits: [
+      "Định lượng dựa trên mô hình (engine DayCent)",
+      "API MRV số & mở rộng serverless",
+      "Báo cáo Thẩm định Mô hình VMD0053",
+      "Rà soát khoa học & phương pháp luận độc lập"
+    ],
+    who_title: "Đối tượng hợp tác",
+    who_desc: "Nhà phát triển dự án carbon, tổ chức đăng ký, đơn vị thẩm định (VVB) và viện nghiên cứu.",
+    apply_title: "Liên hệ",
+    apply_msg: "Quan tâm cấp phép bộ công cụ định lượng hoặc hợp tác khoa học? Liên hệ:"
+  },
+  careers: {
+    title: "Gia nhập RegenLab",
+    intro_title: "Xây dựng khoa học định lượng carbon",
+    intro: "RegenLab là chương trình nghiên cứu hợp tác. Chúng tôi làm việc cùng sinh viên, nhà nghiên cứu và kỹ sư trong các dự án khoa học định lượng quốc tế thực tế — từ mô hình hóa carbon đất đến tự động hóa MRV.",
+    internship_title: "Thực tập",
+    internship_desc: "Nghiên cứu thực hành cùng đội ngũ khoa học và kỹ thuật. Chúng tôi tiếp nhận sinh viên và cử nhân mới trong mô hình hóa, viễn thám và phần mềm.",
+    internship_tags: ["Mô hình hóa & Khoa học Dữ liệu", "Viễn thám / GIS", "Kỹ thuật Phần mềm", "Nông học & Khoa học Đất"],
+    roles_title: "Vị trí đang tuyển",
+    roles_note: "Vị trí mang tính tham khảo — cứ liên hệ kể cả khi chưa thấy vị trí phù hợp.",
+    roles: [
+      { title: "Nhà khoa học Mô hình Carbon", type: "Toàn thời gian", location: "Huế, VN · Từ xa", desc: "Phát triển và hiệu chỉnh các mô hình dựa trên mô hình (DayCent) cho định lượng carbon đất và khí nhà kính." },
+      { title: "Kỹ sư Phần mềm MRV", type: "Toàn thời gian", location: "Từ xa", desc: "Xây dựng và mở rộng API MRV số cùng các pipeline định lượng serverless." },
+      { title: "Nhà nghiên cứu Viễn thám", type: "Toàn thời gian · Hợp đồng", location: "Từ xa", desc: "Tích hợp dữ liệu vệ tinh (NEE, NDVI) để ràng buộc và kiểm định mô hình định lượng." },
+      { title: "Thực tập sinh Nghiên cứu", type: "Thực tập", location: "Huế, VN · Từ xa", desc: "Hỗ trợ mô hình hóa, xử lý dữ liệu và nghiên cứu phương pháp luận cùng các nhà khoa học cấp cao." }
+    ],
+    apply_title: "Cách ứng tuyển",
+    apply_msg: "Gửi CV và một đoạn giới thiệu ngắn tới:"
   },
   contact: {
     title: "Liên Hệ Với Chúng Tôi",
     subtitle: "Kết Nối",
     hero_title: "Hãy Cùng Nhau",
-    hero_highlight: "Kiến Tạo Tương Lai Xanh",
-    hero_desc: "Chúng tôi luôn sẵn sàng lắng nghe và hợp tác cùng bạn trong hành trình phát triển bền vững.",
-    get_in_touch: "Thông Tin Liên Hệ",
-    desc: "Liên hệ với chúng tôi để tìm hiểu thêm về các giải pháp AgTech, cơ hội hợp tác, hoặc chương trình đào tạo.",
+    hero_highlight: "Kiến Tạo Carbon Đáng tin cậy",
+    hero_desc: "Chúng tôi luôn sẵn sàng hợp tác về định lượng, MRV số, rà soát phương pháp luận và nghiên cứu khoa học.",
+    get_in_touch: "Hợp tác cùng Chúng tôi",
+    desc: "Liên hệ về định lượng, MRV số, rà soát phương pháp luận, hoặc hợp tác nghiên cứu.",
     office_title: "Văn Phòng",
     office_address: "117 Đường Phùng Hưng, Phường Phú Xuân, Thành phố Huế, Tỉnh Thừa Thiên Huế, Việt Nam",
     email_title: "Email",
@@ -282,6 +298,8 @@ const vi = {
       subject_internship: "Thực tập / Tuyển dụng",
       subject_training: "Chương trình đào tạo",
       msg: "Nội dung tin nhắn",
+      name_placeholder: "Họ và tên của bạn",
+      msg_placeholder: "Nhập nội dung tin nhắn...",
       send: "Gửi Tin Nhắn",
       sending: "Đang gửi...",
       success_title: "Gửi Thành Công!",
@@ -290,9 +308,10 @@ const vi = {
     }
   },
   footer: {
-    desc: "Phòng thí nghiệm nghiên cứu chuyên sâu về nông nghiệp tái sinh, ứng dụng khoa học để kiến tạo tương lai bền vững.",
+    desc: "RegenLab là chương trình nghiên cứu khoa học nông nghiệp tái sinh và MRV số của RegenAI Solutions (RAS) — thúc đẩy định lượng carbon nghiêm ngặt, đạt chuẩn kiểm toán.",
     links: "Liên kết nhanh",
-    areas: "Công nghệ",
+    areas: "Năng lực",
+    area_items: ["Mô hình hóa dựa trên mô hình", "MRV số", "Định lượng độ bất định", "Viễn thám"],
     contact: "Thông tin",
     rights: "Bảo lưu mọi quyền."
   }

@@ -16,220 +16,212 @@ const en = {
     about: "About",
     projects: "Research",
     videos: "Resources",
-    internship: "Careers",
+    partners: "Partners",
+    careers: "Careers",
+    portal: "API Portal",
     contact: "Contact",
     cta: "Collaborate"
   },
   hero: {
-    tagline: "RESEARCH • EDUCATION • INNOVATION",
-    title_prefix: "Pioneering Research in",
+    tagline: "SCIENCE • QUANTIFICATION • RESEARCH",
+    title_prefix: "Process-Based Carbon Quantification for",
     title_highlight: "Regenerative Agriculture",
-    desc: "RegenLab is a dedicated research hub applying AI, remote sensing, and data science to advance sustainable farming practices and train the next generation of ag-tech leaders.",
+    desc: "RegenLab builds rigorous, audit-grade carbon quantification and digital MRV infrastructure for regenerative agriculture. We provide the science and tooling; we are not a carbon project developer.",
     btn_explore: "Our Research",
-    btn_mission: "Training Programs"
+    btn_mission: "Our Approach"
   },
   highlights: {
-    ai_title: "Scientific Excellence",
-    ai_desc: "Conducting rigorous research on soil health, crop resilience, and carbon sequestration using advanced modeling tools like DayCent.",
-    climate_title: "Tech Transfer",
-    climate_desc: "Bridging the gap between academic research and practical application through technology transfer and pilot programs.",
-    origin_title: "Capacity Building",
-    origin_desc: "Empowering students, researchers, and local communities with cutting-edge knowledge in AgTech and data science."
+    ai_title: "Scientific Rigor",
+    ai_desc: "Process-based biogeochemical quantification of soil carbon and GHG fluxes, built on the peer-reviewed DayCent model and aligned to registry methodologies (e.g., Verra VM0042 / VMD0053).",
+    climate_title: "Digital MRV Infrastructure",
+    climate_desc: "Automated, reproducible quantification pipelines and APIs that developers, registries, and verification bodies can rely on for transparent, auditable results.",
+    origin_title: "Research & Capacity Building",
+    origin_desc: "An open scientific collaboration network connecting universities and researchers to advance regenerative-agriculture science and train the next generation of quantification specialists."
   },
   about: {
-    title: "Our Story",
-    lead: "A Journey Connecting",
-    lead_highlight: "Technology & Agriculture",
-    sub_lead: "We are building \"human infrastructure\" and \"technological infrastructure\" to position Vietnam as a powerhouse in high-tech regenerative agriculture.",
-    cta_journey: "Our Journey",
+    title: "About RegenLab",
+    lead: "Independent Science for",
+    lead_highlight: "Credible Carbon",
+    sub_lead: "RegenLab is an academic and scientific collaboration program. We build the human and scientific infrastructure for high-integrity agricultural carbon quantification.",
+    cta_journey: "Our Approach",
     cta_team: "Leadership",
     problem: {
       title: "The \"Language\" Challenge",
-      desc: "In Vietnam, the biggest barrier is not just technology, but people. Agricultural experts understand the land but are unfamiliar with digitization. Conversely, tech engineers excel at programming but lack field experience. This gap causes many AgTech projects to fail.",
-      ag_expert_title: "Agricultural Experts",
-      ag_expert_desc: "Understand the language of Soil & Crops.",
+      desc: "The hardest barrier in agricultural carbon is not technology — it is people. Agricultural scientists understand the land but are often unfamiliar with digital systems; software engineers excel at code but lack field experience. This gap is why many quantification efforts fail to reach audit-grade quality.",
+      ag_expert_title: "Agricultural Scientists",
+      ag_expert_desc: "Understand the language of soils & crops.",
       tech_expert_title: "Technology Experts",
-      tech_expert_desc: "Understand the language of Data & AI.",
-      bridge_text: "RegenLab is the Bridge"
+      tech_expert_desc: "Understand the language of data & AI.",
+      bridge_text: "RegenLab is the Bridge",
+      gap_label: "The language gap"
     },
     story: {
-      title: "Our Story",
-      subtitle: "From the Classroom to International Fields",
-      desc: "RegenLab was born from the aspiration to bring global standards to solve Vietnamese agricultural challenges.",
+      eyebrow: "Our Journey",
+      title: "Our Approach",
+      subtitle: "Academic Standards, Audit-Grade Quantification",
+      desc: "RegenLab exists to bring global scientific standards to the quantification of agricultural carbon — rigorously, reproducibly, and transparently.",
       steps: [
         {
           year: "2010",
-          title: "Beginning in Hue",
-          subtitle: "Academic Foundation & Biochemistry",
-          desc: "Started as a biochemistry lecturer at Hue University of Agriculture and Forestry, realizing agriculture needs precise data rather than intuition.",
+          title: "Scientific Foundations",
+          subtitle: "Biogeochemistry & Soil Science",
+          desc: "Rooted in academic soil science and biogeochemistry — the conviction that agricultural carbon must be quantified with data and process-based models, not intuition.",
           icon: "seedling"
         },
         {
           year: "plane",
-          title: "Reaching the World",
-          subtitle: "Colorado State University (USA)",
-          desc: "Fulbright Scholar at Colorado State University (USA). Mastered the DayCent model for yield and greenhouse gas forecasting.",
+          title: "Global Standards",
+          subtitle: "Process-Based Modeling (DayCent)",
+          desc: "Adopting the peer-reviewed DayCent model and registry-grade methodologies to forecast yields, soil carbon, and greenhouse-gas fluxes with defensible accuracy.",
           icon: "plane"
         },
         {
           year: "industry",
-          title: "Industrial Scale",
-          subtitle: "Shell & Clean Energy Regulator (Australia)",
-          desc: "Solved the problem of scaling models using Remote Sensing/GIS at Shell. Participated in developing Australia's 2021 Soil Carbon Methodology.",
+          title: "Scale via Technology",
+          subtitle: "Remote Sensing & Automation",
+          desc: "Combining remote sensing, GIS, and serverless automation so quantification scales across thousands of fields without losing scientific reproducibility.",
           icon: "industry"
         },
         {
           year: "flag",
-          title: "Homecoming & Building",
-          subtitle: "RegenLab Vietnam",
-          desc: "Returned to Vietnam, established RegenLab & RegenAI. Combined international experience to build local MMRV infrastructure.",
+          title: "Infrastructure, Not Projects",
+          subtitle: "RegenLab",
+          desc: "RegenLab provides the science and the quantification software and dMRV infrastructure — licensed to developers, registries, and verification bodies.",
           icon: "flag"
         }
       ]
     },
     mission: {
-      title: "Our Mission: Two Infrastructure Pillars",
-      subtitle: "Strategic Mission",
-      desc: "We don't just sell solutions, we build foundations.",
+      title: "Two Infrastructure Pillars",
+      subtitle: "What We Build",
+      desc: "We build foundations, not carbon projects.",
       pillar1_title: "1. Human Infrastructure (RegenLab)",
-      pillar1_desc: "We train the next generation of \"Digital Agricultural Engineers\". By connecting Agricultural and Technology Universities, bringing students into real international projects, we create \"bilingual\" talent - understanding both soil and technology.",
-      pillar2_title: "2. Technological Infrastructure (RegenAI)",
-      pillar2_desc: "Providing reliable MMRV (Measurement, Monitoring, Reporting, Verification) solutions. Our philosophy: \"Using technology to bring money (climate finance) to farmers, not selling technology products to farmers.\""
+      pillar1_desc: "We connect agricultural and technology universities and bring researchers into real international science projects — building \"bilingual\" talent that understands both soil and data, and advancing open regenerative-agriculture science.",
+      pillar2_title: "2. Technology Infrastructure",
+      pillar2_desc: "We provide rigorous, audit-grade digital MRV and process-based quantification software for developers, registries, and verification bodies. Our principle: we provide the science and tooling — we do not source farmers, write PDDs, or sell carbon credits."
     },
     leadership: {
-      title: "Leadership & Founders",
+      title: "Leadership",
       hieu: {
         name: "Prof. Hieu Minh Nguyen",
-        role: "Visionary Founder & Director",
-        bio: "Former Rector of Hue University of Agriculture and Forestry with 40 years of dedication. Laid the foundation connecting Vietnamese agriculture with global climate finance markets. Founded RegenAI with the belief that technology is key to solving climate change."
-      },
-      trung: {
-        name: "Prof. Dr. Nguyen Huu Trung",
-        role: "Founder & Principal Scientist",
-        bio: "DayCent modeling and MMRV expert. Former Fulbright Scholar (CSU), Technical Manager at Shell, and Scientific Lead at Regrow & Varaha. Directly building technical infrastructure and databases to realize the Net Zero vision."
+        role: "Founder & Director, RegenLab",
+        bio: "Former Rector of Hue University of Agriculture and Forestry with four decades in agricultural science and education. Founder and Director of RegenLab, leading its strategic direction and scientific program with the conviction that rigorous, accessible science is key to credible climate action."
       }
     },
     team: {
-      title: "Core Team of Experts",
-      subtitle: "A combination of leading scientists and talented technology engineers.",
+      title: "Core Scientific & Engineering Team",
+      subtitle: "Leading scientists and engineers building audit-grade quantification.",
       members: [
         {
           name: "Dr. Nguyen Trung Hai",
           role: "Senior Modeller",
-          bio: "Deputy Director of Central Climate Change Center. Expert in DayCent modeling, MRV framework under Verra standards, and remote sensing integration in agriculture.",
+          bio: "Deputy Director of the Central Climate Change Center. Expert in DayCent modeling, MRV frameworks under Verra standards, and remote-sensing integration in agriculture.",
           color: "green",
           image: nguyenTrungHaiImg
         },
         {
           name: "Lap Tran",
           role: "Senior Software Engineer",
-          bio: "Over 10 years of Backend/Cloud experience at international tech companies (Skedulo, FPT). Expert in building large-scale and secure systems.",
+          bio: "Over 10 years of Backend/Cloud experience at international tech companies (Skedulo, FPT). Expert in building large-scale, secure quantification systems.",
           color: "blue",
           image: lapTranImg
         },
         {
-          name: "Helen Tran",
-          role: "Protocol Expert",
-          bio: "Master of Environment (Melbourne). Expert consultant on carbon projects, greenhouse gas inventory (ISO 14064) in Australia and Asia.",
-          color: "purple",
-          // image: helenTranImg // Missing image
-        },
-        {
           name: "Dao Thi Hang - Anna",
-          role: "Carbon Market Expert",
-          bio: "Master of Carbon Management (Adelaide). Director of Global Expert Pty Ltd. Practical experience in farm operations and carbon trading consulting.",
+          role: "Carbon Methodology Expert",
+          bio: "Master of Carbon Management (Adelaide). Specialist in methodology compliance and greenhouse-gas accounting across Australia and Asia-Pacific.",
           color: "yellow",
           image: daoThiHangImg
         },
         {
           name: "Assoc. Prof. Phan Kieu Diem",
           role: "Remote Sensing Expert",
-          bio: "Lecturer at Can Tho University. Specialized in GIS and Remote Sensing applications for land resource monitoring and climate change.",
+          bio: "Lecturer at Can Tho University. Specialized in GIS and remote-sensing applications for land-resource monitoring and climate change.",
           color: "teal",
           image: phanKieuDiemImg
         },
         {
           name: "Dr. Nguyen Van Hien",
           role: "Soil Scientist",
-          bio: "Soil scientist at Institute of Soil Science and Agricultural Chemistry. PhD from University of Birmingham (UK). Expert in Biochar and carbon sequestration in soil.",
+          bio: "Soil scientist at the Institute of Soil Science and Agricultural Chemistry. PhD from the University of Birmingham (UK). Expert in biochar and soil carbon sequestration.",
           color: "orange",
           image: nguyenVanHienImg
         },
         {
           name: "Dr. Mai Le Quyen",
-          role: "Social Expert",
-          bio: "PhD in Sociology (Bonn, Germany). Deputy Director of CKC Center. Expert in social impact assessment, community development, and gender equality.",
+          role: "Social & ESG Expert",
+          bio: "PhD in Sociology (Bonn, Germany). Expert in social-impact assessment, community development, and gender equity.",
           color: "pink",
           image: maiLeQuyenImg
         },
         {
           name: "Vu Trong Nghia - Vince",
-          role: "Project Management",
-          bio: "MBA (Thunderbird, USA). Co-founder of Bizzi Bots. Over 15 years of experience in strategic management, startup operations, and investment funds.",
+          role: "Operations",
+          bio: "MBA (Thunderbird, USA). Over 15 years of experience in strategic management and operations.",
           color: "gray",
           image: vuTrongNghiaImg
         },
         {
           name: "Tran Van Tuan Phong",
           role: "Technical Leader",
-          bio: "Been with RegenAI since the early days, the person directly building the foundation for AI & Backend infrastructure and shaping the core solutions for RegenAI Solutions.",
+          bio: "Leads the AI and backend infrastructure, shaping RegenLab's core quantification platform.",
           color: "blue",
           image: tranVanTuanPhongImg
         },
         {
           name: "Dang Van Thang",
           role: "Software/Data Engineer",
-          bio: "Data Science & AI Engineer, having accompanied the company for over 1 year, specializing deeply in designing AWS architectures for big data processing and optimizing data infrastructure, ensuring stability and efficiency for the system expansion journey.",
+          bio: "Data Science & AI engineer specializing in AWS architectures for large-scale data processing and reliable, scalable quantification infrastructure.",
           color: "purple",
           image: dangVanThangImg
         },
         {
           name: "Tran Cao Thuc Uyen",
           role: "Data Scientist",
-          bio: "Starting point as the first AI Engineer at RegenAI, currently focusing on researching and developing advanced LLM applications to automate information extraction.",
+          bio: "Focused on advanced LLM applications to automate scientific data extraction and quality control.",
           color: "teal",
           image: tranCaoThucUyenImg
         },
         {
           name: "Ho Thi Thanh Ngan",
           role: "Jr. Data Scientist",
-          bio: "Data Science Engineer with nearly 1 year with RegenAI, currently solving specific agricultural challenges through creative AI solutions.",
+          bio: "Data science engineer solving agricultural quantification challenges through applied AI.",
           color: "green",
           image: hoThiThanhNganImg
         }
       ]
     },
     projects: {
-      title: "Projects & Real Impact",
-      subtitle: "We have built and deployed AgTech solutions in the most demanding markets.",
+      title: "Research & Track Record",
+      subtitle: "Scientific work delivered across demanding international programs.",
       items: [
         {
           country: "California, USA",
           flag: "🇺🇸",
-          desc: "Developed the \"Regen Ag Planner\" application for California's Healthy Soils Program. Helping farmers plan sustainable farming.",
+          desc: "Co-developed the \"Regen Ag Planner\" application for California's Healthy Soils Program — quantification science supporting state-backed regenerative agriculture.",
           url: "https://regenagplanner.org/login"
         },
         {
           country: "Canada",
           flag: "🇨🇦",
-          desc: "Built an automated nitrogen recommendation system for Canola crops with partner Ukko.ag, optimizing input costs for farmers.",
+          desc: "Built an automated nitrogen-recommendation and N₂O-reduction system for canola with partner Ukko.ag.",
           url: "https://ukko.ag/ukko-product/"
         },
         {
           country: "Australia",
           flag: "🇦🇺",
-          desc: "3D canopy height modeling using LiDAR & Machine Learning for effective forest resource monitoring.",
+          desc: "3D canopy-height modeling using LiDAR and machine learning for forest-resource monitoring.",
           url: "/projects/lidar-canopy"
         },
         {
           country: "India",
           flag: "🇮🇳",
-          desc: "Provided MMRV technical support for large-scale soil carbon credit projects under Verra standards, unlocking climate finance."
+          desc: "Provided technical dMRV and DayCent quantification support for large-scale soil-organic-carbon programs under Verra standards."
         },
         {
           country: "Vietnam",
           flag: "🇻🇳",
-          desc: "Developed \"Ask RegenAI\" - Agricultural virtual assistant. Building input database for DayCent model in Vietnam.",
+          desc: "Building DayCent input databases and research tools for Vietnamese agro-ecological zones.",
           highlight: true
         }
       ]
@@ -244,35 +236,73 @@ const en = {
     check_cali: "Please check the California’s Regen Ag Planner for a live demo."
   },
   videos: { title: "Demo Videos", owner: "Owner" },
-  internship: {
-    title: "Join the Revolution",
-    join: "Partner with Us",
-    desc: "Are you a smallholder farmer, cooperative, or investor? Join our mission.",
-    details: "Why Join?",
-    apply_title: "Contact for Partnership",
-    apply_msg: "Interested in piloting our MMRV Suite? Reach out to:",
-    who_title: "Who we are looking for",
-    who_desc: "Undergraduate or graduate students with a strong background in either computer science or agricultural sciences."
+  partners: {
+    title: "Partner With Us",
+    join: "Collaborate with RegenLab",
+    desc: "Project developers, registries, and verification bodies: partner with us for rigorous, audit-grade carbon quantification and digital MRV. We provide the science and tooling — not carbon projects.",
+    details: "Why partner",
+    benefits: [
+      "Process-based quantification (DayCent engine)",
+      "Digital MRV API & serverless scale",
+      "VMD0053 Model Validation Reports",
+      "Independent scientific & methodology review"
+    ],
+    who_title: "Who we work with",
+    who_desc: "Carbon project developers, registries, verification bodies (VVBs), and research institutions.",
+    apply_title: "Get in touch",
+    apply_msg: "Interested in licensing the quantification suite or collaborating on the science? Reach out to:"
+  },
+  careers: {
+    title: "Join the Lab",
+    intro_title: "Build the science of carbon quantification",
+    intro: "RegenLab is a collaborative research program. We work with students, researchers, and engineers on real international quantification science — from soil-carbon modeling to MRV automation.",
+    internship_title: "Internships",
+    internship_desc: "Hands-on research alongside our scientific and engineering teams. We host students and recent graduates in modeling, remote sensing, and software.",
+    internship_tags: ["Modeling & Data Science", "Remote Sensing / GIS", "Software Engineering", "Agronomy & Soil Science"],
+    roles_title: "Open Roles",
+    roles_note: "Indicative roles — reach out even if your fit isn't listed.",
+    roles: [
+      { title: "Carbon Modeling Scientist", type: "Full-time", location: "Hue, VN · Remote", desc: "Develop and calibrate process-based models (DayCent) for soil-carbon and GHG quantification." },
+      { title: "MRV Software Engineer", type: "Full-time", location: "Remote", desc: "Build and scale the digital MRV API and serverless quantification pipelines." },
+      { title: "Remote Sensing Researcher", type: "Full-time · Contract", location: "Remote", desc: "Integrate satellite data (NEE, NDVI) to constrain and validate quantification models." },
+      { title: "Research Intern", type: "Internship", location: "Hue, VN · Remote", desc: "Support modeling, data processing, and methodology research with senior scientists." }
+    ],
+    apply_title: "How to apply",
+    apply_msg: "Send your CV and a short note to:"
   },
   contact: {
     title: "Contact Us",
-    get_in_touch: "Unlock New Revenue",
-    desc: "Tap into new income streams with verified carbon credits.",
+    get_in_touch: "Partner With Us",
+    desc: "Reach out about quantification, digital MRV, methodology review, or research collaboration.",
+    office_title: "Office",
+    office_address: "117 Phung Hung Street, Phu Xuan Ward, Hue City, Thua Thien Hue Province, Vietnam",
+    email_title: "Email",
+    email_address: "info@regenlab.tech",
+    hours_title: "Hours",
+    hours_desc: "24/7",
     form: {
       name: "Name",
       email: "Email",
       subject: "Subject",
+      subject_general: "General enquiry",
+      subject_collaboration: "Project collaboration",
+      subject_internship: "Internship / Careers",
+      subject_training: "Training program",
       msg: "Message",
+      name_placeholder: "Your name",
+      msg_placeholder: "Type your message...",
       send: "Send Message",
       sending: "Sending...",
       success_title: "Message Sent!",
-      success_desc: "Thank you for contacting RegenLab. We will get back to you shortly."
+      success_desc: "Thank you for contacting RegenLab. We will get back to you shortly.",
+      send_another: "Send another message"
     }
   },
   footer: {
-    desc: "A research laboratory dedicated to advancing regenerative agriculture through science and technology.",
+    desc: "RegenLab is the regenerative-agriculture science and digital-MRV research program of RegenAI Solutions (RAS) — advancing rigorous, audit-grade carbon quantification.",
     links: "Quick Links",
-    areas: "Technology",
+    areas: "Capabilities",
+    area_items: ["Process-based modeling", "Digital MRV", "Uncertainty quantification", "Remote sensing"],
     contact: "Contact",
     rights: "All rights reserved."
   }

@@ -41,7 +41,7 @@ const QT_TEXT = {
     y_axis: "Soil Organic Carbon (tC/ha)",
     scenario_a: "Conventional (Inorganic)",
     scenario_b: "Organic (Manure/Compost)",
-    insight: "DayCent predicts a 18.5% increase in soil carbon storage, unlocking potential carbon credit revenue.",
+    insight: "DayCent projects soil organic carbon rising from ~40 to 48.5 tC/ha under regenerative management — a ~21% increase over ten years.",
 
     // Modules
     mod_db: "Knowledge DB",
@@ -102,7 +102,7 @@ const QT_TEXT = {
     y_axis: "Carbon Hữu cơ trong Đất (tC/ha)",
     scenario_a: "Canh tác Vô cơ",
     scenario_b: "Canh tác Hữu cơ", 
-    insight: "DayCent dự báo lượng Carbon trong đất tăng 18.5%, mở ra cơ hội doanh thu từ tín chỉ Carbon.",
+    insight: "DayCent dự báo carbon hữu cơ trong đất tăng từ ~40 lên 48.5 tC/ha dưới canh tác tái sinh — tăng ~21% sau mười năm.",
 
     // Modules
     mod_db: "CSDL Tri thức",

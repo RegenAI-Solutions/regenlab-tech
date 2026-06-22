@@ -114,20 +114,22 @@ const METRICS = {
 };
 
 const FEATURE_IMPORTANCE = [
-  { name: "B1 (Coastal)", val: 0.15 },
-  { name: "B11 (SWIR)", val: 0.35 },
-  { name: "B12 (SWIR)", val: 0.32 },
-  { name: "B5 (Red Edge)", val: 0.28 },
+  { name: "B1 (Coastal)", val: 0.07 },
+  { name: "B11 (SWIR)", val: 0.18 },
+  { name: "B12 (SWIR)", val: 0.15 },
+  { name: "B5 (Red Edge)", val: 0.10 },
   { name: "NDVI", val: 0.45 },
-  { name: "VV (SAR)", val: 0.12 }
+  { name: "VV (SAR)", val: 0.05 }
 ];
 
+// Overall accuracy = trace / total = 186 / 250 = 0.744 (≈ test_acc 0.74).
+// Weakest recall is on the small-stature classes (0-2m, 2-5m), per the note.
 const CONFUSION_MATRIX = [
-  [50, 4, 0, 0, 2], // Ground
-  [5, 40, 1, 0, 5], // 0-2m
-  [0, 2, 30, 9, 0], // 2-5m
-  [0, 0, 2, 20, 10], // 5-15m
-  [1, 0, 0, 2, 51]  // 15-30m
+  [54, 4, 0, 0, 2], // Ground   (recall 90%)
+  [9, 28, 8, 0, 5], // 0-2m     (recall 56%)
+  [0, 9, 26, 7, 2], // 2-5m     (recall 59%)
+  [0, 0, 5, 34, 5], // 5-15m    (recall 77%)
+  [2, 0, 0, 6, 44]  // 15-30m   (recall 85%)
 ];
 
 // --- 3. SUB-COMPONENTS ---

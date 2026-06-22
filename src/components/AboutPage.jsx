@@ -7,7 +7,6 @@ import {
 import { Link } from 'react-router-dom';
 import CONTENT from '../data/content';
 import nguyenMinhHieuImg from '../assets/members/nguyen_minh_hieu.png';
-import nguyenHuuTrungImg from '../assets/members/nguyen_huu_trung.jpg';
 
 const SectionTitle = ({ children, subtitle, light = false }) => (
     <div className="mb-12 text-center">
@@ -215,7 +214,7 @@ export default function AboutPage({ lang, showHero = true }) {
                         {/* Bridge */}
                         <div className="text-center md:py-0 py-8">
                             <div className="text-gray-300 text-6xl mb-2"><Link2 size={64} className="mx-auto rotate-90 md:rotate-0" /></div>
-                            <p className="font-medium text-red-500 italic mb-4">"Khoảng cách ngôn ngữ"</p>
+                            <p className="font-medium text-red-500 italic mb-4">"{t.problem.gap_label}"</p>
                             <div className="mt-8">
                                 <ArrowRight size={24} className="text-emerald-600 mx-auto mb-2 animate-bounce md:hidden" />
                                 <p className="text-emerald-600 font-bold">{t.problem.bridge_text}</p>
@@ -238,7 +237,7 @@ export default function AboutPage({ lang, showHero = true }) {
             <section id="story" className="py-20 bg-white relative">
                 <div className="max-w-5xl mx-auto px-6">
                     <div className="text-center mb-16">
-                        <span className="text-blue-600 font-semibold uppercase tracking-wider text-sm">Hành trình</span>
+                        <span className="text-blue-600 font-semibold uppercase tracking-wider text-sm">{t.story.eyebrow}</span>
                         <h2 className="text-4xl font-bold text-slate-900 mt-2">{t.story.subtitle}</h2>
                         <p className="text-slate-600 mt-4 max-w-2xl mx-auto">{t.story.desc}</p>
                     </div>
@@ -327,28 +326,16 @@ export default function AboutPage({ lang, showHero = true }) {
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
                     <SectionTitle subtitle light>{t.leadership.title}</SectionTitle>
 
-                    <div className="grid lg:grid-cols-2 gap-12">
+                    <div className="max-w-3xl mx-auto">
                         {/* Prof Hieu */}
                         <div className="bg-slate-800 rounded-2xl p-8 border border-slate-700 flex flex-col md:flex-row gap-8 items-center hover:bg-slate-750 transition">
                             <div className="w-32 h-32 md:w-40 md:h-40 shrink-0">
-                                <img src={nguyenMinhHieuImg} alt="GS.TS Nguyễn Minh Hiếu" className="w-full h-full rounded-full object-cover border-4 border-emerald-500 shadow-xl" />
+                                <img src={nguyenMinhHieuImg} alt={t.leadership.hieu.name} className="w-full h-full rounded-full object-cover border-4 border-emerald-500 shadow-xl" />
                             </div>
                             <div>
                                 <h3 className="text-2xl font-bold text-white">{t.leadership.hieu.name}</h3>
                                 <p className="text-emerald-400 font-medium mb-4">{t.leadership.hieu.role}</p>
                                 <p className="text-gray-300 text-sm leading-relaxed">{t.leadership.hieu.bio}</p>
-                            </div>
-                        </div>
-
-                        {/* Dr Trung */}
-                        <div className="bg-slate-800 rounded-2xl p-8 border border-slate-700 flex flex-col md:flex-row gap-8 items-center hover:bg-slate-750 transition">
-                            <div className="w-32 h-32 md:w-40 md:h-40 shrink-0">
-                                <img src={nguyenHuuTrungImg} alt="GS. TS Nguyễn Hữu Trung" className="w-full h-full rounded-full object-cover border-4 border-blue-500 shadow-xl" />
-                            </div>
-                            <div>
-                                <h3 className="text-2xl font-bold text-white">{t.leadership.trung.name}</h3>
-                                <p className="text-blue-400 font-medium mb-4">{t.leadership.trung.role}</p>
-                                <p className="text-gray-300 text-sm leading-relaxed">{t.leadership.trung.bio}</p>
                             </div>
                         </div>
                     </div>
